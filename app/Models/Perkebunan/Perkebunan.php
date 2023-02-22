@@ -16,4 +16,9 @@ class Perkebunan extends Model
     ];
 
     public $timestamps = true;
+
+    public function getRouteKeyName()
+    {
+        return 'nama';
+    }
 }
