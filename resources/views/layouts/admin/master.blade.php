@@ -7,7 +7,7 @@
     <meta content="E-Sawit Sanggau" name="description" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="shortcut icon" href="{{ asset('images/admin-little.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 
     <link href="{{ asset('assets/libs/bootstrap-5.2.3/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/core.css') }}" rel="stylesheet" type="text/css" />
@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    @include('components.preloader')
     <!-- Begin page -->
     <div id="wrapper">
         @include('layouts.admin.partials.navbar')
@@ -34,7 +35,7 @@
     <!-- END wrapper -->
 
     <script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/bootstrap-5.2.3/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap-5.2.3/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('assets/libs/modernizr/modernizr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/metisMenu/metisMenu.min.js') }}"></script>

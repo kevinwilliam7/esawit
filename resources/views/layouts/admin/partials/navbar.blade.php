@@ -3,10 +3,10 @@
         {{-- <a href="{{ route('dashboard') }}" class="logo"> --}}
         <a href="#" class="logo">
             <span>
-                <img src="{{ asset('assets/images/slider/slide-1.png') }}" alt="" height="30">
+                <img src="{{ asset('assets/images/E-Sawit-Large-White.png') }}" alt="" height="30">
             </span>
             <i>
-                <img src="{{ asset('assets/images/slider/slide-2.png') }}" alt="" height="25">
+                <img src="{{ asset('assets/images/E-Sawit-Icon.png') }}" alt="" height="25">
             </i>
         </a>
     </div>
@@ -22,24 +22,23 @@
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right ms-auto">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle text-decoration-none" data-toggle="dropdown" role="button"
-                        style="font-size: 12pt; color: white; margin-top: 10px;">
+            <ul class="nav navbar-nav navbar-right ms-auto me-lg-4">
+                <li class="dropdown" >
+                    <a href="#" class="dropdown-toggle text-decoration-none text-white" data-bs-toggle="dropdown" role="button">
                         {{-- {{ Auth::user()->name }} --}}
                         John Doe
                         <span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
-                        <li>
+                        <li class="dropdown-item ps-2">
                             {{-- <form action="{{ route('logout') }}" method="POST"> --}}
-                            <form>
+                            <form action="" class="d-none" id="logout">
                                 @csrf
-                                <button type="submit">
-                                    <i class="fa fa-sign-out"></i> Logout
-                                </button>
                             </form>
+                            <button type="submit" class="btn btn-sm" form="logout">
+                                <i class="fa fa-sign-out"></i> Logout
+                            </button>
                         </li>
                     </ul>
                 </li>

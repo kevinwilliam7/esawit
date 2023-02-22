@@ -3,14 +3,14 @@
         <div id="sidebar-menu">
             <ul class="metisMenu nav" id="side-menu">
                 <li class="menu-title">MENU NAVIGASI</li>
-                <li class="w-100 {{ Route::currentRouteName() ==='home' }}">
+                <li class="w-100">
                     <a href="#">
                         <i class="fa fa-home"></i><span>Halaman Utama</span>
                     </a>
                 </li>
 
-                <li class="w-100 {{ str_contains(Route::currentRouteName(), 'perkebunan') ? 'active' : ''}}">
-                    <a href="#" class="text-decoration-none">
+                <li class="w-100">
+                    <a href="{{ route('perkebunan.index') }}" class="text-decoration-none">
                         <i class="fa fa-tree"></i><span>Perusahaan Perkebunan</span>
                     </a>
                 </li>
@@ -33,7 +33,7 @@
                     </a>
                 </li>
 
-                <li class="w-100 menu-item {{ str_contains(Route::currentRouteName(), 'perundangan') }}">
+                <li class="w-100 menu-item">
                     <a href="#" class="text-decoration-none">
                         <i class="fa fa-download"></i><span>Peraturan Perundangan</span>
                     </a>
