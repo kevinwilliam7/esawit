@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Green Bootstrap Template - Index</title>
+  <link rel="shortcut icon" href="{{ asset('assets/images/E-Sawit-Icon.png') }}"/>
+  <title>E-Sawit</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
   <!-- Favicons -->
   <link href="assets/green/img/favicon.png" rel="icon">
   <link href="assets/green/img/apple-touch-icon.png" rel="apple-touch-icon">
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
   <!-- Vendor CSS Files -->
   <link href="assets/green/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="assets/green/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,14 +19,10 @@
   <link href="assets/green/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/green/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/green/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="assets/images/E-Sawit-Icon.png">
-
   <!-- Template Main CSS File -->
   <link href="assets/green/css/style.css" rel="stylesheet">
 </head>
-
 <body>
-
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -49,11 +41,8 @@
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center">
+    <div class="container d-flex align-items-center">    
     <a class="logo me-auto" href=""><img style="" src="assets/images/E-Sawit-Small.png" alt="E-Sawit" class="img-fluid"></a>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
       <nav id="navbar" class="navbar">
         <ul>
             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -81,11 +70,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
       <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
       <div class="carousel-inner" role="listbox">
-
         <!-- Slide 1 -->
         <div class="carousel-item active" style="background-image: url(assets/images/slider/sawit1.jpg)">
           <div class="carousel-container">
@@ -107,7 +93,6 @@
             </div>
           </div>
         </div>
-
         <!-- Slide 3 -->
         <div class="carousel-item" style="background-image: url(assets/images/slider/sawit3.jpg)">
           <div class="carousel-container">
@@ -118,22 +103,17 @@
             </div>
           </div>
         </div>
-
       </div>
-
       <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
       </a>
-
       <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
         <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
       </a>
-
     </div>
   </section><!-- End Hero -->
 
   <main id="main">
-
     <!-- ======= Featured Services Section ======= -->
     <section id="featured-services" class="featured-services section-bg">
       <div class="container">
@@ -371,16 +351,13 @@
       </div>
     </div>
   </footer><!-- End Footer -->
-
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   <!-- Vendor JS Files -->
   <script src="assets/green/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/green/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/green/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/green/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/green/vendor/php-email-form/validate.js"></script>
-
   <!-- Template Main JS File -->
   <script src="assets/green/js/main.js"></script>
 
