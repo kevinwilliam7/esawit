@@ -121,7 +121,7 @@ File: Menu
   background-color: rgba(100, 197, 177, 0.4);
 }
 .enlarged .side-menu {
-  position: absolute;
+  position: fixed;
 }
 .content-page {
   margin-left: 240px;
