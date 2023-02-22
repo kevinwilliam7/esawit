@@ -77,14 +77,3 @@
     init();
 
 })(jQuery)
-
-$(document).ready(function(){
-    function disablePreloader(){
-        $('#preloader').fadeOut(2000, function(){
-            $('body').css('overflow', 'auto');
-            $('#preloader').remove();
-        });
-    }
-
-    disablePreloader();
-});
