@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Sistem Informasi Usaha Perkebunan Kelapa Sawit Kabupaten Sanggau</title>
@@ -39,12 +40,38 @@
     <script src="{{ asset('assets/libs/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
     <script src="{{ asset('assets/libs/modernizr/modernizr.min.js') }}"></script>
     <script src="{{ asset('assets/libs/metisMenu/metisMenu.min.js') }}"></script>
-    
+
     <!-- App js -->
     <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
     <script src="{{ asset('assets/libs/sweetalert2-11.7.2/js/sweetalert2.all.min.js') }}"></script>
-    @include('components.alert')
+    <script>
+        function swal(message, icon = 'success', timer = 1500){
+            Swal.fire({
+                position: 'top-end',
+                icon: icon,
+                title: message,
+                showConfirmButton: false,
+                timer: timer
+            });
+        };
+
+        $(document).ready(function() {
+            function disablePreloader() {
+                $('#preloader').fadeOut(2000, function() {
+                    $('body').css('overflow', 'auto');
+                    $('#preloader').remove();
+                    @if (session()->has('success'))
+                        swal('{{ session()->get("success") }}')
+                    @elseif(session()->has('error'))
+                        swal('{{ session()->get("error") }}', 'error')
+                    @endif
+                });
+            }
+
+            disablePreloader();
+        });
+    </script>
     @yield('js')
 </body>
 
