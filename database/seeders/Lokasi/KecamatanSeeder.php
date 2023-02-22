@@ -19,6 +19,7 @@ class KecamatanSeeder extends Seeder
             ['kabupaten_id' => 1, 'name' => 'Beduai'],
             ['kabupaten_id' => 1, 'name' => 'Bonti'],
             ['kabupaten_id' => 1, 'name' => 'Entikong'],
+            ['kabupaten_id' => 1, 'name' => 'Jangkang'],
             ['kabupaten_id' => 1, 'name' => 'Kapuas'],
             ['kabupaten_id' => 1, 'name' => 'Kembayan'],
             ['kabupaten_id' => 1, 'name' => 'Meliau'],
@@ -30,6 +31,7 @@ class KecamatanSeeder extends Seeder
             ['kabupaten_id' => 1, 'name' => 'Tayan Hulu'],
             ['kabupaten_id' => 1, 'name' => 'Toba'],
         ];
-        Kecamatan::create($kecamatans);
+
+        Kecamatan::insert($kecamatans);
     }
 }
