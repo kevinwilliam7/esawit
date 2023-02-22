@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PerkebunanController;
+use App\Http\Controllers\Perkebunan\PerkebunanController as AdminPerkebunanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,7 @@ Route::get('/', function () {
     return view('home.public.index');
 });
 Route::resource('perkebunan', PerkebunanController::class);
+
+Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
+    Route::resource('perkebunan', AdminPerkebunanController::class);
+});

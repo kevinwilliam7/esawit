@@ -17,7 +17,7 @@ class PerkebunanController extends Controller
     public function index()
     {
         $perkebunans = Perkebunan::select('id', 'nama', 'npwp', 'alamat', 'pola_kemitraan')->get();
-        return view('perkebunan.index', compact('perkebunans'));
+        return view('perkebunan.admin.index', compact('perkebunans'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PerkebunanController extends Controller
      */
     public function create()
     {
-        return view('perkebunan.create');
+        return view('perkebunan.admin.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class PerkebunanController extends Controller
             //throw $th;
             dd($th);
         }
-        return redirect()->route('perkebunan.index')->with('success', 'Berhasil menambah data perkebunan');
+        return redirect()->route('admin.perkebunan.index')->with('success', 'Berhasil menambah data perkebunan');
     }
 
     /**
@@ -89,7 +89,7 @@ class PerkebunanController extends Controller
      */
     public function destroy(Perkebunan $perkebunan)
     {
-        // $perkebunan->delete();
-        return response('', 500);
+        $perkebunan->delete();
+        return response('', 204);
     }
 }
