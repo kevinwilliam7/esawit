@@ -43,7 +43,8 @@
     <!-- App js -->
     <script src="{{ asset('assets/js/jquery.core.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
-
+    <script src="{{ asset('assets/libs/sweetalert2-11.7.2/js/sweetalert2.all.min.js') }}"></script>
+    @include('components.alert')
     @yield('js')
 </body>
 
