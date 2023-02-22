@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <a href="{{ route('perkebunan.create') }}"
+                <a href="{{ route('admin.perkebunan.create') }}"
                     class="btn btn-sm btn-success btn-bordered waves-effect w-md waves-light mb-3 rounded-2">
                     <i class="fa fa-plus"></i> Tambah Data
                 </a>
@@ -212,7 +212,7 @@
                 var nama = row.data()[1];
                 if (await confirmation()) {
                     $.ajax({
-                        'url': `{{ url('perkebunan') }}/${nama}`,
+                        'url': `{{ url('admin/perkebunan') }}/${nama}`,
                         'method': 'POST',
                         'data': {
                             '_token': '{{ csrf_token() }}',

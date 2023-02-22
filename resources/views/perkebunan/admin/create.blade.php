@@ -7,7 +7,7 @@
                 <div class="card-title py-0 h5">Tambah Data Perusahaan Perusahaan Perkebunan</div>
             </div>
             <div class="card-body">
-                <form enctype="multipart/form-data" method="POST" action="{{ route('perkebunan.store') }}"
+                <form enctype="multipart/form-data" method="POST" action="{{ route('admin.perkebunan.store') }}"
                     id="store-perkebunan">
                     @csrf
 
