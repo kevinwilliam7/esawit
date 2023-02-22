@@ -564,3 +564,9 @@ body.enlarged.bg-transparent {
 .mega-menu .yamm-content {
   padding: 20px;
 }
+
+@media only screen and (max-width: 480px) {
+  .content-page .content {
+    margin-bottom: 60px;
+  }
+}
