@@ -15,13 +15,13 @@ class CreatePerkebunansTable extends Migration
     {
         Schema::create('perkebunans', function (Blueprint $table) {
             $table->id();
-            $table->string('npwp');
-            $table->string('nama')->nullable();
-            $table->string('alamat')->nullable();
+            $table->string('npwp')->nullable();
+            $table->string('nama');
+            $table->string('alamat');
             $table->string('email')->nullable();
             $table->string('direktur')->nullable();
             $table->string('gm')->nullable();
-            $table->string('kadivlegal')->nullable();
+            $table->string('kadiv_legal')->nullable();
             $table->string('manager_mill')->nullable();
             $table->string('nomor_akta_pendirian')->nullable();
             $table->date('tanggal_akta_pendirian')->nullable();
