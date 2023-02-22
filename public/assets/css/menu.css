@@ -455,7 +455,7 @@ File: Menu
 }
 /* Body min-height set */
 body.enlarged {
-  min-height: 1450px;
+  /* min-height: 1450px; */
 }
 body.enlarged.bg-transparent {
   min-height: 500px;
