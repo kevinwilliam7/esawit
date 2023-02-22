@@ -256,8 +256,8 @@
 
                                             <div class="mb-3">
                                                 <label class="form-label">Jabatan TKA</label>
-                                                <input type="text" name="jabatantka" class="form-control"
-                                                    value="{{ old('jabatantka') }}">
+                                                <input type="text" name="jabatan_tka" class="form-control"
+                                                    value="{{ old('jabatan_tka') }}">
                                             </div>
                                         </div>
                                     </div>
