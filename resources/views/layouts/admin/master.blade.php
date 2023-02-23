@@ -58,7 +58,7 @@
 
         $(document).ready(function() {
             function disablePreloader() {
-                $('#preloader').fadeOut(2000, function() {
+                $('#preloader').fadeOut(1000, function() {
                     $('body').css('overflow', 'auto');
                     $('#preloader').remove();
                     @if (session()->has('success'))
