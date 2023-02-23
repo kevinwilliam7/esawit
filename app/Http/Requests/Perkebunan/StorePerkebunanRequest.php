@@ -24,8 +24,8 @@ class StorePerkebunanRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required|string',
-            'npwp' => 'nullable|string',
+            'nama' => 'required|string|unique:perkebunans,nama',
+            'npwp' => 'nullable|string|unique:perkebunans,npwp',
             'alamat' => 'required|string',
             'email' => 'nullable|email',
             'direktur' => 'nullable|string',
@@ -62,11 +62,53 @@ class StorePerkebunanRequest extends FormRequest
 
     public function attributes()
     {
-        return [];
+        return [
+            'nama' => 'Nama Perusahaan Perkebunan',
+            'npwp' => 'NPWP',
+            'alamat' => 'Alamat',
+            'email' => 'Email',
+            'direktur' => 'Direktur Utama',
+            'gm' => 'General Manager Operational',
+            'kadiv_legal' => 'Kadiv Legal',
+            'manager_mill' => 'Manager Mill Project',
+            'nomor_akta_pendirian' => 'Nomor Akta Pendirian',
+            'tanggal_akta_pendirian' => 'Tanggal Akta Pendirian',
+            'notaris_akta_pendirian' => 'Notaris Akta Pendirian',
+            'komisaris_akta_pendirian' => 'Komisaris Akta Pendirian',
+            'direktur_akta_pendirian' => 'Direktur Akta Pendirian',
+            'nomor_akta_perubahan' => 'Nomor Akta Perubahan',
+            'tanggal_akta_perubahan' => 'Tanggal Akta Perubahan',
+            'notaris_akta_perubahan' => 'Notaris Akta Perubahan',
+            'komisaris_akta_perubahan' => 'Komisaris Akta Perubahan',
+            'direktur_akta_perubahan' => 'Direktur Akta Perubahan',
+            'bulanan_kebun' => 'Pekerja Bulanan Kebun',
+            'tetap_kebun' => 'Pekerja Tetap Kebun',
+            'lepas_kebun' => 'Pekerja Lepas Kebun',
+            'musiman_kebun' => 'Pekerja Musiman Kebun',
+            'bulanan_pabrik' => 'Pekerja Bulanan Pabrik',
+            'tetap_pabrik' => 'Pekerja Tetap Pabrik',
+            'lepas_pabrik' => 'Pekerja Lepas Pabrik',
+            'musiman_pabrik' => 'Pekerja Musiman Pabrik',
+            'tka' => 'Jumlah TKA',
+            'jabatan_tka' => 'Jabatan TKA',
+            'pola_kemitraan' => 'Pola Kemitraan',
+            'kk_target_plasma' => 'Target Petani Plasma (KK)',
+            'ha_target_plasma' => 'Target Petani Plasma (Ha)',
+            'kk_realisasi_plasma' => 'Realisasi Petani Plasma (KK)',
+            'ha_realisasi_plasma' => 'Realisasi Petani Plasma (Ha)',
+
+        ];
     }
 
     public function messages()
     {
-        return [];
+        return [
+            'required' => ':attribute wajib diisi',
+            'string' => ':attribute harus berupa teks',
+            'numeric' => ':attribute harus berupa angka',
+            'min' => ':attribute minimal :min',
+            'in' => ':attribute harus salah satu dari :values',
+            'unique' => ':attribute sudah terdaftar',
+        ];
     }
 }
