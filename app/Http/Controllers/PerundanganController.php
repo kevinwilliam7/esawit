@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kontribusi;
-use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Http\Request;
 
-class PerkebunanController extends Controller
+class PerundanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class PerkebunanController extends Controller
      */
     public function index()
     {
-        $perkebunans = Perkebunan::get();
-        return view('perkebunan.public.index',compact('perkebunans'));
+        //
     }
 
     /**

@@ -48,7 +48,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($perkebunans as $perkebunan)
+                                    @foreach($kontribusis as $kontribusi)
                                     <tr>
                                         <td>{{ $perkebunan->nama_perkebunan }}</td>
                                         <td>{{ $perkebunan->npwp }}</td>

@@ -18,7 +18,13 @@ use App\Http\Controllers\Perkebunan\PerkebunanController as AdminPerkebunanContr
 Route::get('/', function () {
     return view('home.public.index');
 });
-Route::resource('perkebunan', PerkebunanController::class);
+Route::get('/login-esawit', function () {
+    return view('auth.index');
+});
+Route::get('/', [HomeController::class, 'index']);
+Route::get('perkebunan', [PerkebunanController::class, 'index']);
+Route::get('pabrik', [PabrikController::class, 'index']);
+Route::get('kontribusi', [KontribusiController::class, 'index']);
 
 Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
     Route::resource('perkebunan', AdminPerkebunanController::class);

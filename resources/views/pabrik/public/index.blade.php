@@ -31,6 +31,7 @@
     <main id="main">
         <section id="location" class="contact">
             <div class="container">
+
                 <div class="section-title">
                     <h2>Perusahaan Perkebunan Kelapa Sawit</h2>
                     <p>Informasi Daftar Perusahaan Perkebunan Kelapa Sawit di Kabupaten Sanggau</p>
@@ -38,21 +39,23 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="info">
-                            <table id="tablePerkebunan" class="table table-bordered table-striped">
+                            <table id="tablePabrik" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Nama Perkebunan</th>
+                                    <th>Nama Pabrik</th>
                                     <th>NPWP</th>
-                                    <th>Pola Kemitraan</th>
+                                    <th>Grup Perusahaan</th>
+                                    <th>Kapasitas Produksi (Ton TBS/Jam)</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($perkebunans as $perkebunan)
+                                    @foreach($pabriks as $pabrik)
                                     <tr>
-                                        <td>{{ $perkebunan->nama_perkebunan }}</td>
-                                        <td>{{ $perkebunan->npwp }}</td>
-                                        <td>{{ $perkebunan->pola_kemitraan }}</td>
+                                        <td>{{ $pabrik->nama_pabrik }}</td>
+                                        <td>{{ $pabrik->npwp }}</td>
+                                        <td>{{ $pabrik->nama_grup }}</td>
+                                        <td>{{ number_format($pabrik->kapasitas_produksi) }}</td>
                                         <td style="width: 70px"><a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a></td>
                                     </tr>
                                 @endforeach
@@ -71,7 +74,7 @@
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function(){
-            $('#tablePerkebunan').DataTable({
+            $('#tablePabrik').DataTable({
                 columnDefs: [
 
                 ],

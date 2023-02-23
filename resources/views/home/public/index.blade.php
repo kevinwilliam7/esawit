@@ -52,7 +52,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="icon-box">
                     <h4 class="title"><a href="">Perkebunan Terdaftar</a></h4>
-                    <h2><b><strong>72</strong> Perkebunan</b></p>
+                    <h2><b><strong>{{ $countPerkebunan ?? '0' }}</strong> Perkebunan</b></p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -64,7 +64,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="icon-box">
                     <h4 class="title"><a href="">Jumlah Kontribusi</a></h4>
-                    <h2><b><strong>12</strong> Kontribusi</b></p>
+                    <h2><b><strong>{{ $countKontribusi ?? '0' }}</strong> Kontribusi</b></p>
                     </div>
                 </div>
                 </div>

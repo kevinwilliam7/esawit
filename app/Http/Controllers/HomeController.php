@@ -6,7 +6,7 @@ use App\Models\Kontribusi;
 use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Http\Request;
 
-class PerkebunanController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class PerkebunanController extends Controller
      */
     public function index()
     {
-        $perkebunans = Perkebunan::get();
-        return view('perkebunan.public.index',compact('perkebunans'));
+        $countPerkebunan = Perkebunan::count();
+        $countKontribusi = Kontribusi::where('pelaksanaan', 'realisasi')->count();
+        return view('home.public.index',compact('countKontribusi','countPerkebunan'));
     }
 
     /**

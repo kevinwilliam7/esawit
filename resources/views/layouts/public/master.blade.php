@@ -10,6 +10,7 @@
     <!-- Favicons -->
     <link href="{{ asset('assets/green/img/favicon.png')}}" rel="icon">
     <link href="{{ asset('assets/green/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Vendor CSS Files -->
@@ -21,6 +22,7 @@
     <link href="{{asset('assets/green/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
     <!-- Template Main CSS File -->
     <link href="{{asset('assets/green/css/style.css')}}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
     @include('layouts.public.partials.navbar')
@@ -35,4 +37,5 @@
     <script src="{{asset('assets/green/vendor/php-email-form/validate.js')}}"></script>
     <!-- Template Main JS File -->
     <script src="{{asset('assets/green/js/main.js')}}"></script>
+    @yield('js')
 </body>

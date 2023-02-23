@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kontribusi;
-use App\Models\Perkebunan\Perkebunan;
+use App\Models\Pabrik\Pabrik;
 use Illuminate\Http\Request;
 
-class PerkebunanController extends Controller
+class PabrikController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class PerkebunanController extends Controller
      */
     public function index()
     {
-        $perkebunans = Perkebunan::get();
-        return view('perkebunan.public.index',compact('perkebunans'));
+        $pabriks = Pabrik::get();
+        return view('pabrik.public.index',compact('pabriks'));
     }
 
     /**

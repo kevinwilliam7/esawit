@@ -17,7 +17,7 @@
                 <li class="dropdown"><a href="#services"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/perkebunan">Perusahaan Perkebunan</a></li>
-                        <li><a href="#">Pabrik</a></li>
+                        <li><a href="/pabrik">Pabrik</a></li>
                         <li><a href="#">CSR</a></li>
                         <li><a href="#">SOP Perizinan</a></li>
                         <li><a href="#">Peraturan Perundangan</a></li>
