@@ -10,7 +10,7 @@
                 </li>
 
                 <li class="w-100">
-                    <a href="{{ route('perkebunan.index') }}" class="text-decoration-none">
+                    <a href="{{ route('admin.perkebunan.index') }}" class="text-decoration-none">
                         <i class="fa fa-tree"></i><span>Perusahaan Perkebunan</span>
                     </a>
                 </li>
