@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pabrik\Pabrik;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables as DataTable;
 
 class PabrikController extends Controller
 {
@@ -14,8 +15,20 @@ class PabrikController extends Controller
      */
     public function index()
     {
-        $pabriks = Pabrik::get();
-        return view('pabrik.public.index',compact('pabriks'));
+        if(request()->ajax()){
+            $pabriks = Pabrik::query();
+            return DataTable::of($pabriks)
+                ->addIndexColumn()
+                ->addColumn('aksi', function($row){
+                    $btn = '<a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a>';
+                    return $btn;
+                })
+                ->rawColumns(['aksi'])
+                ->make();
+        }
+        return view('pabrik.public.index');
+        // $pabriks = Pabrik::get();
+        // return view('pabrik.public.index',compact('pabriks'));
     }
 
     /**

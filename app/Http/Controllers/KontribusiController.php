@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kontribusi;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables as DataTable;
 
 class KontribusiController extends Controller
 {
@@ -14,8 +15,16 @@ class KontribusiController extends Controller
      */
     public function index()
     {
-        $kontribusis = Kontribusi::get();
-        return view('kontribusi',compact('kontribusis'));
+        if(request()->ajax()){
+            $pabrikRencana = Kontribusi::where('kategori','pabrik')->where('pelaksanaan','rencana');
+            $perkebunanRealisasi = Kontribusi::where('kategori','perkebunan')->where('pelaksanaan','realisasi');
+            $perkebunanRencana  = Kontribusi::where('kategori','perkebunan')->where('pelaksanaan','rencana');
+            $pabrikRealisasi = Kontribusi::where('kategori','pabrik')->where('pelaksanaan','realisasi');
+            return DataTable::of($perkebunanRencana)
+                ->addIndexColumn()
+                ->make();
+        }
+        return view('kontribusi.public.index');
     }
 
     /**

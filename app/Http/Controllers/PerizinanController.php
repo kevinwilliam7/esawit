@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Perundangan;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables as DataTable;
 
-class PerundanganController extends Controller
+class PerizinanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,18 +13,7 @@ class PerundanganController extends Controller
      */
     public function index()
     {
-        if(request()->ajax()){
-            $pabriks = Perundangan::query();
-            return DataTable::of($pabriks)
-                ->addIndexColumn()
-                ->addColumn('download', function($row){
-                    $btn = '<a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a>';
-                    return $btn;
-                })
-                ->rawColumns(['download'])
-                ->make();
-        }
-        return view('perundangan.public.index');
+        return view('perizinan.public.index');
     }
 
     /**
