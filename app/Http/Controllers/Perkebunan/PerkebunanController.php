@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Perkebunan;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Perkebunan\StorePerkebunanRequest;
+use App\Http\Requests\Perkebunan\UpdatePerkebunanRequest;
 use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class PerkebunanController extends Controller
 {
@@ -74,14 +74,14 @@ class PerkebunanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app/Http/Requests/Perkebunan/UpdatePerkebunanRequest  $request
      * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Perkebunan $perkebunan)
+    public function update(UpdatePerkebunanRequest $request, Perkebunan $perkebunan)
     {
         $perkebunan->update($request->all());
-        return redirect()->route('admin.perkebunan.index');
+        return redirect()->route('admin.perkebunan.index')->with('success', 'Berhasil mengubah data');
     }
 
     /**
