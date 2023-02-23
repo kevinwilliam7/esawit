@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Perkebunan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Perkebunan\StorePerkebunanRequest;
 use App\Models\Perkebunan\Perkebunan;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class PerkebunanController extends Controller
@@ -50,35 +51,37 @@ class PerkebunanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Perkebunan $perkebunan)
     {
-        //
+        $perkebunan->load('distribusis', 'kontribusis', 'lokasis', 'lokasi_pabriks', 'hgus', 'iups', 'iblhs', 'petanis', 'sertifikats', 'perolehan_lahans', 'penanamans', 'produksi_tbs', 'izin_lokasis', 'koperasis', 'penilaians', 'cpcls');
+        return view('perkebunan.admin.show', compact('perkebunan'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Perkebunan $perkebunan): View
     {
-        //
+        return view('perkebunan.admin.edit', compact('perkebunan'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Perkebunan $perkebunan)
     {
-        //
+        $perkebunan->update($request->all());
+        return redirect()->route('admin.perkebunan.index');
     }
 
     /**

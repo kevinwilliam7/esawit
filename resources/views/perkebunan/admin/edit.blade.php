@@ -17,10 +17,10 @@
                 <div class="card-title py-0 h5">Tambah Data Perusahaan Perusahaan Perkebunan</div>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.perkebunan.store') }}"
+                <form method="POST" action="{{ route('admin.perkebunan.update', ['perkebunan' => $perkebunan->nama]) }}"
                     id="store-perkebunan">
                     @csrf
-
+                    @method('PATCH')
                     <div class="accordion" id="data-perkebunan">
                         {{-- Informasi Umum Perusahaan Perkebunan --}}
                         <div class="accordion-item">
@@ -37,7 +37,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Nama Perusahaan Perkebunan</label>
                                             <input type="text" name="nama" class="form-control"
-                                                value="{{ old('nama') }}" required>
+                                                value="{{ $perkebunan->nama }}" required>
                                             @error('nama')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -46,7 +46,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">NPWP</label>
                                             <input type="text" name="npwp" class="form-control"
-                                                value="{{ old('npwp') }}" minlength="10" required>
+                                                value="{{ $perkebunan->npwp }}" minlength="10" required>
                                             @error('npwp')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -54,7 +54,7 @@
 
                                         <div class="col-12 mb-3">
                                             <label class="form-label">Alamat Perusahaan</label>
-                                            <textarea type="text" name="alamat" class="form-control" row=5 required>{{ old('alamat') }}</textarea>
+                                            <textarea type="text" name="alamat" class="form-control" row=5 required>{{ $perkebunan->alamat }}</textarea>
                                             @error('alamat')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -63,7 +63,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Email</label>
                                             <input type="email" name="email" class="form-control"
-                                                value="{{ old('email') }}">
+                                                value="{{ $perkebunan->email }}">
                                             @error('email')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -72,7 +72,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Direktur Utama</label>
                                             <input type="text" name="direktur" class="form-control"
-                                                value="{{ old('direktur') }}">
+                                                value="{{ $perkebunan->direktur }}">
                                             @error('direktur')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -81,7 +81,7 @@
                                         <div class="col-12 col-lg-4 mb-3">
                                             <label class="form-label">General Manager Oprasional</label>
                                             <input type="text" name="gm" class="form-control"
-                                                value="{{ old('gm') }}">
+                                                value="{{ $perkebunan->gm }}">
                                             @error('gm')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -90,7 +90,7 @@
                                         <div class="col-12 col-lg-4 mb-3">
                                             <label class="form-label">Kadiv Legal</label>
                                             <input type="text" name="kadiv_legal" class="form-control"
-                                                value="{{ old('kadiv_legal') }}">
+                                                value="{{ $perkebunan->kadiv_legal }}">
                                             @error('kadiv_legal')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -99,7 +99,7 @@
                                         <div class="col-12 col-lg-4">
                                             <label class="form-label">Manager Mill Project</label>
                                             <input type="text" name="manager_mill" class="form-control"
-                                                value="{{ old('manager_mill') }}">
+                                                value="{{ $perkebunan->manager_mill }}">
                                             @error('manager_mill')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -124,7 +124,7 @@
                                         <div class="col-12 col-lg-4 mb-3">
                                             <label class="form-label">Nomor Akta</label>
                                             <input type="text" name="nomor_akta_pendirian" class="form-control"
-                                                value="{{ old('nomor_akta_pendirian') }}">
+                                                value="{{ $perkebunan->nomor_akta_pendirian }}">
                                             @error('nomor_akta_pendirian')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -133,7 +133,7 @@
                                         <div class="col-12 col-lg-4 mb-3">
                                             <label class="form-label">Tanggal Akta</label>
                                             <input type="date" name="tanggal_akta_pendirian" class="form-control"
-                                                value="{{ old('tanggal_akta_pendirian') }}">
+                                                value="{{ $perkebunan->tanggal_akta_pendirian }}">
                                             @error('tanggal_akta_pendirian')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -142,7 +142,7 @@
                                         <div class="col-12 col-lg-4 mb-3">
                                             <label class="form-label">Notaris</label>
                                             <input type="text" name="notaris_akta_pendirian" class="form-control"
-                                                value="{{ old('notaris_akta_pendirian') }}">
+                                                value="{{ $perkebunan->notaris_akta_pendirian }}">
                                             @error('notaris_akta_pendirian')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -151,7 +151,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Komisaris</label>
                                             <input type="text" name="komisaris_akta_pendirian" class="form-control"
-                                                value="{{ old('komisaris_akta_pendirian') }}">
+                                                value="{{ $perkebunan->komisaris_akta_pendirian }}">
                                             @error('komisaris_akta_pendirian')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -160,7 +160,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Direktur</label>
                                             <input type="text" name="direktur_akta_pendirian" class="form-control"
-                                                value="{{ old('direktur_akta_pendirian') }}">
+                                                value="{{ $perkebunan->direktur_akta_pendirian }}">
                                             @error('direktur_akta_pendirian')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -185,7 +185,7 @@
                                         <div class="col-12 col-lg-4 mb-3">
                                             <label class="form-label">Nomor Akta</label>
                                             <input type="text" name="nomor_akta_perubahan" class="form-control"
-                                                value="{{ old('nomor_akta_perubahan') }}">
+                                                value="{{ $perkebunan->nomor_akta_perubahan }}">
                                             @error('nomor_akta_perubahan')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -194,7 +194,7 @@
                                         <div class="col-12 col-lg-4 mb-3">
                                             <label class="form-label">Tanggal Akta</label>
                                             <input type="date" name="tanggal_akta_perubahan" class="form-control"
-                                                value="{{ old('tanggal_akta_perubahan') }}">
+                                                value="{{ $perkebunan->tanggal_akta_perubahan }}">
                                             @error('tanggal_akta_perubahan')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -203,7 +203,7 @@
                                         <div class="col-12 col-lg-4 mb-3">
                                             <label class="form-label">Notaris</label>
                                             <input type="text" name="notaris_akta_perubahan" class="form-control"
-                                                value="{{ old('notaris_akta_perubahan') }}">
+                                                value="{{ $perkebunan->notaris_akta_perubahan }}">
                                             @error('notaris_akta_perubahan')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -212,7 +212,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Komisaris</label>
                                             <input type="text" name="komisaris_akta_perubahan" class="form-control"
-                                                value="{{ old('komisaris_akta_perubahan') }}">
+                                                value="{{ $perkebunan->komisaris_akta_perubahan }}">
                                             @error('komisaris_akta_perubahan')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -221,7 +221,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Direktur</label>
                                             <input type="text" name="direktur_akta_perubahan" class="form-control"
-                                                value="{{ old('direktur_akta_perubahan') }}">
+                                                value="{{ $perkebunan->direktur_akta_perubahan }}">
                                             @error('direktur_akta_perubahan')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -244,7 +244,7 @@
                                 <div class="accordion-body">
                                     <label class="form-label">Luas Izin Usaha Perkebunan (Ha)</label>
                                     <input type="number" step="0.01" name="luas_iup" class="form-control"
-                                        value="{{ old('luas_iup') }}">
+                                        value="{{ $perkebunan->luas_iup }}">
                                     @error('luas_iup')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -269,7 +269,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Pekerja Bulanan</label>
                                                 <input type="number" name="bulanan_kebun" class="form-control"
-                                                    value="{{ old('bulanan_kebun') }}">
+                                                    value="{{ $perkebunan->bulanan_kebun }}">
                                                 @error('bulanan_kebun')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -277,7 +277,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Pekerja Tetap</label>
                                                 <input type="number" name="tetap_kebun" class="form-control"
-                                                    value="{{ old('tetap_kebun') }}">
+                                                    value="{{ $perkebunan->tetap_kebun }}">
                                                 @error('tetap_kebun')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -285,7 +285,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Pekerja Harian Lepas</label>
                                                 <input type="number" name="lepas_kebun" class="form-control"
-                                                    value="{{ old('lepas_kebun') }}">
+                                                    value="{{ $perkebunan->lepas_kebun }}">
                                                 @error('lepas_kebun')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -293,7 +293,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Pekerja Musiman</label>
                                                 <input type="number" name="musiman_kebun" class="form-control"
-                                                    value="{{ old('musiman_kebun') }}">
+                                                    value="{{ $perkebunan->musiman_kebun }}">
                                                 @error('musiman_kebun')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -305,7 +305,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Pekerja Bulanan</label>
                                                 <input type="number" name="bulanan_pabrik" class="form-control"
-                                                    value="{{ old('bulanan_pabrik') }}">
+                                                    value="{{ $perkebunan->bulanan_pabrik }}">
                                                 @error('bulanan_pabrik')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -313,7 +313,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Pekerja Tetap</label>
                                                 <input type="number" name="tetap_pabrik" class="form-control"
-                                                    value="{{ old('tetap_pabrik') }}">
+                                                    value="{{ $perkebunan->tetap_pabrik }}">
                                                 @error('tetap_pabrik')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -321,7 +321,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Pekerja Harian Lepas</label>
                                                 <input type="number" name="lepas_pabrik" class="form-control"
-                                                    value="{{ old('lepas_pabrik') }}">
+                                                    value="{{ $perkebunan->lepas_pabrik }}">
                                                 @error('lepas_pabrik')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -329,7 +329,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Pekerja Musiman</label>
                                                 <input type="number" name="musiman_pabrik" class="form-control"
-                                                    value="{{ old('musiman_pabrik') }}">
+                                                    value="{{ $perkebunan->musiman_pabrik }}">
                                                 @error('musiman_pabrik')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -341,7 +341,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Jumlah Tenaga Kerja Asing</label>
                                                 <input type="number" name="tka" class="form-control"
-                                                    value="{{ old('tka') }}">
+                                                    value="{{ $perkebunan->tka }}">
                                                 @error('tka')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -350,7 +350,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label">Jabatan TKA</label>
                                                 <input type="text" name="jabatan_tka" class="form-control"
-                                                    value="{{ old('jabatan_tka') }}">
+                                                    value="{{ $perkebunan->jabatan_tka }}">
                                                 @error('jabatan_tka')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
@@ -376,7 +376,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Target Petani Plasma (KK)</label>
                                             <input type="number" name="kk_target_plasma" class="form-control"
-                                                value="{{ old('kk_target_plasma') }}">
+                                                value="{{ $perkebunan->kk_target_plasma }}">
                                             @error('kk_target_plasma')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -384,7 +384,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Target Petani Plasma (Ha)</label>
                                             <input type="number" step="0.01" name="ha_target_plasma"
-                                                class="form-control" value="{{ old('ha_target_plasma') }}">
+                                                class="form-control" value="{{ $perkebunan->ha_target_plasma }}">
                                             @error('ha_target_plasma')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -392,7 +392,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Realisasi Petani Plasma (KK)</label>
                                             <input type="number" name="kk_realisasi_plasma" class="form-control"
-                                                value="{{ old('kk_realisasi_plasma') }}">
+                                                value="{{ $perkebunan->kk_realisasi_plasma }}">
                                             @error('kk_realisasi_plasma')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -400,7 +400,7 @@
                                         <div class="col-12 col-lg-6 mb-3">
                                             <label class="form-label">Realisasi Petani Plasma (Ha)</label>
                                             <input type="number" step="0.01" name="ha_realisasi_plasma"
-                                                class="form-control" value="{{ old('ha_realisasi_plasma') }}">
+                                                class="form-control" value="{{ $perkebunan->ha_realisasi_plasma }}">
                                             @error('ha_realisasi_plasma')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -411,14 +411,14 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="pola_kemitraan"
                                                     id="kemitraan-mandiri" value="kemitraan mandiri"
-                                                    {{ old('pola_kemitraan') === 'kemitraan mandiri' ? 'checked' : '' }}>
+                                                    {{ $perkebunan->pola_kemitraan === 'kemitraan mandiri' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="kemitraan-mandiri">Kemitraan
                                                     Mandiri</label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="pola_kemitraan"
                                                     id="kemitraan-satu-manajemen" value="kemitraan satu manajemen"
-                                                    {{ old('pola_kemitraan') === 'kemitraan satu manajemen' ? 'checked' : '' }}>
+                                                    {{ $perkebunan->pola_kemitraan === 'kemitraan satu manajemen' ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="kemitraan-satu-manajemen">Kemitraan
                                                     Satu Manajemen</label>
                                             </div>

@@ -46,11 +46,11 @@
                                 <td>{{ $perkebunan->alamat }}</td>
                                 <td>{{ $perkebunan->pola_kemitraan }}</td>
                                 <td>
-                                    <a href="#"
+                                    <a href="{{ route('admin.perkebunan.show', ['perkebunan' => $perkebunan->nama]) }}"
                                         class="btn btn-sm btn-primary btn-bordered waves-effect waves-light me-1 mb-1 rounded-2">
                                         <i class="fa fa-eye"></i> Lihat Data
                                     </a>
-                                    <a href="#"
+                                    <a href="{{ route('admin.perkebunan.edit', ['perkebunan' => $perkebunan->nama]) }}"
                                         class="btn btn-sm btn-warning btn-bordered waves-effect waves-light me-1 mb-1 rounded-2">
                                         <i class="fa fa-pencil"></i> Ubah Data
                                     </a>
@@ -201,8 +201,9 @@
                         'target': -1,
                         'orderable': false,
                         'searchable': false,
-                        'width': 500
+                        'width': 520
                     },
+                    { 'target': [0], 'className': 'dt-center' },
                 ],
             });
 
@@ -220,6 +221,7 @@
                         }
                     }).then((req, res, xhr) => {
                         if (xhr.status === 204) {
+                            swal('Berhasil menghapus data');
                             row.remove();
                             let i = 1;
                             table.cells(null, 0, {
