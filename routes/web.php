@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PerkebunanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PabrikController;
-use App\Http\Controllers\KontribusiController;
 use App\Http\Controllers\PerizinanController;
+use App\Http\Controllers\KontribusiController;
+use App\Http\Controllers\PerkebunanController;
 use App\Http\Controllers\PerundanganController;
+use App\Http\Controllers\Pabrik\PabrikController as AdminPabrikController;
 use App\Http\Controllers\Perkebunan\PerkebunanController as AdminPerkebunanController;
 
 /*
@@ -28,4 +29,5 @@ Route::get('perundangan', [PerundanganController::class, 'index']);
 
 Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
     Route::resource('perkebunan', AdminPerkebunanController::class);
+    Route::resource('pabrik', AdminPabrikController::class);
 });
