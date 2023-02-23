@@ -38,26 +38,128 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="info">
-                            <table id="tablePerkebunan" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Nama Perkebunan</th>
-                                    <th>NPWP</th>
-                                    <th>Pola Kemitraan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($kontribusis as $kontribusi)
-                                    <tr>
-                                        <td>{{ $perkebunan->nama_perkebunan }}</td>
-                                        <td>{{ $perkebunan->npwp }}</td>
-                                        <td>{{ $perkebunan->pola_kemitraan }}</td>
-                                        <td style="width: 70px"><a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            CSR Pabrik yang sudah terealisasi
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <table id="pabrikRencana" class="table table-bordered table-striped w-100">
+                                                <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Pabrik</th>
+                                                    <th>Tahun</th>
+                                                    <th>Jenis Kegiatan</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Nilai Setara</th>
+                                                    <th>Lokasi Desa</th>
+                                                    <th>Lokasi Kecamatan</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{-- @foreach($pabrikRealisasi as $key => $ik)
+                                                    <tr>
+                                                        <td>{{ $key+1 }}</td>
+                                                        <td>{{ $ik->nama_pabrik }}</td>
+                                                        <td>{{ $ik->tahun }}</td>
+                                                        <td>{{ $ik->jeniskegiatan }}</td>
+                                                        <td>{{ $ik->tanggal }}</td>
+                                                        <td>{{ number_format($ik->nilaisetara) }}</td>
+                                                        <td>{{ $ik->lokasidesa }}</td>
+                                                        <td>{{ $ik->lokasikecamatan }}</td>
+                                                    </tr>
+                                                    @endforeach --}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            CSR Pabrik yang belum terealisasi
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <table id="pabrikRealisasi" class="table table-bordered table-striped w-100">
+                                                <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Pabrik</th>
+                                                    <th>Tahun</th>
+                                                    <th>Jenis Kegiatan</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Nilai Setara</th>
+                                                    <th>Lokasi Desa</th>
+                                                    <th>Lokasi Kecamatan</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            CSR Perkebunan yang sudah terealisasi
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <table id="perkebunanRealisasi" class="table table-bordered table-striped w-100">
+                                                <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Perkebunan</th>
+                                                    <th>Tahun</th>
+                                                    <th>Jenis Kegiatan</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Nilai Setara</th>
+                                                    <th>Lokasi Desa</th>
+                                                    <th>Lokasi Kecamatan</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            CSR Perkebunan yang belum terealisasi
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <table id="perkebunanRencana" class="table table-bordered table-striped w-100">
+                                                <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Perkebunan</th>
+                                                    <th>Tahun</th>
+                                                    <th>Jenis Kegiatan</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Nilai Setara</th>
+                                                    <th>Lokasi Desa</th>
+                                                    <th>Lokasi Kecamatan</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,9 +173,69 @@
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function(){
-            $('#tablePerkebunan').DataTable({
-                columnDefs: [
-
+            $('#pabrikRencana').DataTable({  
+                processing: true,
+                serverSide: true,
+                scrollX: true,
+                ajax: '{{ url()->current() }}',
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'tahun', name: 'tahun'},
+                    {data: 'tahun', name: 'tahun'},
+                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'tanggal', name: 'tanggal'},
+                    {data: 'nilaisetara', name: 'nilaisetara'},
+                    {data: 'lokasidesa', name: 'lokasidesa'},
+                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                ],
+            });
+           
+            $('#pabrikRealisasi').DataTable({
+                processing: true,
+                serverSide: true,
+                scrollX: true,
+                ajax: '{{ url()->current() }}',
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'tahun', name: 'tahun'},
+                    {data: 'tahun', name: 'tahun'},
+                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'tanggal', name: 'tanggal'},
+                    {data: 'nilaisetara', name: 'nilaisetara'},
+                    {data: 'lokasidesa', name: 'lokasidesa'},
+                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                ],
+            });
+            $('#perkebunanRencana').DataTable({
+                processing: true,
+                serverSide: true,
+                scrollX: true,
+                ajax: '{{ url()->current() }}',
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'tahun', name: 'tahun'},
+                    {data: 'tahun', name: 'tahun'},
+                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'tanggal', name: 'tanggal'},
+                    {data: 'nilaisetara', name: 'nilaisetara'},
+                    {data: 'lokasidesa', name: 'lokasidesa'},
+                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                ],
+            });
+            $('#perkebunanRealisasi').DataTable({
+                processing: true,
+                serverSide: true,
+                scrollX: true,
+                ajax: '{{ url()->current() }}',
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'tahun', name: 'tahun'},
+                    {data: 'tahun', name: 'tahun'},
+                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'tanggal', name: 'tanggal'},
+                    {data: 'nilaisetara', name: 'nilaisetara'},
+                    {data: 'lokasidesa', name: 'lokasidesa'},
+                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
                 ],
             });
         });

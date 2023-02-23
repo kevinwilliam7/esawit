@@ -18,9 +18,9 @@
                     <ul>
                         <li><a href="/perkebunan">Perusahaan Perkebunan</a></li>
                         <li><a href="/pabrik">Pabrik</a></li>
-                        <li><a href="#">CSR</a></li>
-                        <li><a href="#">SOP Perizinan</a></li>
-                        <li><a href="#">Peraturan Perundangan</a></li>
+                        <li><a href="/kontribusi">CSR</a></li>
+                        <li><a href="/perizinan">SOP Perizinan</a></li>
+                        <li><a href="/perundangan">Peraturan Perundangan</a></li>
                         <li><a href="#">Harga TBS</a></li>
                     </ul>
                 </li>

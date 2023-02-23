@@ -38,25 +38,17 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="info">
-                            <table id="tablePerkebunan" class="table table-bordered table-striped">
+                            <table id="tablePerkebunan" class="table table-bordered table-striped w-100">
                                 <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Nama Perkebunan</th>
                                     <th>NPWP</th>
                                     <th>Pola Kemitraan</th>
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach($perkebunans as $perkebunan)
-                                    <tr>
-                                        <td>{{ $perkebunan->nama_perkebunan }}</td>
-                                        <td>{{ $perkebunan->npwp }}</td>
-                                        <td>{{ $perkebunan->pola_kemitraan }}</td>
-                                        <td style="width: 70px"><a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
@@ -70,11 +62,29 @@
 <script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
-        $(document).ready(function(){
+      $(document).ready(function(){
             $('#tablePerkebunan').DataTable({
-                columnDefs: [
-
+                processing: true,
+                serverSide: true,
+                scrollX: true,
+                ajax: '{{ url()->current() }}',
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'nama_perkebunan', name: 'nama_perkebunan'},
+                    {data: 'npwp', name: 'npwp'},
+                    {data: 'pola_kemitraan', name: 'pola_kemitraan'},
+                    {
+                        data: 'aksi', name: 'aksi', 
+                        orderable: false,
+                        searchable: false
+                    },
                 ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3],
+                        className: 'dt-center'
+                    }
+                ]
             });
         });
     </script>

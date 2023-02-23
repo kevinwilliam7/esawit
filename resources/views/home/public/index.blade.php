@@ -234,7 +234,7 @@
                     <div class="email">
                         <i class="bi bi-envelope"></i>
                         <h4>Email:</h4>
-                        <p>dpp@sanggau.go.id</p>
+                        <p><a style="color:rgb(60, 59, 59)" href="mailto: dpp@sanggau.go.id">dpp@sanggau.go.id</a></p>
                     </div>
 
                     <div class="phone">

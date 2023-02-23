@@ -39,9 +39,10 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="info">
-                            <table id="tablePabrik" class="table table-bordered table-striped">
+                            <table id="tablePabrik" class="table table-bordered table-striped w-100">
                                 <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Nama Pabrik</th>
                                     <th>NPWP</th>
                                     <th>Grup Perusahaan</th>
@@ -49,17 +50,7 @@
                                     <th>Aksi</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach($pabriks as $pabrik)
-                                    <tr>
-                                        <td>{{ $pabrik->nama_pabrik }}</td>
-                                        <td>{{ $pabrik->npwp }}</td>
-                                        <td>{{ $pabrik->nama_grup }}</td>
-                                        <td>{{ number_format($pabrik->kapasitas_produksi) }}</td>
-                                        <td style="width: 70px"><a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a></td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
@@ -75,9 +66,28 @@
     <script>
         $(document).ready(function(){
             $('#tablePabrik').DataTable({
-                columnDefs: [
-
+                processing: true,
+                serverSide: true,
+                scrollX: true,
+                ajax: '{{ url()->current() }}',
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'nama_pabrik', name: 'nama_pabrik'},
+                    {data: 'npwp', name: 'npwp'},
+                    {data: 'npwp', name: 'npwp'},
+                    {data: 'npwp', name: 'npwp'},
+                    {
+                        data: 'aksi', name: 'aksi', 
+                        orderable: false,
+                        searchable: false
+                    },
                 ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4],
+                        className: 'dt-center'
+                    }
+                ]
             });
         });
     </script>
