@@ -15,8 +15,7 @@ class CreateKontribusisTable extends Migration
     {
         Schema::create('kontribusis', function (Blueprint $table) {
             $table->id();
-            $table->enum('kategori', ['pabrik','perkebunan']);
-            $table->unsignedBigInteger('kategori_id');
+            $table->morphs('kategori');
             $table->enum('pelaksanaan', ['realisasi','rencana']);
             $table->integer('tahun')->nullable();
             $table->string('jenis_kegiatan')->nullable();

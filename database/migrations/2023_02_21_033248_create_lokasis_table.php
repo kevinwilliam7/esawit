@@ -15,9 +15,7 @@ class CreateLokasisTable extends Migration
     {
         Schema::create('lokasis', function (Blueprint $table) {
             $table->id();
-            $table->enum('kategori', ['pabrik','perkebunan']);
-            $table->string('perkebunan_id')->nullable();
-            $table->string('pabrik_id')->nullable();
+            $table->morphs('kategori');
             $table->unsignedBigInteger('desa_id');
             $table->timestamps();
 
