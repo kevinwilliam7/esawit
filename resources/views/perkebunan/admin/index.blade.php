@@ -26,7 +26,7 @@
                     class="btn btn-sm btn-success btn-bordered waves-effect w-md waves-light mb-3 rounded-2">
                     <i class="fa fa-plus"></i> Tambah Data
                 </a>
-                <table id="perkebunans" class="table table-bordered table-striped">
+                <table id="perkebunans" class="table table-bordered table-striped w-100">
                     <thead>
                         <tr>
                             <th>No</th>
