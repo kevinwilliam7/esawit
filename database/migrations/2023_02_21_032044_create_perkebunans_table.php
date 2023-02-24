@@ -49,6 +49,7 @@ class CreatePerkebunansTable extends Migration
             $table->integer('kk_realisasi_plasma')->nullable();
             $table->double('ha_realisasi_plasma')->nullable();
             $table->date('update_terakhir')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }

@@ -105,6 +105,7 @@ class CreatePabriksTable extends Migration
             $table->string('nomor_dokumen_sertifikat')->nullable();
             $table->string('dokumen_sertifikat')->nullable();
             $table->date('upload_terakhir')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }
