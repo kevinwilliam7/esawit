@@ -6,6 +6,7 @@ use DataTables;
 use Illuminate\Http\Request;
 use App\Models\Pabrik\Pabrik;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Pabrik\PabrikRequest;
 
 class PabrikController extends Controller
 {
@@ -17,7 +18,7 @@ class PabrikController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $pabriks = Pabrik::select('nama', 'npwp', 'nama_grup', 'kapasitas_produksi');
+            $pabriks = Pabrik::select('id', 'nama', 'npwp', 'nama_grup', 'kapasitas_produksi');
             return DataTables::of($pabriks)->addIndexColumn()->make();
         }
         return view('pabrik.admin.index');
@@ -36,12 +37,13 @@ class PabrikController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App/Http/Resources/Pabrik/PabrikRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PabrikRequest $request)
     {
-        //
+        Pabrik::create($request->all());
+        return redirect()->route('admin.pabrik.index')->with('success', 'Berhasil menambah data');
     }
 
     /**
@@ -81,11 +83,12 @@ class PabrikController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  App\Models\Pabrik\Pabrik  $pabrik
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pabrik $pabrik)
     {
-        //
+        $pabrik->delete();
+        return response('', 204);
     }
 }
