@@ -16,7 +16,7 @@ class CreatePabriksTable extends Migration
         Schema::create('pabriks', function (Blueprint $table) {
             $table->id();
             $table->string('npwp')->nullable();
-            $table->string('nama')->unique();
+            $table->string('nama');
             $table->string('nama_grup')->nullable();
             $table->string('pimpinan')->nullable();
             $table->string('jabatan_pimpinan')->nullable();

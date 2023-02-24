@@ -16,7 +16,7 @@ class CreatePerkebunansTable extends Migration
         Schema::create('perkebunans', function (Blueprint $table) {
             $table->id();
             $table->string('npwp')->nullable();
-            $table->string('nama')->unique();
+            $table->string('nama');
             $table->string('alamat');
             $table->string('email')->nullable();
             $table->string('direktur')->nullable();
