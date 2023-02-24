@@ -53,7 +53,7 @@ class PerkebunanController extends Controller
      * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function show(Perkebunan $perkebunan)
+    public function show(Perkebunan $perkebunan, String $nama)
     {
         $perkebunan->load('distribusis', 'kontribusis', 'lokasis', 'lokasi_pabriks', 'hgus', 'iups', 'iblhs', 'petanis', 'sertifikats', 'perolehan_lahans', 'penanamans', 'produksi_tbs', 'izin_lokasis', 'koperasis', 'penilaians', 'cpcls');
         return view('perkebunan.admin.show', compact('perkebunan'));
@@ -65,7 +65,7 @@ class PerkebunanController extends Controller
      * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Perkebunan $perkebunan): View
+    public function edit(Perkebunan $perkebunan, String $nama): View
     {
         return view('perkebunan.admin.edit', compact('perkebunan'));
     }
@@ -77,7 +77,7 @@ class PerkebunanController extends Controller
      * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function update(PerkebunanRequest $request, Perkebunan $perkebunan)
+    public function update(PerkebunanRequest $request, Perkebunan $perkebunan, String $nama)
     {
         $perkebunan->update($request->all());
         return redirect()->route('admin.perkebunan.index')->with('success', 'Berhasil mengubah data');
@@ -89,7 +89,7 @@ class PerkebunanController extends Controller
      * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Perkebunan $perkebunan)
+    public function destroy(Perkebunan $perkebunan, String $nama)
     {
         $perkebunan->delete();
         return response('', 204);

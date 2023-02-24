@@ -28,6 +28,14 @@ Route::get('perizinan', [PerizinanController::class, 'index']);
 Route::get('perundangan', [PerundanganController::class, 'index']);
 
 Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
-    Route::resource('perkebunan', AdminPerkebunanController::class);
+
+    // Perkebunan
+    Route::resource('perkebunan', AdminPerkebunanController::class)->only(['index', 'create', 'store']);
+    Route::get('perkebunan/{perkebunan:id}/{nama}', [AdminPerkebunanController::class, 'show'])->name('perkebunan.show');
+    Route::get('perkebunan/{perkebunan:id}/{nama}/edit', [AdminPerkebunanController::class, 'edit'])->name('perkebunan.edit');
+    Route::patch('perkebunan/{perkebunan:id}/{nama}', [AdminPerkebunanController::class, 'update'])->name('perkebunan.update');
+    Route::delete('perkebunan/{perkebunan:id}/{nama}', [AdminPerkebunanController::class, 'destroy'])->name('perkebunan.destroy');
+
+
     Route::resource('pabrik', AdminPabrikController::class);
 });
