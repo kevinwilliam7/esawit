@@ -8,9 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Pabrik extends Model
 {
     use HasFactory;
-
-    public function getRouteKeyName()
-    {
-        return 'nama';
-    }
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 }
