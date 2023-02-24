@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Perkebunan;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Perkebunan\StorePerkebunanRequest;
-use App\Http\Requests\Perkebunan\UpdatePerkebunanRequest;
-use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use App\Models\Perkebunan\Perkebunan;
+use App\Http\Requests\Perkebunan\PerkebunanRequest;
 
 class PerkebunanController extends Controller
 {
@@ -34,10 +33,10 @@ class PerkebunanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  app/Http/Requests/Perkebunan/StorePerkebunanRequest  $request
+     * @param  app/Http/Requests/Perkebunan/PerkebunanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePerkebunanRequest $request)
+    public function store(PerkebunanRequest $request)
     {
         try {
             Perkebunan::create($request->all());
@@ -74,11 +73,11 @@ class PerkebunanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  app/Http/Requests/Perkebunan/UpdatePerkebunanRequest  $request
+     * @param  app/Http/Requests/Perkebunan/PerkebunanRequest  $request
      * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePerkebunanRequest $request, Perkebunan $perkebunan)
+    public function update(PerkebunanRequest $request, Perkebunan $perkebunan)
     {
         $perkebunan->update($request->all());
         return redirect()->route('admin.perkebunan.index')->with('success', 'Berhasil mengubah data');

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Perkebunan;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdatePerkebunanRequest extends FormRequest
+class PerkebunanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class UpdatePerkebunanRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required|string|unique:perkebunans,nama,'.$this->perkebunan->id,
-            'npwp' => 'nullable|string|unique:perkebunans,npwp,'.$this->perkebunan->id,
+            'nama' => 'required|string',
+            'npwp' => 'nullable|string',
             'alamat' => 'required|string',
             'email' => 'nullable|email',
             'direktur' => 'nullable|string',
