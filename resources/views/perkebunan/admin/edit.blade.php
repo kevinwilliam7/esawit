@@ -17,7 +17,7 @@
                 <div class="card-title py-0 h5">Tambah Data Perusahaan Perusahaan Perkebunan</div>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.perkebunan.update', ['perkebunan' => $perkebunan->nama]) }}"
+                <form method="POST" action="{{ route('admin.perkebunan.update', ['perkebunan' => $perkebunan->id, 'nama' => $perkebunan->nama]) }}"
                     id="store-perkebunan">
                     @csrf
                     @method('PATCH')

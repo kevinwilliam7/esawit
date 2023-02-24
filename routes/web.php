@@ -37,5 +37,10 @@ Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
     Route::delete('perkebunan/{perkebunan:id}/{nama}', [AdminPerkebunanController::class, 'destroy'])->name('perkebunan.destroy');
 
 
-    Route::resource('pabrik', AdminPabrikController::class);
+    // Pabrik
+    Route::resource('pabrik', AdminPabrikController::class)->only(['index', 'create', 'store']);
+    Route::get('pabrik/{pabrik:id}/{nama}', [AdminPabrikController::class, 'show'])->name('pabrik.show');
+    Route::get('pabrik/{pabrik:id}/{nama}/edit', [AdminPabrikController::class, 'edit'])->name('pabrik.edit');
+    Route::patch('pabrik/{pabrik:id}/{nama}', [AdminPabrikController::class, 'update'])->name('pabrik.update');
+    Route::delete('pabrik/{pabrik:id}/{nama}', [AdminPabrikController::class, 'destroy'])->name('pabrik.destroy');
 });

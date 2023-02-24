@@ -23,7 +23,6 @@ class PabrikRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->request);
         return [
             'nama' => 'required|string',
             'npwp' => 'nullable|string',

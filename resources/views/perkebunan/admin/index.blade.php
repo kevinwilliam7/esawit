@@ -39,18 +39,18 @@
                     </thead>
                     <tbody>
                         @foreach ($perkebunans as $perkebunan)
-                            <tr>
+                            <tr data-id="{{ $perkebunan->id }}">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $perkebunan->nama }}</td>
                                 <td>{{ $perkebunan->npwp }}</td>
                                 <td>{{ $perkebunan->alamat }}</td>
                                 <td>{{ $perkebunan->pola_kemitraan }}</td>
                                 <td>
-                                    <a href="{{ route('admin.perkebunan.show', ['perkebunan' => $perkebunan->nama]) }}"
+                                    <a href="{{ route('admin.perkebunan.show', ['perkebunan' => $perkebunan->id, 'nama' => $perkebunan->nama]) }}"
                                         class="btn btn-sm btn-primary btn-bordered waves-effect waves-light me-1 mb-1 rounded-2">
                                         <i class="fa fa-eye"></i> Lihat Data
                                     </a>
-                                    <a href="{{ route('admin.perkebunan.edit', ['perkebunan' => $perkebunan->nama]) }}"
+                                    <a href="{{ route('admin.perkebunan.edit', ['perkebunan' =>$perkebunan->id, 'nama' => $perkebunan->nama]) }}"
                                         class="btn btn-sm btn-warning btn-bordered waves-effect waves-light me-1 mb-1 rounded-2">
                                         <i class="fa fa-pencil"></i> Ubah Data
                                     </a>
@@ -210,10 +210,11 @@
             $('table').on('click', 'button.btn-danger', async function() {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
+                var id = tr.data('id');
                 var nama = row.data()[1];
                 if (await confirmation()) {
                     $.ajax({
-                        'url': `{{ url('admin/perkebunan') }}/${nama}`,
+                        'url': `{{ url('admin/perkebunan') }}/${id}/${nama}`,
                         'method': 'POST',
                         'data': {
                             '_token': '{{ csrf_token() }}',

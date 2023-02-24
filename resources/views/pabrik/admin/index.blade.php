@@ -99,10 +99,10 @@
             $('table').on('click', 'button.btn-danger', async function() {
                 var tr = $(this).closest('tr');
                 var row = table.row(tr);
-                var nama = row.data()[1];
+                var nama = row.data().nama;
                 if (await confirmation()) {
                     $.ajax({
-                        'url': `{{ url('admin/perkebunan') }}/${nama}`,
+                        'url': `{{ url('admin/pabrik') }}/${nama}`,
                         'method': 'POST',
                         'data': {
                             '_token': '{{ csrf_token() }}',
@@ -113,16 +113,11 @@
                             swal('Berhasil menghapus data');
                             row.remove();
                             let i = 1;
-                            table.cells(null, 0, {
-                                search: 'applied',
-                                order: 'applied'
-                            }).every(function(cell) {
-                                this.data(i++);
-                            });
-                            table.draw();
+                            table.ajax.reload();
                         };
                     }).catch((error) => {
-                        console.log(error);
+                        // console.log(error);
+                        swal('Gagal menghapus data', 'error');
                     });
                 };
             });
