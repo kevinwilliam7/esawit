@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perkebunan\Distribusi;
 use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables as DataTable;
@@ -16,19 +17,17 @@ class PerkebunanController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            $pabriks = Perkebunan::select('nama_perkebunan', 'npwp', 'pola_kemitraan');
-            return DataTable::of($pabriks)
+            $perkebunan = Perkebunan::select('id', 'nama_perkebunan', 'npwp', 'pola_kemitraan'); 
+            return DataTable::of($perkebunan)
                 ->addIndexColumn()
-                ->addColumn('aksi', function($row){
-                    $btn = '<a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a>';
+                ->addColumn('aksi', function($perkebunan){
+                    $btn = '<a href="/perkebunan-detail/'.$perkebunan->id.'" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a>';
                     return $btn;
                 })
                 ->rawColumns(['aksi'])
                 ->make();
         }
         return view('perkebunan.public.index');
-        // $perkebunans = Perkebunan::get();
-        // return view('perkebunan.public.index',compact('perkebunans'));
     }
 
     /**
@@ -60,7 +59,8 @@ class PerkebunanController extends Controller
      */
     public function show($id)
     {
-        //
+        $perkebunans = Perkebunan::where('id',$id)->get();
+        return view('perkebunan.public.show', compact('perkebunans'),);
     }
 
     /**

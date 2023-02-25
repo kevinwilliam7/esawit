@@ -31,23 +31,20 @@
     <main id="main">
         <section id="location" class="contact">
             <div class="container">
-
                 <div class="section-title">
-                    <h2>Perusahaan Perkebunan Kelapa Sawit</h2>
-                    <p>Informasi Daftar Perusahaan Perkebunan Kelapa Sawit di Kabupaten Sanggau</p>
+                    <h2>SOP Perizinan</h2>
+                    <p>Informasi Daftar Standart Operating Procedure (SOP) Perizinan Persawitan</p>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="info">
-                            <table id="tablePabrik" class="table table-bordered table-striped w-100">
+                            <table id="tableSop" class="table table-bordered table-striped w-100">
                                 <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Pabrik</th>
-                                    <th>NPWP</th>
-                                    <th>Grup Perusahaan</th>
-                                    <th>Kapasitas Produksi (Ton TBS/Jam)</th>
-                                    <th>Aksi</th>
+                                    <th>Keterangan</th>
+                                    <th>Jenis Izin</th>
+                                    <th>Download</th>
                                 </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -63,32 +60,30 @@
 @section('js')
 <script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $('#tablePabrik').DataTable({
-                processing: true,
-                serverSide: true,
-                scrollX: true,
-                ajax: '{{ url()->current() }}',
-                columns: [
-                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-                    {data: 'nama_pabrik', name: 'nama_pabrik'},
-                    {data: 'npwp', name: 'npwp'},
-                    {data: 'nama_grup', name: 'nama_grup'},
-                    {data: 'kapasitas_produksi', name: 'kapasitas_produksi'},
-                    {
-                        data: 'aksi', name: 'aksi', 
-                        orderable: false,
-                        searchable: false
-                    },
-                ],
-                columnDefs: [
-                    {
-                        targets: [0, 1, 2, 3, 4, 5],
-                        className: 'dt-center'
-                    }
-                ]
-            });
+<script>
+    $(document).ready(function(){
+        $('#tableSop').DataTable({  
+            processing: true,
+            serverSide: true,
+            scrollX: true,
+            ajax: '{{ url()->current() }}',
+            columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                {data: 'keterangan', name: 'keterangan'},
+                {data: 'jenis_izin', name: 'jenis_izin'},
+                {
+                    data: 'download', name: 'download', 
+                    orderable: false,
+                    searchable: false
+                },
+            ],
+            columnDefs: [
+                {
+                    targets: [0, 2, 3],
+                    className: 'dt-center'
+                }
+            ]
         });
-    </script>
+    });
+</script>
 @endsection

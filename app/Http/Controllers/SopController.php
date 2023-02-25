@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sop;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables as DataTable;
 
-class PerizinanController extends Controller
+class SopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,18 @@ class PerizinanController extends Controller
      */
     public function index()
     {
-        return view('perizinan.public.index');
+        if(request()->ajax()){
+            $sop = Sop::query();
+            return DataTable::of($sop)
+                ->addIndexColumn()
+                ->addColumn('download', function($row){
+                    $btn = '<a href="" >Download </a>';
+                    return $btn;
+                })
+                ->rawColumns(['download'])
+                ->make();
+        }
+        return view('sop.public.index');
     }
 
     /**

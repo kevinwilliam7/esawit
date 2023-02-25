@@ -3,12 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PabrikController;
-use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\KontribusiController;
-use App\Http\Controllers\PerkebunanController;
-use App\Http\Controllers\PerundanganController;
 use App\Http\Controllers\Pabrik\PabrikController as AdminPabrikController;
 use App\Http\Controllers\Perkebunan\PerkebunanController as AdminPerkebunanController;
+use App\Http\Controllers\SopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +19,12 @@ use App\Http\Controllers\Perkebunan\PerkebunanController as AdminPerkebunanContr
 |
 */
 Route::get('/', [HomeController::class, 'index']);
+Route::get('home', [HomeController::class, 'index']);
 Route::get('perkebunan', [PerkebunanController::class, 'index']);
+Route::get('perkebunan-detail/{id}', [PerkebunanController::class, 'show']);
 Route::get('pabrik', [PabrikController::class, 'index']);
 Route::get('kontribusi', [KontribusiController::class, 'index']);
-Route::get('perizinan', [PerizinanController::class, 'index']);
+Route::get('sop', [SopController::class, 'index']);
 Route::get('perundangan', [PerundanganController::class, 'index']);
 
 Route::prefix('admin')->name('admin.')->middleware([])->group(function(){

@@ -1,5 +1,4 @@
 @extends('layouts.admin.master')
-
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/libs/DataTables/datatables.min.css') }}">
     <style>
@@ -9,7 +8,6 @@
         }
     </style>
 @endsection
-
 @section('content')
     <div class="container">
         <div class="card">

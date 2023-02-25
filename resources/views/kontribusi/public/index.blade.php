@@ -41,7 +41,7 @@
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                             CSR Pabrik yang sudah terealisasi
                                         </button>
                                     </h2>
@@ -61,18 +61,6 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {{-- @foreach($pabrikRealisasi as $key => $ik)
-                                                    <tr>
-                                                        <td>{{ $key+1 }}</td>
-                                                        <td>{{ $ik->nama_pabrik }}</td>
-                                                        <td>{{ $ik->tahun }}</td>
-                                                        <td>{{ $ik->jeniskegiatan }}</td>
-                                                        <td>{{ $ik->tanggal }}</td>
-                                                        <td>{{ number_format($ik->nilaisetara) }}</td>
-                                                        <td>{{ $ik->lokasidesa }}</td>
-                                                        <td>{{ $ik->lokasikecamatan }}</td>
-                                                    </tr>
-                                                    @endforeach --}}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -177,7 +165,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url()->current() }}',
+                ajax: '{{ url('api/datatable-pabrik-rencana') }}',
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -188,13 +176,19 @@
                     {data: 'lokasidesa', name: 'lokasidesa'},
                     {data: 'lokasikecamatan', name: 'lokasikecamatan'},
                 ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7],
+                        className: 'dt-center'
+                    }
+                ]
             });
-           
+
             $('#pabrikRealisasi').DataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url()->current() }}',
+                ajax: '{{ url('api/datatable-pabrik-realisasi') }}',
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -205,12 +199,19 @@
                     {data: 'lokasidesa', name: 'lokasidesa'},
                     {data: 'lokasikecamatan', name: 'lokasikecamatan'},
                 ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7],
+                        className: 'dt-center'
+                    }
+                ]
             });
+
             $('#perkebunanRencana').DataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url()->current() }}',
+                ajax: '{{ url('api/datatable-perkebunan-rencana') }}',
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -221,12 +222,19 @@
                     {data: 'lokasidesa', name: 'lokasidesa'},
                     {data: 'lokasikecamatan', name: 'lokasikecamatan'},
                 ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7],
+                        className: 'dt-center'
+                    }
+                ]
             });
+
             $('#perkebunanRealisasi').DataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url()->current() }}',
+                ajax: '{{ url('api/datatable-perkebunan-realisasi') }}',
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -237,6 +245,12 @@
                     {data: 'lokasidesa', name: 'lokasidesa'},
                     {data: 'lokasikecamatan', name: 'lokasikecamatan'},
                 ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 5, 6, 7],
+                        className: 'dt-center'
+                    }
+                ]
             });
         });
     </script>

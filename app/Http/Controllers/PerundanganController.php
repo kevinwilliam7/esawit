@@ -20,7 +20,7 @@ class PerundanganController extends Controller
             return DataTable::of($pabriks)
                 ->addIndexColumn()
                 ->addColumn('download', function($row){
-                    $btn = '<a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a>';
+                    $btn = '<a href="" >Download </a>';
                     return $btn;
                 })
                 ->rawColumns(['download'])

@@ -24,10 +24,16 @@
     <link href="{{asset('assets/green/css/style.css')}}" rel="stylesheet">
     @yield('css')
 </head>
-<body>
-    @include('layouts.public.partials.navbar')
-    @yield('content')
-    @include('layouts.public.partials.footer')
+<body style="position: relative">
+    <div id="wrapper">
+        @include('layouts.public.partials.navbar')
+        <div class="content-page">
+            <div class="content">
+                @yield('content')
+            </div>
+        </div>
+        @include('layouts.public.partials.footer')
+    </div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     <!-- Vendor JS Files -->
     <script src="{{asset('assets/green/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

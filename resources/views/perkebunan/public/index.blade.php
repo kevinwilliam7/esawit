@@ -81,7 +81,7 @@
                 ],
                 columnDefs: [
                     {
-                        targets: [0, 1, 2, 3],
+                        targets: [0, 1, 2, 3, 4],
                         className: 'dt-center'
                     }
                 ]

@@ -58,7 +58,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="icon-box">
                     <h4 class="title"><a href="">Pabrik Terdaftar</a></h4>
-                    <h2><b><strong>72</strong> Pabrik</b></p>
+                    <h2><b><strong>{{ $countPabrik ?? '0' }}</strong> Pabrik</b></p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -125,7 +125,7 @@
                         </svg>
                         <i class="bx bx-landscape"></i>
                     </div>
-                    <h4><a href="">Perusahaan Perkebunan</a></h4>
+                    <h4><a href="/perkebunan">Perusahaan Perkebunan</a></h4>
                     <p>Informasi Daftar Perusahaan Perkebunan Kelapa Sawit di Kabupaten Sanggau</p>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                         </svg>
                         <i class="bx bx-buildings"></i>
                     </div>
-                    <h4><a href="">Pabrik</a></h4>
+                    <h4><a href="/pabrik">Pabrik</a></h4>
                     <p>Informasi Daftar Pabrik Perkebunan Kelapa Sawit di Kabupaten Sanggau</p>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                         </svg>
                         <i class="bx bx-tachometer"></i>
                     </div>
-                    <h4><a href="">CSR</a></h4>
+                    <h4><a href="/kontribusi">CSR</a></h4>
                     <p>Informasi Corporate Social Responsibility (CSR) Perusahaan Perkebunan Sawit</p>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                         </svg>
                         <i class="bx bx-layer"></i>
                     </div>
-                    <h4><a href="">SOP Perizinan</a></h4>
+                    <h4><a href="/sop">SOP Perizinan</a></h4>
                     <p>Informasi Daftar Standart Operating Procedure (SOP) Perizinan Persawitan</p>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                         </svg>
                         <i class="bx bx-paperclip"></i>
                     </div>
-                    <h4><a href="">Peraturan Perundangan</a></h4>
+                    <h4><a href="/perundangan">Peraturan Perundangan</a></h4>
                     <p>Informasi Daftar Peraturan Perundang-Undangan Tentang Perizinan Persawitan</p>
                     </div>
                 </div>
@@ -201,7 +201,6 @@
         </section>
         <section id="cta" class="cta">
             <div class="container">
-
                 <div class="row">
                 <div class="col-lg-9 text-center text-lg-start">
                     <h3>Daftarkan Perkebunan Sawit Anda Sekarang Juga</h3>
@@ -214,7 +213,7 @@
 
             </div>
         </section>
-        <section id="location" class="contact">
+        <section id="contact" class="contact">
             <div class="container">
 
                 <div class="section-title">

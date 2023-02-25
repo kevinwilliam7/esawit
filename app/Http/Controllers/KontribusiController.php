@@ -15,16 +15,35 @@ class KontribusiController extends Controller
      */
     public function index()
     {
-        if(request()->ajax()){
-            $pabrikRencana = Kontribusi::where('kategori','pabrik')->where('pelaksanaan','rencana');
-            $perkebunanRealisasi = Kontribusi::where('kategori','perkebunan')->where('pelaksanaan','realisasi');
-            $perkebunanRencana  = Kontribusi::where('kategori','perkebunan')->where('pelaksanaan','rencana');
-            $pabrikRealisasi = Kontribusi::where('kategori','pabrik')->where('pelaksanaan','realisasi');
-            return DataTable::of($perkebunanRencana)
-                ->addIndexColumn()
-                ->make();
-        }
         return view('kontribusi.public.index');
+    }
+
+    public function dtPabrikRencana(){
+        $pabrikRencana = Kontribusi::where('kategori','pabrik')->where('pelaksanaan','rencana');
+        return DataTable::of($pabrikRencana)
+            ->addIndexColumn()
+            ->make();
+    }
+
+    public function dtPabrikRealisasi(){
+        $pabrikRealisasi = Kontribusi::where('kategori','pabrik')->where('pelaksanaan','realisasi');
+        return DataTable::of($pabrikRealisasi)
+            ->addIndexColumn()
+            ->make();   
+    }
+
+    public function dtPerkebunanRencana(){
+        $perkebunanRencana  = Kontribusi::where('kategori','perkebunan')->where('pelaksanaan','rencana');
+        return DataTable::of($perkebunanRencana)
+            ->addIndexColumn()
+            ->make();
+    }
+
+    public function dtPerkebunanRealisasi(){
+        $perkebunanRealisasi = Kontribusi::where('kategori','perkebunan')->where('pelaksanaan','realisasi');
+        return DataTable::of($perkebunanRealisasi)
+            ->addIndexColumn()
+            ->make();
     }
 
     /**

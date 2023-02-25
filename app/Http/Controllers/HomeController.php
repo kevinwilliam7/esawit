@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kontribusi;
+use App\Models\Pabrik\Pabrik;
 use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,9 @@ class HomeController extends Controller
     public function index()
     {
         $countPerkebunan = Perkebunan::count();
+        $countPabrik = Pabrik::count();
         $countKontribusi = Kontribusi::where('pelaksanaan', 'realisasi')->count();
-        return view('home.public.index',compact('countKontribusi','countPerkebunan'));
+        return view('home.public.index',compact('countKontribusi','countPerkebunan','countPabrik'));
     }
 
     /**

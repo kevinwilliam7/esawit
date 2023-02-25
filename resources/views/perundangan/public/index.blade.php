@@ -75,6 +75,12 @@
                         searchable: false
                     },
                 ],
+                columnDefs: [
+                    {
+                        targets: [0, 2],
+                        className: 'dt-center'
+                    }
+                ]
             });
         });
     </script>
