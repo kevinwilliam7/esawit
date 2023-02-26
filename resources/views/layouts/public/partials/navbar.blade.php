@@ -21,7 +21,7 @@
                         <li><a href="/kontribusi">CSR</a></li>
                         <li><a href="/sop">SOP Perizinan</a></li>
                         <li><a href="/perundangan">Peraturan Perundangan</a></li>
-                        <li><a href="#">Harga TBS</a></li>
+                        <li><a href="/tbs">Harga TBS</a></li>
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto" href="home#contact">Location</a></li>

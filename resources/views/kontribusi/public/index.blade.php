@@ -32,7 +32,7 @@
         <section id="location" class="contact">
             <div class="container">
                 <div class="section-title">
-                    <h2>Perusahaan Perkebunan Kelapa Sawit</h2>
+                    <h2>CSR Perusahaan</h2>
                     <p>Informasi Daftar Perusahaan Perkebunan Kelapa Sawit di Kabupaten Sanggau</p>
                 </div>
                 <div class="row">

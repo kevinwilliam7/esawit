@@ -895,21 +895,23 @@
                             </div>
                             <div class="tab-pane fade" id="nav-sertifikat" role="tabpanel" aria-labelledby="nav-sertifikat-tab">
                                 <div class="container">
-                                    <table id="tableSertifikat" class="table table-bordered w-100">
-                                        <thead>
-                                            <tr>
-                                                <th><b>No</b></th>
-                                                <th><b>Jenis Sertifikat</b></th>
-                                                <th><b>Nama Sertifikat</b></th>
-                                                <th><b>Nomor Surat</b></th>
-                                                <th><b>Tanggal Diterbitkan</b></th>
-                                                <th><b>Penjabat Penerbit</b></th>
-                                                <th><b>Kategori</b></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
+                                    <div class="row p-4">
+                                        <table id="tableSertifikat" class="table table-bordered w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th><b>No</b></th>
+                                                    <th><b>Jenis Sertifikat</b></th>
+                                                    <th><b>Nama Sertifikat</b></th>
+                                                    <th><b>Nomor Surat</b></th>
+                                                    <th><b>Tanggal Diterbitkan</b></th>
+                                                    <th><b>Penjabat Penerbit</b></th>
+                                                    <th><b>Kategori</b></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

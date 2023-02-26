@@ -51,19 +51,19 @@
                 <div class="row no-gutters">
                 <div class="col-lg-4 col-md-6">
                     <div class="icon-box">
-                    <h4 class="title"><a href="">Perkebunan Terdaftar</a></h4>
+                    <h4 class="title"><a href="/perkebunan">Perkebunan Terdaftar</a></h4>
                     <h2><b><strong>{{ $countPerkebunan ?? '0' }}</strong> Perkebunan</b></p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="icon-box">
-                    <h4 class="title"><a href="">Pabrik Terdaftar</a></h4>
+                    <h4 class="title"><a href="/pabrik">Pabrik Terdaftar</a></h4>
                     <h2><b><strong>{{ $countPabrik ?? '0' }}</strong> Pabrik</b></p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="icon-box">
-                    <h4 class="title"><a href="">Jumlah Kontribusi</a></h4>
+                    <h4 class="title"><a href="/kontribusi">Jumlah Kontribusi</a></h4>
                     <h2><b><strong>{{ $countKontribusi ?? '0' }}</strong> Kontribusi</b></p>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
                         </svg>
                         <i class="bx bx-purchase-tag"></i>
                     </div>
-                    <h4><a href="">Harga TBS</a></h4>
+                    <h4><a href="/tbs">Harga TBS</a></h4>
                     <p>Informasi Daftar Statistik & Informasi Harga Tandan Buah Segar (TBS) Persawitan</p>
                     </div>
                 </div>
