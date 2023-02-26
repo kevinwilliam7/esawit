@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kontribusi;
 use App\Models\Pabrik\Pabrik;
+use App\Models\Produksi;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables as DataTable;
 
@@ -19,8 +22,8 @@ class PabrikController extends Controller
             $pabriks = Pabrik::query();
             return DataTable::of($pabriks)
                 ->addIndexColumn()
-                ->addColumn('aksi', function($row){
-                    $btn = '<a href="" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a>';
+                ->addColumn('aksi', function($pabrik){
+                    $btn = '<a href="/pabrik-detail/'.$pabrik->id.'" class="btn btn-outline-success"><span class="bi-eye"></span> Lihat </a>';
                     return $btn;
                 })
                 ->rawColumns(['aksi'])
@@ -60,7 +63,36 @@ class PabrikController extends Controller
      */
     public function show($id)
     {
-        //
+        $pabriks = Pabrik::where('id', $id);
+        return view('pabrik.public.show', compact('pabriks'));
+    }
+
+    public function dtRencana(){
+        $pabrikRencana = Kontribusi::where('pabrik_id', 12)->where('kategori','pabrik')->where('pelaksanaan','rencana');
+        return DataTable::of($pabrikRencana)
+            ->addIndexColumn()
+            ->make();
+    }
+
+    public function dtRealisasi(){
+        $pabrikRealisasi = Kontribusi::where('pabrik_id', 12)->where('kategori','pabrik')->where('pelaksanaan','realisasi');
+        return DataTable::of($pabrikRealisasi)
+            ->addIndexColumn()
+            ->make();  
+    }
+
+    public function dtProduksi(){
+        $produksi = Produksi::where('pabrik_id', 1);
+        return DataTable::of($produksi)
+            ->addIndexColumn()
+            ->make();  
+    }
+    
+    public function dtSupply(){
+        $supplier = Supplier::where('pabrik_id', 12);
+        return DataTable::of($supplier)
+            ->addIndexColumn()
+            ->make();  
     }
 
     /**

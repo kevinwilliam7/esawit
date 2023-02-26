@@ -9,6 +9,7 @@ use App\Http\Controllers\Perkebunan\PerkebunanController as AdminPerkebunanContr
 use App\Http\Controllers\PerkebunanController;
 use App\Http\Controllers\PerundanganController;
 use App\Http\Controllers\SopController;
+use App\Http\Controllers\TbsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,11 @@ Route::get('home', [HomeController::class, 'index']);
 Route::get('perkebunan', [PerkebunanController::class, 'index']);
 Route::get('perkebunan-detail/{id}', [PerkebunanController::class, 'show']);
 Route::get('pabrik', [PabrikController::class, 'index']);
+Route::get('pabrik-detail/{id}', [PabrikController::class, 'show']);
 Route::get('kontribusi', [KontribusiController::class, 'index']);
 Route::get('sop', [SopController::class, 'index']);
 Route::get('perundangan', [PerundanganController::class, 'index']);
+Route::get('tbs', [TbsController::class, 'index']);
 
 Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
 
