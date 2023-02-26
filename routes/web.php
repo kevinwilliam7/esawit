@@ -6,6 +6,8 @@ use App\Http\Controllers\PabrikController;
 use App\Http\Controllers\KontribusiController;
 use App\Http\Controllers\Pabrik\PabrikController as AdminPabrikController;
 use App\Http\Controllers\Perkebunan\PerkebunanController as AdminPerkebunanController;
+use App\Http\Controllers\PerkebunanController;
+use App\Http\Controllers\PerundanganController;
 use App\Http\Controllers\SopController;
 
 /*
