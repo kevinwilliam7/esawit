@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KontribusiController;
+use App\Http\Controllers\PabrikController;
 use App\Http\Controllers\PerkebunanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,9 @@ Route::get('datatable-perkebunan-realisasi', [KontribusiController::class, 'dtPe
 Route::get('perkebunan-datatable-rencana',[PerkebunanController::class, 'dtRencana']);
 Route::get('perkebunan-datatable-realisasi',[PerkebunanController::class, 'dtRealisasi']);
 Route::get('perkebunan-datatable-sertifikat',[PerkebunanController::class, 'dtSertifikat']);
+
+//Datatable Halaman Pabrik
+Route::get('pabrik-datatable-rencana',[PabrikController::class, 'dtRencana']);
+Route::get('pabrik-datatable-realisasi',[PabrikController::class, 'dtRealisasi']);
+Route::get('pabrik-datatable-produksi',[PabrikController::class, 'dtProduksi']);
+Route::get('pabrik-datatable-supply',[PabrikController::class, 'dtSupply']);
