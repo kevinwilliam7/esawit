@@ -27,12 +27,12 @@ Route::get('datatable-perkebunan-rencana', [KontribusiController::class, 'dtPerk
 Route::get('datatable-perkebunan-realisasi', [KontribusiController::class, 'dtPerkebunanRealisasi']);
 
 //Datatable Halaman Perkebunan Tab CSR
-Route::get('perkebunan-datatable-rencana',[PerkebunanController::class, 'dtRencana']);
-Route::get('perkebunan-datatable-realisasi',[PerkebunanController::class, 'dtRealisasi']);
-Route::get('perkebunan-datatable-sertifikat',[PerkebunanController::class, 'dtSertifikat']);
+Route::get('perkebunan-datatable-rencana/{id}',[PerkebunanController::class, 'dtRencana']);
+Route::get('perkebunan-datatable-realisasi/{id}',[PerkebunanController::class, 'dtRealisasi']);
+Route::get('perkebunan-datatable-sertifikat/{id}',[PerkebunanController::class, 'dtSertifikat']);
 
 //Datatable Halaman Pabrik
-Route::get('pabrik-datatable-rencana',[PabrikController::class, 'dtRencana']);
-Route::get('pabrik-datatable-realisasi',[PabrikController::class, 'dtRealisasi']);
-Route::get('pabrik-datatable-produksi',[PabrikController::class, 'dtProduksi']);
-Route::get('pabrik-datatable-supply',[PabrikController::class, 'dtSupply']);
+Route::get('pabrik-datatable-rencana/{id}',[PabrikController::class, 'dtRencana']);
+Route::get('pabrik-datatable-realisasi/{id}',[PabrikController::class, 'dtRealisasi']);
+Route::get('pabrik-datatable-produksi/{id}',[PabrikController::class, 'dtProduksi']);
+Route::get('pabrik-datatable-supply/{id}',[PabrikController::class, 'dtSupply']);

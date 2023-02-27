@@ -64,32 +64,32 @@ class PabrikController extends Controller
     public function show($id)
     {
         $pabriks = Pabrik::where('id', $id);
-        return view('pabrik.public.show', compact('pabriks'));
+        return view('pabrik.public.show', compact('id', 'pabriks'));
     }
 
-    public function dtRencana(){
-        $pabrikRencana = Kontribusi::where('pabrik_id', 12)->where('kategori','pabrik')->where('pelaksanaan','rencana');
+    public function dtRencana(Request $request){
+        $pabrikRencana = Kontribusi::where('pabrik_id', $request->id)->where('kategori','pabrik')->where('pelaksanaan','rencana');
         return DataTable::of($pabrikRencana)
             ->addIndexColumn()
             ->make();
     }
 
-    public function dtRealisasi(){
-        $pabrikRealisasi = Kontribusi::where('pabrik_id', 12)->where('kategori','pabrik')->where('pelaksanaan','realisasi');
+    public function dtRealisasi(Request $request){
+        $pabrikRealisasi = Kontribusi::where('pabrik_id', $request->id)->where('kategori','pabrik')->where('pelaksanaan','realisasi');
         return DataTable::of($pabrikRealisasi)
             ->addIndexColumn()
             ->make();  
     }
 
-    public function dtProduksi(){
-        $produksi = Produksi::where('pabrik_id', 1);
+    public function dtProduksi(Request $request){
+        $produksi = Produksi::where('pabrik_id', $request->id);
         return DataTable::of($produksi)
             ->addIndexColumn()
             ->make();  
     }
     
-    public function dtSupply(){
-        $supplier = Supplier::where('pabrik_id', 12);
+    public function dtSupply(Request $request){
+        $supplier = Supplier::where('pabrik_id', $request->id);
         return DataTable::of($supplier)
             ->addIndexColumn()
             ->make();  

@@ -114,27 +114,27 @@ class PerkebunanController extends Controller
         //csr
         //sertifikat
         return view('perkebunan.public.show', 
-            compact('perkebunans', 'lokasiPerkebunans', 'lokasiPabriks', 'izinLokasis', 'izinLokasiTotal', 'iups', 'iupTotal', 'hgus', 'hguTotal', 'iblhs', 'iblhTotal', 'perolehanIntis', 'perolehanPlasmas', 'perolehanIntiTotal', 'perolehanPlasmaTotal', 'penanamanIntis', 'penanamanPlasmas', 'penanamanIntiTotal', 'penanamanPlasmaTotal', 'produksiBerjalans', 'produksiKemarins', 'produksiBerjalanTotal', 'produksiKemarinTotal', 'distribusis', 'distribusiTotal', 'petanis', 'kkPetaniTotal', 'luasPetaniTotal', 'koperasis', 'luasKoperasiTotal', 'kreditKoperasiTotal', 'biayaKoperasiTotal', 'anggotaKoperasiTotal'),
+            compact('id', 'perkebunans', 'lokasiPerkebunans', 'lokasiPabriks', 'izinLokasis', 'izinLokasiTotal', 'iups', 'iupTotal', 'hgus', 'hguTotal', 'iblhs', 'iblhTotal', 'perolehanIntis', 'perolehanPlasmas', 'perolehanIntiTotal', 'perolehanPlasmaTotal', 'penanamanIntis', 'penanamanPlasmas', 'penanamanIntiTotal', 'penanamanPlasmaTotal', 'produksiBerjalans', 'produksiKemarins', 'produksiBerjalanTotal', 'produksiKemarinTotal', 'distribusis', 'distribusiTotal', 'petanis', 'kkPetaniTotal', 'luasPetaniTotal', 'koperasis', 'luasKoperasiTotal', 'kreditKoperasiTotal', 'biayaKoperasiTotal', 'anggotaKoperasiTotal'),
         );
     }
 
     
-    public function dtRencana(){
-        $perkebunanRencana  = Kontribusi::where('perkebunan_id', 1)->where('kategori','perkebunan')->where('pelaksanaan','rencana');
+    public function dtRencana(Request $request){
+        $perkebunanRencana  = Kontribusi::where('perkebunan_id', $request->id)->where('kategori','perkebunan')->where('pelaksanaan','rencana');
         return DataTable::of($perkebunanRencana)
             ->addIndexColumn()
             ->make();
     }
 
-    public function dtRealisasi(){
-        $realisasi = Kontribusi::where('perkebunan_id', 1)->where('kategori','perkebunan')->where('pelaksanaan','realisasi');
+    public function dtRealisasi(Request $request){
+        $realisasi = Kontribusi::where('perkebunan_id', $request->id)->where('kategori','perkebunan')->where('pelaksanaan','realisasi');
         return DataTable::of($realisasi)
             ->addIndexColumn()
             ->make();   
     }
 
-    public function dtSertifikat(){
-        $sertifikat = Sertifikat::where('perkebunan_id', 1);
+    public function dtSertifikat(Request $request){
+        $sertifikat = Sertifikat::where('perkebunan_id', $request->id);
         return DataTable::of($sertifikat)
             ->addIndexColumn()
             ->make();   

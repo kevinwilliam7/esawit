@@ -184,12 +184,13 @@
 <script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
+        var id = {{ $id }}
         $(document).ready(function(){
             $('#tableRencana').DataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url('api/pabrik-datatable-rencana') }}',
+                ajax: `{{ url('api/pabrik-datatable-rencana/${id}') }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -212,7 +213,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url('api/pabrik-datatable-realisasi') }}',
+                ajax: `{{ url('api/pabrik-datatable-realisasi/${id}') }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -239,7 +240,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url('api/pabrik-datatable-produksi') }}',
+                ajax: `{{ url('api/pabrik-datatable-produksi/${id}') }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'hasil_pabrik', name: 'hasil_pabrik'},
@@ -259,10 +260,10 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url('api/pabrik-datatable-supply') }}',
+                ajax: `{{ url('api/pabrik-datatable-supply/${id}') }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-                    {data: 'nama_kebun', name: 'nama_kebun'},
+                    {data: 'nama_perkebunan', name: 'nama_perkebunan'},
                     {data: 'jumlah_supply', name: 'jumlah_supply'},
                     {data: 'jangka_waktu', name: 'jangka_waktu'},
                 ],

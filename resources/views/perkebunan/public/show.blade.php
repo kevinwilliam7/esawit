@@ -927,12 +927,13 @@
 <script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
+        var id = {{ $id }}
         $(document).ready(function(){
             $('#tableRencana').DataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url('api/perkebunan-datatable-rencana') }}',
+                ajax: `{{ url('api/perkebunan-datatable-rencana/${id}') }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -955,7 +956,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url('api/perkebunan-datatable-realisasi') }}',
+                ajax: `{{ url('api/perkebunan-datatable-realisasi/${id}') }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -978,7 +979,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: '{{ url('api/perkebunan-datatable-sertifikat') }}',
+                ajax: `{{ url('api/perkebunan-datatable-sertifikat/${id}') }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'jenis', name: 'jenis'},
