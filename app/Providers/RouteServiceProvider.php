@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Kontribusi;
+use App\Models\Pabrik\Pabrik;
 use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -52,6 +54,14 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('perkebunan', function ($id, $route) {
             $nama = $route->parameter('nama');
             return Perkebunan::where([
+                'id'  => $id,
+                'nama' => $nama,
+            ])->firstOrFail();
+        });
+
+        Route::bind('pabrik', function ($id, $route) {
+            $nama = $route->parameter('nama');
+            return Pabrik::where([
                 'id'  => $id,
                 'nama' => $nama,
             ])->firstOrFail();
