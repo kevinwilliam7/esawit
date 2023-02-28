@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\KontribusiController;
+use App\Http\Controllers\Pabrik\KontribusiController as PabrikKontribusiController;
+use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PabrikController;
 use App\Http\Controllers\PerkebunanController;
 use Illuminate\Http\Request;
@@ -36,3 +38,8 @@ Route::get('pabrik-datatable-rencana/{id}',[PabrikController::class, 'dtRencana'
 Route::get('pabrik-datatable-realisasi/{id}',[PabrikController::class, 'dtRealisasi']);
 Route::get('pabrik-datatable-produksi/{id}',[PabrikController::class, 'dtProduksi']);
 Route::get('pabrik-datatable-supply/{id}',[PabrikController::class, 'dtSupply']);
+
+Route::get('kecamatan/{kabupaten}', [LokasiController::class, 'kecamatan'])->name('api.kecamatan.index');
+Route::get('desa/{kecamatan}', [LokasiController::class, 'desa'])->name('api.desa.index');
+
+Route::get('pabrik/{pabrik:id}/{nama}/kontribusi/{pelaksanaan}', [PabrikKontribusiController::class, 'index'])->name('api.pabrik.kontribusi.index');
