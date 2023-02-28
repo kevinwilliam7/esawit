@@ -1,5 +1,7 @@
 @extends('layouts.admin.master')
 
+@section('content-title', 'Pabrik')
+
 @section('content')
     <div class="container">
         @if ($errors->any())
@@ -37,15 +39,15 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-informasi-umum" role="tabpanel"
                             aria-labelledby="nav-informasi-umum-tab" tabindex="0">
-                            @include('pabrik.admin.tabs.informasi-umum')
+                            @include('pabrik.admin.tabs.create.informasi-umum')
                         </div>
                         <div class="tab-pane fade" id="nav-legalitas" role="tabpanel" aria-labelledby="nav-legalitas-tab"
                             tabindex="0">
-                            @include('pabrik.admin.tabs.legalitas')
+                            @include('pabrik.admin.tabs.create.legalitas')
                         </div>
                         <div class="tab-pane fade" id="nav-sertifikasi" role="tabpanel"
                             aria-labelledby="nav-sertifikasi-tab" tabindex="0">
-                            @include('pabrik.admin.tabs.sertifikasi')
+                            @include('pabrik.admin.tabs.create.sertifikasi')
                         </div>
                     </div>
                 </form>

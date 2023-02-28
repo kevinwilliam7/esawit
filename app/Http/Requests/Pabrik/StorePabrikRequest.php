@@ -4,7 +4,7 @@ namespace App\Http\Requests\Pabrik;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PabrikRequest extends FormRequest
+class StorePabrikRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,14 +30,14 @@ class PabrikRequest extends FormRequest
             'jabatan_pimpinan' => 'required_with:pimpinan|string|nullable',
             'alamat_kantor' => 'required|string',
             'email' => 'nullable|email',
-            'telp' => 'nullable|numeric|',
+            'telp' => 'nullable|integer|digits_between:8,15',
             'luas_lokasi_pabrik' => 'nullable|integer|min:0',
-            'tahun_operasi' => 'nullable|digits_between:1900,'.date('Y'),
+            'tahun_operasi' => 'nullable|integer|between:1900,'.date('Y'),
             'nama_grup' => 'nullable|string',
             'status' => 'nullable|in:go public,tidak go public',
             'bursa_efek' => 'nullable|string',
-            'tenaga_kerja_wni' => 'nullable|numeric|min:0',
-            'tenaga_kerja_asing' => 'nullable|numeric|min:0',
+            'tenaga_kerja_wni' => 'nullable|integer|min:0',
+            'tenaga_kerja_asing' => 'nullable|integer|min:0',
             'nomor_amdal' => 'nullable|string',
             'amdal' => 'required_with:nomor_amdal|file|mimes:pdf|nullable',
             'ditetapkan_amdal' => 'required_with:nomor_amdal|date|nullable',
@@ -119,12 +119,113 @@ class PabrikRequest extends FormRequest
     public function attributes()
     {
         return [
-
+            'nama' => 'Nama',
+            'npwp' => 'NPWP',
+            'pimpinan' => 'Pimpinan',
+            'jabatan_pimpinan' => 'Jabatan Pimpinan',
+            'alamat_kantor' => 'Alamat Kantor',
+            'email' => 'Email',
+            'telp' => 'Telepon',
+            'luas_lokasi_pabrik' => 'Luas Lokasi',
+            'tahun_operasi' => 'Tahun Mulai Beroperasi',
+            'nama_grup' => 'Nama Grup Perusahaan',
+            'status' => 'Status',
+            'bursa_efek' => 'Bursa Efek',
+            'tenaga_kerja_wni' => 'Tenaga Kerja WNI',
+            'tenaga_kerja_asing' => 'Tenaga Kerja Asing',
+            'nomor_amdal' => 'Nomor AMDAL',
+            'amdal' => 'Berkas AMDAL',
+            'ditetapkan_amdal' => 'Tanggal Penetapan AMDAL',
+            'berakhir_amdal' => 'Tanggal Berakhir AMDAL',
+            'penjabat_amdal' => 'Penjabat AMDAL',
+            'keterangan_amdal' => 'Keterangan AMDAL',
+            'nomor_siupp' => 'Nomor SIUPP',
+            'siupp' => 'Berkas SIUPP',
+            'ditetapkan_siupp' => 'Tanggal Penetapan SIUPP',
+            'berakhir_siupp' => 'Tanggal Berakhir SIUPP',
+            'penjabat_siupp' => 'Penjabat SIUPP',
+            'keterangan_siupp' => 'Keterangan SIUPP',
+            'nomor_situ' => 'Nomor SITU',
+            'situ' => 'SITU',
+            'ditetapkan_situ' => 'Tanggal Penetapan SITU',
+            'berakhir_situ' => 'Tanggal Berakhir SITU',
+            'penjabat_situ' => 'Penjabat SITU',
+            'keterangan_situ' => 'Keterangan SITU',
+            'nomor_hgb' => 'Nomor HGB',
+            'hgb' => 'Berkas HGB',
+            'ditetapkan_hgb' => 'Tanggal Penetapan HGB',
+            'berakhir_hgb' => 'Tanggal Berakhir HGB',
+            'penjabat_hgb' => 'Penjabat HGB',
+            'keterangan_hgb' => 'Keterangan HGB',
+            'nomor_imb_pabrik' => 'Nomor IMB Pabrik',
+            'imb_pabrik' => 'Berkas IMB Pabrik',
+            'ditetapkan_imb_pabrik' => 'Tanggal Penetapan IMB Pabrik',
+            'berakhir_imb_pabrik' => 'Tanggal Berakhir IMB Pabrik',
+            'penjabat_imb_pabrik' => 'Penjabat IMB Pabrik',
+            'keterangan_imb_pabrik' => 'Keterangan IMB Pabrik',
+            'nomor_imb_perumahan' => 'Nomor IMB Perumahan',
+            'imb_perumahan' => 'Berkas IMB Perumahan',
+            'ditetapkan_imb_perumahan' => 'Tanggal Penetapan IMB Perumahan',
+            'berakhir_imb_perumahan' => 'Tanggal Berakhir IMB Perumahan',
+            'penjabat_imb_perumahan' => 'PenjabatIMB Perumahan',
+            'keterangan_imb_perumahan' => 'Keterangan IMB Perumahan',
+            'nomor_ijin_gangguan' => 'Nomor Izin Gangguan',
+            'ijin_gangguan' => 'Berkas Izin Gangguan',
+            'ditetapkan_ijin_gangguan' => 'Tanggal Penetapan Izin Gangguan',
+            'berakhir_ijin_gangguan' => 'Tanggal Berakhir Izin Gangguan',
+            'penjabat_ijin_gangguan' => 'Penjabat Izin Gangguan',
+            'keterangan_ijin_gangguan' => 'Keterangan Izin Gangguan',
+            'nomor_ijin_limbah_cair' => 'Nomor Izin Pembuangan Air Limbah',
+            'ijin_limbah_cair' => 'Berkas Izin Pembuangan Air Limbah',
+            'ditetapkan_ijin_limbah_cair' => 'Tanggal Penetapan Izin Pembuangan Air Limbah',
+            'berakhir_ijin_limbah_cair' => 'Tanggal Berakhir Izin Pembuangan Air Limbah',
+            'penjabat_ijin_limbah_cair' => 'Penjabat Izin Pembuangan Air Limbah',
+            'keterangan_ijin_limbah_cair' => 'Keterangan Izin Pembuangan Air Limbah',
+            'nomor_ijin_radio' => 'Nomor Izin Radio',
+            'ijin_radio' => 'Berkas Izin Radio',
+            'ditetapkan_ijin_radio' => 'Tanggal Penetapan Izin Radio',
+            'berakhir_ijin_radio' => 'Tanggal Berakhir Izin Radio',
+            'penjabat_ijin_radio' => 'Penjabat Izin Radio',
+            'keterangan_ijin_radio' => 'Keterangan Izin Radio',
+            'nomor_land_aplikasi' => 'Nomor Land Application',
+            'land_aplikasi' => 'Berkas Land Application',
+            'ditetapkan_land_aplikasi' => 'Tanggal Penetapan Land Application',
+            'berakhir_land_aplikasi' => 'Tanggal Berakhir Land Application',
+            'penjabat_land_aplikasi' => 'Penjabat Land Application',
+            'keterangan_land_aplikasi' => 'Keterangan Land Application',
+            'nomor_mesin_pabrik' => 'Nomor Izin Mesin Pabrik',
+            'mesin_pabrik' => 'Berkas Izin Mesin Pabrik',
+            'ditetapkan_mesin_pabrik' => 'Tanggal Penetapan Izin Mesin Pabrik',
+            'berakhir_mesin_pabrik' => 'Tanggal Berakhir Izin Mesin Pabrik',
+            'penjabat_mesin_pabrik' => 'Penjabat Izin Mesin Pabrik',
+            'keterangan_mesin_pabrik' => 'Keterangan Izin Mesin Pabrik',
+            'nomor_ijin_timbang' => 'Nomor Izin Timbang',
+            'ijin_timbang' => 'Berkas Izin Timbang',
+            'ditetapkan_ijin_timbang' => 'Tanggal Penetapan Izin Timbang',
+            'berakhir_ijin_timbang' => 'Tanggal Berakhir Izin Timbang',
+            'penjabat_ijin_timbang' => 'Penjabat Izin Timbang',
+            'keterangan_ijin_timbang' => 'Keterangan Izin Timbang',
+            'kapasitas_produksi' => 'Kapasitas Produksi',
+            'nomor_dokumen_sertifikat' => 'Nomor Dokumen Sertifikat',
+            'dokumen_sertifikat' => 'Berkas Dokumen Sertifikat'
         ];
     }
 
     public function messages()
     {
-        return [];
+        return [
+            'required' => ':attribute wajib diisi',
+            'required_with' => ':attribute wajib diisi jika :values diisi',
+            'string' => ':attribute harus berupa teks',
+            'email' => ':attribute tidak valid',
+            'integer' => ':attribute harus berupa angka',
+            'numeric' => ':attribute harus berupa angka',
+            'between' => ':attribute harus berada diantara :min dan :max',
+            'in' => ':attribute harus salah satu dari :values',
+            'digits_between' => ':attribute harus terdiri dari :min hingga :max karakter',
+            'file' => ':attribute harus berupa file',
+            'mimes' =>  ':attribute harus berupa file :values'
+
+        ];
     }
 }
