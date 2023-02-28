@@ -1,0 +1,117 @@
+@extends('layouts.admin.master')
+
+@section('content-title', 'Pabrik')
+
+@section('content')
+    <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title py-0 h5">Ubah Data</div>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.pabrik.update', ['pabrik' => $pabrik->id, 'nama' => $pabrik->nama]) }}" method="post" enctype="multipart/form-data" id="store">
+                    @csrf
+                    @method('PATCH')
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-informasi-umum-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-informasi-umum" type="button" role="tab"
+                                aria-controls="nav-informasi-umum" aria-selected="true">Informasi Umum Pabrik</button>
+                            <button class="nav-link" id="nav-legalitas-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-legalitas" type="button" role="tab" aria-controls="nav-legalitas"
+                                aria-selected="false">Legalitas
+                                Pabrik</button>
+                            <button class="nav-link" id="nav-sertifikasi-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-sertifikasi" type="button" role="tab"
+                                aria-controls="nav-sertifikasi" aria-selected="false">Sertifikasi Pabrik</button>
+                        </div>
+                    </nav>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-informasi-umum" role="tabpanel"
+                            aria-labelledby="nav-informasi-umum-tab" tabindex="0">
+                            @include('pabrik.admin.tabs.edit.informasi-umum')
+                        </div>
+                        <div class="tab-pane fade" id="nav-legalitas" role="tabpanel" aria-labelledby="nav-legalitas-tab"
+                            tabindex="0">
+                            @include('pabrik.admin.tabs.edit.legalitas')
+                        </div>
+                        <div class="tab-pane fade" id="nav-sertifikasi" role="tabpanel"
+                            aria-labelledby="nav-sertifikasi-tab" tabindex="0">
+                            @include('pabrik.admin.tabs.edit.sertifikasi')
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <div class="d-flex w-100 justify-content-between">
+                    <a href="{{ route('admin.pabrik.index') }}" class="btn btn-default btn-bordered w-md waves-light">
+                        <i class="fa fa-chevron-left"></i>
+                        Kembali</a>
+                    <button type="submit" class="btn btn-primary btn-bordered w-md waves-light" form="store">
+                        <i class="fa fa-save"></i> Simpan Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('button[type=submit]').on('click', async function(e) {
+                var flag = true;
+                var name = '';
+                e.preventDefault();
+                $('[required]').each(function(index, input) {
+                    if ($(input).val() === '') {
+                        name = $(input).attr('name').replace('_', ' ');
+                        name = name.charAt(0).toUpperCase() + name.slice(1);
+                        flag = false;
+                        return false;
+                    }
+                });
+                if (flag) {
+                    var confirm = await confirmation();
+                    if (confirm) {
+                        $('form').submit();
+                    }
+                    return;
+                }
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: `${name} wajib diisi`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+
+            const confirmation = async () => {
+                var result = await Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: "Anda tidak dapat mengembalikan aksi ini!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya!',
+                    cancelButtonText: 'Tidak'
+                });
+                return result.isConfirmed;
+            }
+        });
+    </script>
+@endsection
