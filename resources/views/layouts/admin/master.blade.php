@@ -28,6 +28,9 @@
         @include('layouts.admin.partials.sidebar')
         <div class="content-page">
             <div class="content">
+                <div class="content-title">
+                    @yield('content-title')
+                </div>
                 @yield('content')
             </div>
         </div>
