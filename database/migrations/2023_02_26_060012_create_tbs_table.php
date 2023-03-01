@@ -16,19 +16,19 @@ class CreateTbsTable extends Migration
         Schema::create('tbs', function (Blueprint $table) {
             $table->id();
             $table->string('bulan');
-            $table->int('tbs_3');
-            $table->int('tbs_4');
-            $table->int('tbs_5');
-            $table->int('tbs_6');
-            $table->int('tbs_7');
-            $table->int('tbs_8');
-            $table->int('tbs_9');
-            $table->int('tbs_10');
-            $table->int('tbs_21');
-            $table->int('tbs_22');
-            $table->int('tbs_23');
-            $table->int('tbs_24');
-            $table->int('tbs_25');
+            $table->integer('tbs_3')->unsigned();
+            $table->integer('tbs_4')->unsigned();
+            $table->integer('tbs_5')->unsigned();
+            $table->integer('tbs_6')->unsigned();
+            $table->integer('tbs_7')->unsigned();
+            $table->integer('tbs_8')->unsigned();
+            $table->integer('tbs_9')->unsigned();
+            $table->integer('tbs_10')->unsigned();
+            $table->integer('tbs_21')->unsigned();
+            $table->integer('tbs_22')->unsigned();
+            $table->integer('tbs_23')->unsigned();
+            $table->integer('tbs_24')->unsigned();
+            $table->integer('tbs_25')->unsigned();
             $table->timestamps();
         });
     }
