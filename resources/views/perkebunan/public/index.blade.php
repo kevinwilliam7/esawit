@@ -58,7 +58,7 @@
     </main>
 @endsection
 
-@section('js')
+@push('js')
 <script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
@@ -70,7 +70,7 @@
                 ajax: '{{ url()->current() }}',
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-                    {data: 'nama_perkebunan', name: 'nama_perkebunan'},
+                    {data: 'nama', name: 'nama'},
                     {data: 'npwp', name: 'npwp'},
                     {data: 'pola_kemitraan', name: 'pola_kemitraan'},
                     {
@@ -88,4 +88,4 @@
             });
         });
     </script>
-@endsection
+@endpush

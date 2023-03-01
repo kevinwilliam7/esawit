@@ -63,7 +63,7 @@ class PabrikController extends Controller
      */
     public function show($id)
     {
-        $pabriks = Pabrik::where('id', $id);
+        $pabriks = Pabrik::findOrFail($id);
         return view('pabrik.public.show', compact('id', 'pabriks'));
     }
 

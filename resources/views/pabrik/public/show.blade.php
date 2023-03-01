@@ -40,6 +40,7 @@
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="nav-info-tab" data-bs-toggle="tab" data-bs-target="#nav-info" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Umum</button>
+                                <button class="nav-link" id="nav-location-tab" data-bs-toggle="tab" data-bs-target="#nav-location" type="button" role="tab" aria-controls="nav-location aria-selected="false">Lokasi</button>
                                 <button class="nav-link" id="nav-legal-tab" data-bs-toggle="tab" data-bs-target="#nav-legal" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Legalitas</button>
                                 <button class="nav-link" id="nav-produksi-tab" data-bs-toggle="tab" data-bs-target="#nav-produksi" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Produksi</button>
                                 <button class="nav-link" id="nav-supply-tab" data-bs-toggle="tab" data-bs-target="#nav-supply" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Supply</button>
@@ -49,10 +50,188 @@
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
-                                asdasdsa
+                                <div class="container p-2">
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Nama Pabrik</strong></div>
+                                        <div class="col-8">{{ $pabriks->nama}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>NPWP</strong></div>
+                                        <div class="col-8">{{ $pabriks->npwp}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Pimpinan Perusahaan</strong></div>
+                                        <div class="col-8">{{ $pabriks->npwp}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Alamat Kantor Pusat</strong></div>
+                                        <div class="col-8">{{ $pabriks->alamat_kantor}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Telepon</strong></div>
+                                        <div class="col-8">{{ $pabriks->telp}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Email</strong></div>
+                                        <div class="col-8">{{ $pabriks->email}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Tahun Mulai Beroperasi</strong></div>
+                                        <div class="col-8">{{ $pabriks->tahun_operasi}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Luas Lokasi Pabrik (Ha)</strong></div>
+                                        <div class="col-8">{{ $pabriks->npwp}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Nama Grup Perusahaan</strong></div>
+                                        <div class="col-8">{{ $pabriks->nama_grup}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Status Perusahaan</strong></div>
+                                        <div class="col-8">{{ $pabriks->status_perusahaan}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Bursa Efek</strong></div>
+                                        <div class="col-8">{{ $pabriks->bursa_efek}}</div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Jumlah Tenaga Kerja</strong></div>
+                                        <div class="col-2"><strong>WNI {{ number_format($pabriks->tenaga_kerjawni) }}</strong></div>
+                                        <div class="col-2"><strong>ASING {{ number_format($pabriks->tenaga_kerjaasing) }}</strong></div>
+                                    </div>
+                                    <div class="row p-2">
+                                        <div class="col-4"><strong>Kapasitas Produksi (Ton TBS/Jam)</strong></div>
+                                        <div class="col-8">{{ $pabriks->kapasitas_produksi}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-location" role="tabpanel" aria-labelledby="nav-location-tab">
+                                <div class="container">
+                                    <div class="row p-4">
+                                        <table id="tableLokasi" class="table table-bordered w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Lokasi Desa</th>
+                                                    <th>Lokasi Kecamatan</th>
+                                                    <th>Lokasi Kabupaten</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="nav-legal" role="tabpanel" aria-labelledby="nav-legal-tab">
-                                asdasd
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="row p-2">
+                                            <div class="col"></div>
+                                            <div class="col"><strong>Nama Legalitas</strong></div>
+                                            <div class="col"><strong>Penjabat</strong></div>
+                                            <div class="col"><strong>Ditetapkan</strong></div>
+                                            <div class="col"><strong>Berakhir</strong></div>
+                                            <div class="col"><strong>Keterangan</strong></div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>UKL-UPL/RKL-RPL/AMDAL</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_amdal }}</div>
+                                            <div class="col">{{ $pabriks->penjabat_amdal }}</div>
+                                            <div class="col">{{ $pabriks->ditetapkan_amdal }}</div>
+                                            <div class="col">{{ $pabriks->berakhir_amdal }}</div>
+                                            <div class="col">{{ $pabriks->keterangan_amdal }}</div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>SIUP</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_siupp }}</div>
+                                            <div class="col">{{ $pabriks->penjabat_siupp }}</div>
+                                            <div class="col">{{ $pabriks->ditetapkan_siupp }}</div>
+                                            <div class="col">{{ $pabriks->berakhir_siupp }}</div>
+                                            <div class="col">{{ $pabriks->keterangan_siupp }}</div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>SITU</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_situ }}</div>
+                                            <div class="col">{{ $pabriks->penjabat_situ }}</div>
+                                            <div class="col">{{ $pabriks->ditetapkan_situ }}</div>
+                                            <div class="col">{{ $pabriks->berakhir_situ }}</div>
+                                            <div class="col">{{ $pabriks->keterangan_situ }}</div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>HGB</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_hgb }}</div>
+                                            <div class="col">{{ $pabriks->penjabat_hgb }}</div>
+                                            <div class="col">{{ $pabriks->ditetapkan_hgb }}</div>
+                                            <div class="col">{{ $pabriks->berakhir_hgb }}</div>
+                                            <div class="col">{{ $pabriks->keterangan_hgb }}</div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>IMB Pabrik</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_imbpabrik }}</div>
+                                            <div class="col">{{ $pabriks->penjabat_imbpabrik }}</div>
+                                            <div class="col">{{ $pabriks->ditetapkan_imbpabrik }}</div>
+                                            <div class="col">{{ $pabriks->berakhir_imbpabrik }}</div>
+                                            <div class="col">{{ $pabriks->keterangan_imbpabrik }}</div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>IMB Perumahan</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_imbperumahan }}</div>
+                                            <div class="col">{{ $pabriks->penjabat_imbperumahan }}</div>
+                                            <div class="col">{{ $pabriks->ditetapkan_imbperumahan }}</div>
+                                            <div class="col">{{ $pabriks->berakhir_imbperumahan }}</div>
+                                            <div class="col">{{ $pabriks->keterangan_imbperumahan }}</div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>Izin Gangguan HO</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_ijingangguan }}</div>
+                                            <div class="col">{{ $pabriks->penjabat_ijingangguan }}</div>
+                                            <div class="col">{{ $pabriks->ditetapkan_ijingangguan }}</div>
+                                            <div class="col">{{ $pabriks->berakhir_ijingangguan }}</div>
+                                            <div class="col">{{ $pabriks->keterangan_ijingangguan }}</div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>IMB Pembuangan Air Limbah</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_ijinlimbahcair }}</div>
+                                            <div class="col">{{ $pabriks->penjabat_ijinlimbahcair }}</div>
+                                            <div class="col">{{ $pabriks->ditetapkan_ijinlimbahcair }}</div>
+                                            <div class="col">{{ $pabriks->berakhir_ijinlimbahcair }}</div>
+                                            <div class="col">{{ $pabriks->keterangan_ijinlimbahcair }}</div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>Izin Radio</strong></div>
+                                            <div class="col">{{ $pabriks->nomor_ijinradio }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->penjabat_ijinradio }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->ditetapkan_ijinradio}}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->berakhir_ijinradio }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->keterangan_ijinradio }}</strong></div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>Land Aplikasi</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->nomor_landaplikasi }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->penjabat_landaplikasi }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->ditetapkan_landaplikasi }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->berakhir_landaplikasi }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->keterangan_landaplikasi }}</strong></div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>Izin Mesing - Mesin Pabrik</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->nomor_mesinpabrik }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->penjabat_mesinpabrik }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->ditetapkan_mesinpabrik }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->berakhir_mesinpabrik }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->keterangan_mesinpabrik }}</strong></div>
+                                        </div>
+                                        <div class="row p-2">
+                                            <div class="col"><strong>Izin Tambang</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->nomor_ijintimbang }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->penjabat_ijintimbang }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->ditetapkan_ijintimbang}}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->berakhir_ijintimbang }}</strong></div>
+                                            <div class="col"><strong>{{ $pabriks->keterangan_ijintimbang }}</strong></div>
+                                        </div>
+                                    </div>
+    
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="nav-produksi" role="tabpanel" aria-labelledby="nav-produksi-tab">
                                 <div class="container">
@@ -184,13 +363,12 @@
 <script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
-        var id = {{ $id }}
         $(document).ready(function(){
             $('#tableRencana').DataTable({
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: `{{ url('api/pabrik-datatable-rencana/${id}') }}`,
+                ajax: `{{ url("api/pabrik-datatable-rencana/$id") }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -213,7 +391,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: `{{ url('api/pabrik-datatable-realisasi/${id}') }}`,
+                ajax: `{{ url("api/pabrik-datatable-realisasi/$id") }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -240,7 +418,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: `{{ url('api/pabrik-datatable-produksi/${id}') }}`,
+                ajax: `{{ url("api/pabrik-datatable-produksi/$id") }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'hasil_pabrik', name: 'hasil_pabrik'},
@@ -260,7 +438,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: `{{ url('api/pabrik-datatable-supply/${id}') }}`,
+                ajax: `{{ url("api/pabrik-datatable-supply/$id") }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'nama_perkebunan', name: 'nama_perkebunan'},
@@ -273,6 +451,10 @@
                         className: 'dt-center'
                     }
                 ]
+            });
+        });
+        $(document).ready(function(){
+            $('#tableLokasi').DataTable({
             });
         });
     </script>

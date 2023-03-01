@@ -72,7 +72,7 @@
                 ajax: '{{ url()->current() }}',
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-                    {data: 'nama_pabrik', name: 'nama_pabrik'},
+                    {data: 'nama', name: 'nama'},
                     {data: 'npwp', name: 'npwp'},
                     {data: 'nama_grup', name: 'nama_grup'},
                     {data: 'kapasitas_produksi', name: 'kapasitas_produksi'},

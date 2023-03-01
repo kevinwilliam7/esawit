@@ -64,7 +64,7 @@
                                                 <div class="container">
                                                     <div class="row p-2">
                                                         <div class="col-4"><strong>Nama Perusahaan Perkebunan</strong></div>
-                                                        <div class="col-8">{{ $perkebunan->nama_perkebunan }}</div>
+                                                        <div class="col-8">{{ $perkebunan->nama }}</div>
                                                     </div>
                                                     <div class="row p-2">
                                                         <div class="col-4"><strong>NPWP</strong></div>
@@ -933,7 +933,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: `{{ url('api/perkebunan-datatable-rencana/${id}') }}`,
+                ajax: `{{ url("api/perkebunan-datatable-rencana/$id") }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -956,7 +956,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: `{{ url('api/perkebunan-datatable-realisasi/${id}') }}`,
+                ajax: `{{ url("api/perkebunan-datatable-realisasi/$id") }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
@@ -979,7 +979,7 @@
                 processing: true,
                 serverSide: true,
                 scrollX: true,
-                ajax: `{{ url('api/perkebunan-datatable-sertifikat/${id}') }}`,
+                ajax: `{{ url("api/perkebunan-datatable-sertifikat/$id") }}`,
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'jenis', name: 'jenis'},
