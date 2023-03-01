@@ -68,7 +68,7 @@ class PabrikController extends Controller
         foreach ($this->files as $file) {
             if ($request->has($file)) {
                 $fileName = uniqid() . '-' . $request->{$file}->getClientOriginalName();
-                if ($request->{$file}->storeAs("public/$file", $fileName)) $input[$file] = "storage/$file/$fileName";
+                if ($request->{$file}->storeAs("public/$file", $fileName)) $input[$file] = "$file/$fileName";
             }
         }
         Pabrik::create($input);
@@ -113,8 +113,8 @@ class PabrikController extends Controller
             if ($request->has($file)) {
                 $fileName = uniqid() . '-' . $request->{$file}->getClientOriginalName();
                 if ($request->{$file}->storeAs("public/$file", $fileName)) {
-                    $input[$file] = "storage/$file/$fileName";
-                    if ($pabrik->{$file} !== null && is_file($pabrik->{$file})) Storage::delete('public/' . $pabrik->{$file});
+                    $input[$file] = "$file/$fileName";
+                    if ($pabrik->{$file} !== null && is_file('storage/'.$pabrik->{$file})) Storage::delete('public/' . $pabrik->{$file});
                 }
             }
         }
@@ -131,7 +131,7 @@ class PabrikController extends Controller
     public function destroy(Pabrik $pabrik)
     {
         foreach ($this->files as $file) {
-            if ($pabrik->{$file} !== null && is_file($pabrik->{$file})) Storage::delete('public/' . $pabrik->{$file});
+            if ($pabrik->{$file} !== null && is_file('storage/'.$pabrik->{$file})) Storage::delete('public/' . $pabrik->{$file});
         }
         $pabrik->delete();
         return response('', 204);
