@@ -18,7 +18,7 @@
             <tr>
                 <td>
                     @if ($pabrik->{$legal['name']})
-                        <a href="{{ asset($pabrik->{$legal['name']}) }}" target="_BLANK">{{ $legal['view'] }}</a>
+                        <a href="{{ asset('storage/'.$pabrik->{$legal['name']}) }}" target="_BLANK">{{ $legal['view'] }}</a>
 					@else
 						{{ $legal['view'] }}
                     @endif

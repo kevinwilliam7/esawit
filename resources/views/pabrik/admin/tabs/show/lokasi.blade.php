@@ -1,7 +1,7 @@
 <button type="button" class="btn btn-sm btn-success btn-bordered waves-effect waves-light mb-3 rounded-2">
     <i class="fa fa-plus"></i> Tambah Lokasi
 </button>
-<table id="lokasis" class="table table-striped table-bordered w-100" style="font-size: 14px;">
+<table id="lokasis" class="table table-striped w-100" style="font-size: 14px;">
     <thead>
         <tr>
             <th>No</th>

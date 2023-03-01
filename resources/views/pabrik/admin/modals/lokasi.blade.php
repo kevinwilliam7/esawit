@@ -1,4 +1,4 @@
-<div class="modal" tabindex="-1" id="modal-lokasi">
+<div class="modal" id="modal-lokasi">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

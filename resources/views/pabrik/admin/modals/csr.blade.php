@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Kabupaten</label>
-                        <select id="kabupaten" class="form-select" required>
+                        <select id="kabupaten-kontribusi" class="form-select" required>
                             <option value="">Pilih Kabupaten</option>
                             @foreach ($kabupatens as $kabupaten)
                                 <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}</option>
@@ -47,13 +47,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Kecamatan</label>
-                        <select id="kecamatan" class="form-select" required>
+                        <select id="kecamatan-kontribusi" class="form-select" required>
                             <option value="">Pilih Kecamatan</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Desa</label>
-                        <select name="desa_id" id="desa" class="form-select" required>
+                        <select name="desa_id" id="desa-kontribusi" class="form-select" required>
                             <option value="">Pilih Desa</option>
                         </select>
                     </div>
