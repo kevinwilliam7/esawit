@@ -17,418 +17,56 @@
                 <div class="card-title py-0 h5">Tambah Data Perusahaan Perusahaan Perkebunan</div>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.perkebunan.store') }}"
-                    id="store-perkebunan">
+                <form method="POST" action="{{ route('admin.perkebunan.store') }}" id="store-perkebunan">
                     @csrf
 
-                    <div class="accordion" id="data-perkebunan">
-                        {{-- Informasi Umum Perusahaan Perkebunan --}}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header m-0" id="header-informasi-umum">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#informasi-umum" aria-controls="informasi-umum">
-                                    Informasi Umum Perusahaan Perkebunan
-                                </button>
-                            </h2>
-                            <div id="informasi-umum" class="accordion-collapse collapse show"
-                                aria-labelledby="header-informasi-umum" data-bs-parent="#data-perkebunan">
-                                <div class="accordion-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Nama Perusahaan Perkebunan</label>
-                                            <input type="text" name="nama" class="form-control"
-                                                value="{{ old('nama') }}" required>
-                                            @error('nama')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">NPWP</label>
-                                            <input type="text" name="npwp" class="form-control"
-                                                value="{{ old('npwp') }}" minlength="10" required>
-                                            @error('npwp')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 mb-3">
-                                            <label class="form-label">Alamat Perusahaan</label>
-                                            <textarea type="text" name="alamat" class="form-control" row=5 required>{{ old('alamat') }}</textarea>
-                                            @error('alamat')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input type="email" name="email" class="form-control"
-                                                value="{{ old('email') }}">
-                                            @error('email')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Direktur Utama</label>
-                                            <input type="text" name="direktur" class="form-control"
-                                                value="{{ old('direktur') }}">
-                                            @error('direktur')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">General Manager Oprasional</label>
-                                            <input type="text" name="gm" class="form-control"
-                                                value="{{ old('gm') }}">
-                                            @error('gm')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">Kadiv Legal</label>
-                                            <input type="text" name="kadiv_legal" class="form-control"
-                                                value="{{ old('kadiv_legal') }}">
-                                            @error('kadiv_legal')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-4">
-                                            <label class="form-label">Manager Mill Project</label>
-                                            <input type="text" name="manager_mill" class="form-control"
-                                                value="{{ old('manager_mill') }}">
-                                            @error('manager_mill')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <nav class="">
+                        <div class="nav nav-tabs nav-justified" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-informasi-umum-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-informasi-umum" type="button" role="tab"
+                                aria-controls="nav-informasi-umum" aria-selected="true">Informasi Umum</button>
+                            <button class="nav-link" id="nav-pendirian-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-pendirian" type="button" role="tab"
+                                aria-controls="nav-pendirian" aria-selected="false">Akta Pendirian</button>
+                            <button class="nav-link" id="nav-perubahan-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-perubahan" type="button" role="tab"
+                                aria-controls="nav-perubahan" aria-selected="false">Akta Perubahan</button>
+                            <button class="nav-link" id="nav-penanaman-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-penanaman" type="button" role="tab"
+                                aria-controls="nav-penanaman" aria-selected="false">Penanaman</button>
+                            <button class="nav-link" id="nav-ketenagakerjaan-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-ketenagakerjaan" type="button" role="tab"
+                                aria-controls="nav-ketenagakerjaan" aria-selected="false">Ketenagakerjaan</button>
+                            <button class="nav-link" id="nav-kemitraan-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-kemitraan" type="button" role="tab"
+                                aria-controls="nav-kemitraan" aria-selected="false">Kemitraan</button>
                         </div>
+                    </nav>
 
-                        {{-- Akta Pendirian Perusahaan --}}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header m-0" id="header-akta-pendirian">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#akta-pendirian" aria-controls="akta-pendirian">
-                                    Akta Pendirian Perusahaan
-                                </button>
-                            </h2>
-                            <div id="akta-pendirian" class="accordion-collapse collapse"
-                                aria-labelledby="header-akta-pendirian" data-bs-parent="#data-perkebunan">
-                                <div class="accordion-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">Nomor Akta</label>
-                                            <input type="text" name="nomor_akta_pendirian" class="form-control"
-                                                value="{{ old('nomor_akta_pendirian') }}">
-                                            @error('nomor_akta_pendirian')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">Tanggal Akta</label>
-                                            <input type="date" name="tanggal_akta_pendirian" class="form-control"
-                                                value="{{ old('tanggal_akta_pendirian') }}">
-                                            @error('tanggal_akta_pendirian')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">Notaris</label>
-                                            <input type="text" name="notaris_akta_pendirian" class="form-control"
-                                                value="{{ old('notaris_akta_pendirian') }}">
-                                            @error('notaris_akta_pendirian')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Komisaris</label>
-                                            <input type="text" name="komisaris_akta_pendirian" class="form-control"
-                                                value="{{ old('komisaris_akta_pendirian') }}">
-                                            @error('komisaris_akta_pendirian')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Direktur</label>
-                                            <input type="text" name="direktur_akta_pendirian" class="form-control"
-                                                value="{{ old('direktur_akta_pendirian') }}">
-                                            @error('direktur_akta_pendirian')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-informasi-umum" role="tabpanel"
+                            aria-labelledby="nav-informasi-umum-tab" tabindex="0">
+                            @include('perkebunan.admin.tabs.create.informasi-umum')
                         </div>
-
-                        {{-- Akta Perubahan --}}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header m-0" id="header-akta-perubahan">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#akta-perubahan" aria-controls="akta-perubahan">
-                                    Akta Perubahan Perusahaan
-                                </button>
-                            </h2>
-                            <div id="akta-perubahan" class="accordion-collapse collapse"
-                                aria-labelledby="header-akta-perubahan" data-bs-parent="#data-perkebunan">
-                                <div class="accordion-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">Nomor Akta</label>
-                                            <input type="text" name="nomor_akta_perubahan" class="form-control"
-                                                value="{{ old('nomor_akta_perubahan') }}">
-                                            @error('nomor_akta_perubahan')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">Tanggal Akta</label>
-                                            <input type="date" name="tanggal_akta_perubahan" class="form-control"
-                                                value="{{ old('tanggal_akta_perubahan') }}">
-                                            @error('tanggal_akta_perubahan')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-4 mb-3">
-                                            <label class="form-label">Notaris</label>
-                                            <input type="text" name="notaris_akta_perubahan" class="form-control"
-                                                value="{{ old('notaris_akta_perubahan') }}">
-                                            @error('notaris_akta_perubahan')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Komisaris</label>
-                                            <input type="text" name="komisaris_akta_perubahan" class="form-control"
-                                                value="{{ old('komisaris_akta_perubahan') }}">
-                                            @error('komisaris_akta_perubahan')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Direktur</label>
-                                            <input type="text" name="direktur_akta_perubahan" class="form-control"
-                                                value="{{ old('direktur_akta_perubahan') }}">
-                                            @error('direktur_akta_perubahan')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade" id="nav-pendirian" role="tabpanel"
+                            aria-labelledby="nav-pendirian-tab" tabindex="0">
+                            @include('perkebunan.admin.tabs.create.akta-pendirian')
                         </div>
-
-                        {{-- Penanaman --}}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header m-0" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour" aria-controls="collapseFour">
-                                    Penanaman
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                data-bs-parent="#data-perkebunan">
-                                <div class="accordion-body">
-                                    <label class="form-label">Luas Izin Usaha Perkebunan (Ha)</label>
-                                    <input type="number" step="0.01" name="luas_iup" class="form-control"
-                                        value="{{ old('luas_iup') }}">
-                                    @error('luas_iup')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
+                        <div class="tab-pane fade" id="nav-perubahan" role="tabpanel"
+                            aria-labelledby="nav-perubahan-tab" tabindex="0">
+                            @include('perkebunan.admin.tabs.create.akta-perubahan')
                         </div>
-
-                        {{-- Ketengakerjaan --}}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header m-0" id="header-ketenagakerjaan">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#ketenagakerjaan" aria-controls="ketenagakerjaan">
-                                    Ketenagakerjaan
-                                </button>
-                            </h2>
-                            <div id="ketenagakerjaan" class="accordion-collapse collapse"
-                                aria-labelledby="header-ketenagakerjaan" data-bs-parent="#data-perkebunan">
-                                <div class="accordion-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-4">
-                                            <div class="h6">Tenaga Kerja Kebun</div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pekerja Bulanan</label>
-                                                <input type="number" name="bulanan_kebun" class="form-control"
-                                                    value="{{ old('bulanan_kebun') }}">
-                                                @error('bulanan_kebun')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pekerja Tetap</label>
-                                                <input type="number" name="tetap_kebun" class="form-control"
-                                                    value="{{ old('tetap_kebun') }}">
-                                                @error('tetap_kebun')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pekerja Harian Lepas</label>
-                                                <input type="number" name="lepas_kebun" class="form-control"
-                                                    value="{{ old('lepas_kebun') }}">
-                                                @error('lepas_kebun')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pekerja Musiman</label>
-                                                <input type="number" name="musiman_kebun" class="form-control"
-                                                    value="{{ old('musiman_kebun') }}">
-                                                @error('musiman_kebun')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-lg-4">
-                                            <div class="h6">Tenaga Kerja Pabrik</div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pekerja Bulanan</label>
-                                                <input type="number" name="bulanan_pabrik" class="form-control"
-                                                    value="{{ old('bulanan_pabrik') }}">
-                                                @error('bulanan_pabrik')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pekerja Tetap</label>
-                                                <input type="number" name="tetap_pabrik" class="form-control"
-                                                    value="{{ old('tetap_pabrik') }}">
-                                                @error('tetap_pabrik')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pekerja Harian Lepas</label>
-                                                <input type="number" name="lepas_pabrik" class="form-control"
-                                                    value="{{ old('lepas_pabrik') }}">
-                                                @error('lepas_pabrik')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Pekerja Musiman</label>
-                                                <input type="number" name="musiman_pabrik" class="form-control"
-                                                    value="{{ old('musiman_pabrik') }}">
-                                                @error('musiman_pabrik')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12 col-lg-4">
-                                            <div class="h6">Tenaga Kerja Asing</div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Jumlah Tenaga Kerja Asing</label>
-                                                <input type="number" name="tka" class="form-control"
-                                                    value="{{ old('tka') }}">
-                                                @error('tka')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label class="form-label">Jabatan TKA</label>
-                                                <input type="text" name="jabatan_tka" class="form-control"
-                                                    value="{{ old('jabatan_tka') }}">
-                                                @error('jabatan_tka')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade" id="nav-penanaman" role="tabpanel"
+                            aria-labelledby="nav-penanaman-tab" tabindex="0">
+                            @include('perkebunan.admin.tabs.create.penanaman')
                         </div>
-
-                        {{-- Kemitraan --}}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header m-0" id="header-kemitraan">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#kemitraan" aria-controls="kemitraan">
-                                    Kemitraan
-                                </button>
-                            </h2>
-                            <div id="kemitraan" class="accordion-collapse collapse" aria-labelledby="header-kemitraan"
-                                data-bs-parent="#data-perkebunan">
-                                <div class="accordion-body">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Target Petani Plasma (KK)</label>
-                                            <input type="number" name="kk_target_plasma" class="form-control"
-                                                value="{{ old('kk_target_plasma') }}">
-                                            @error('kk_target_plasma')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Target Petani Plasma (Ha)</label>
-                                            <input type="number" step="0.01" name="ha_target_plasma"
-                                                class="form-control" value="{{ old('ha_target_plasma') }}">
-                                            @error('ha_target_plasma')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Realisasi Petani Plasma (KK)</label>
-                                            <input type="number" name="kk_realisasi_plasma" class="form-control"
-                                                value="{{ old('kk_realisasi_plasma') }}">
-                                            @error('kk_realisasi_plasma')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <label class="form-label">Realisasi Petani Plasma (Ha)</label>
-                                            <input type="number" step="0.01" name="ha_realisasi_plasma"
-                                                class="form-control" value="{{ old('ha_realisasi_plasma') }}">
-                                            @error('ha_realisasi_plasma')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Pola Kemitraan</label>
-
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="pola_kemitraan"
-                                                    id="kemitraan-mandiri" value="kemitraan mandiri"
-                                                    {{ old('pola_kemitraan') === 'kemitraan mandiri' ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="kemitraan-mandiri">Kemitraan
-                                                    Mandiri</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="pola_kemitraan"
-                                                    id="kemitraan-satu-manajemen" value="kemitraan satu manajemen"
-                                                    {{ old('pola_kemitraan') === 'kemitraan satu manajemen' ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="kemitraan-satu-manajemen">Kemitraan
-                                                    Satu Manajemen</label>
-                                            </div>
-                                            @error('pola_kemitraan')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade" id="nav-ketenagakerjaan" role="tabpanel"
+                            aria-labelledby="nav-ketenagakerjaan-tab" tabindex="0">
+                            @include('perkebunan.admin.tabs.create.ketenagakerjaan')
+                        </div>
+                        <div class="tab-pane fade" id="nav-kemitraan" role="tabpanel"
+                            aria-labelledby="nav-kemitraan-tab" tabindex="0">
+                            @include('perkebunan.admin.tabs.create.kemitraan')
                         </div>
                     </div>
                 </form>
