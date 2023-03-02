@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Perundangan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables as DataTable;
 
 class PerundanganController extends Controller
@@ -47,7 +48,13 @@ class PerundanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->except('file');
+        $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
+        if ($request->file->storeAs("public/perundangan", $fileName)) {
+            $input['file'] = "perundangan/$fileName";            
+        }
+        Perundangan::create($input);
+        return redirect()->back()->with('success', 'Berhasil menambah data perundangan');
     }
 
     /**
@@ -79,9 +86,18 @@ class PerundanganController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Perundangan $perundangan)
     {
-        //
+        $input = $request->except('file');
+        if($request->has('file')){
+            $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
+            if ($request->file->storeAs("public/perundangan", $fileName)) {
+                $input['file'] = "perundangan/$fileName";
+                if ($perundangan->file !== null && is_file($perundangan->file)) Storage::delete('public/' . $perundangan->file);
+            }
+        }
+        $perundangan->update($input);
+        return redirect()->back()->with('success', 'Berhasil mengubah data perundangan');
     }
 
     /**
@@ -90,8 +106,16 @@ class PerundanganController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Perundangan $perundangan)
     {
-        //
+        if ($perundangan->file !== null && is_file('storage/'.$perundangan->file)) Storage::delete('public/' . $perundangan->file);
+        $perundangan->delete();
+        return response('', 204);
+    }
+
+    public function admin()
+    {
+        $perundangans = Perundangan::select('id', 'nama', 'file')->get();
+        return view('perundangan.admin.index', compact('perundangans'));
     }
 }

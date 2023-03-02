@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kontribusi;
+use App\Models\Lokasi\Kecamatan;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables as DataTable;
 
@@ -48,6 +49,7 @@ class KontribusiController extends Controller
     
     public function admin()
     {
-        return view('kontribusi.admin.index');
+        $kecamatans = Kecamatan::select('id', 'name')->get();
+        return view('kontribusi.admin.index', compact('kecamatans'));
     }
 }

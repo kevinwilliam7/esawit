@@ -100,10 +100,12 @@ class SopController extends Controller
     public function update(Request $request, Sop $sop)
     {
         $input = $request->except('file');
-        $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
-        if ($request->file->storeAs("public/sop", $fileName)) {
-            $input['file'] = "sop/$fileName";
-            if ($sop->file !== null && is_file($sop->file)) Storage::delete('public/' . $sop->file);
+        if($request->has('file')){
+            $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
+            if ($request->file->storeAs("public/sop", $fileName)) {
+                $input['file'] = "sop/$fileName";
+                if ($sop->file !== null && is_file($sop->file)) Storage::delete('public/' . $sop->file);
+            }
         }
         $sop->update($input);
         return redirect()->back()->with('success', 'Berhasil mengubah data SOP');
