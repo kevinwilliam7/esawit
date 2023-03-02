@@ -107,13 +107,18 @@
                         'target': -1,
                         'orderable': false,
                         'searchable': false,
-                        'width': 520
+                        'width': 350,
+                        'className': 'dt-center'
                     },
                     {
                         'target': [0],
                         'className': 'dt-center'
                     },
                 ],
+            });
+
+            $(document).on('click', function(e) {
+                $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
             });
 
             $('table').on('click', 'button.btn-danger', async function() {
@@ -140,20 +145,6 @@
                     });
                 };
             });
-
-            const confirmation = async () => {
-                var result = await Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda tidak dapat mengembalikan aksi ini!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya!',
-                    cancelButtonText: 'Tidak'
-                });
-                return result.isConfirmed;
-            };
         });
     </script>
 @endsection
