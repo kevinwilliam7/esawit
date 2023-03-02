@@ -49,7 +49,7 @@
     <script src="{{ asset('assets/js/jquery.app.js') }}"></script>
     <script src="{{ asset('assets/libs/sweetalert2-11.7.2/js/sweetalert2.all.min.js') }}"></script>
     <script>
-        function swal(message, icon = 'success', timer = 1500){
+        function swal(message, icon = 'success', timer = 1500) {
             Swal.fire({
                 position: 'top-end',
                 icon: icon,
@@ -59,15 +59,29 @@
             });
         };
 
+        async function confirmation() {
+            var result = await Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak dapat mengembalikan aksi ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya!',
+                cancelButtonText: 'Tidak'
+            });
+            return result.isConfirmed;
+        }
+
         $(document).ready(function() {
             function disablePreloader() {
                 $('#preloader').fadeOut(1000, function() {
                     $('body').css('overflow', 'auto');
                     $('#preloader').remove();
                     @if (session()->has('success'))
-                        swal('{{ session()->get("success") }}')
-                    @elseif(session()->has('error'))
-                        swal('{{ session()->get("error") }}', 'error')
+                        swal('{{ session()->get('success') }}')
+                    @elseif (session()->has('error'))
+                        swal('{{ session()->get('error') }}', 'error')
                     @endif
                 });
             }
