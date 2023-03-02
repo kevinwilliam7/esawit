@@ -22,9 +22,9 @@
                     <button class="btn btn-warning rounded-2">
                         <i class="fa fa-edit"></i>
                     </button>
-                    <button class="btn btn-danger rounded-2">
+                    {{-- <button class="btn btn-danger rounded-2">
                         <i class="fa fa-trash"></i>
-                    </button>
+                    </button> --}}
                 </td>
             </tr>
         @endforeach
