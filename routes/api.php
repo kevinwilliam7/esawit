@@ -23,10 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Datatable Halaman CSR
-Route::get('datatable-pabrik-rencana', [KontribusiController::class, 'dtPabrikRencana']);
-Route::get('datatable-pabrik-realisasi', [KontribusiController::class, 'dtPabrikRealisasi']);
-Route::get('datatable-perkebunan-rencana', [KontribusiController::class, 'dtPerkebunanRencana']);
-Route::get('datatable-perkebunan-realisasi', [KontribusiController::class, 'dtPerkebunanRealisasi']);
+Route::get('datatable-pabrik-rencana', [KontribusiController::class, 'dtPabrikRencana'])->name('api.dt-pabrik-rencana');
+Route::get('datatable-pabrik-realisasi', [KontribusiController::class, 'dtPabrikRealisasi'])->name('api.dt-pabrik-realisasi');
+Route::get('datatable-perkebunan-rencana', [KontribusiController::class, 'dtPerkebunanRencana'])->name('api.dt-perkebunan-rencana');
+Route::get('datatable-perkebunan-realisasi', [KontribusiController::class, 'dtPerkebunanRealisasi'])->name('api.dt-perkebunan-realisasi');
 
 //Datatable Halaman Perkebunan Tab CSR
 Route::get('perkebunan-datatable-rencana/{id}',[PerkebunanController::class, 'dtRencana']);

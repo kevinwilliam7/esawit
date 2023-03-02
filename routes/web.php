@@ -76,4 +76,11 @@ Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
     Route::post('sop', [SopController::class, 'store'])->name('sop.store');
     Route::patch('sop/{sop:id}/{jenis}', [SopController::class, 'update'])->name('sop.update');
     Route::delete('sop/{sop:id}/{jenis}', [SopController::class, 'destroy'])->name('sop.destroy');
+
+    Route::get('perundangan', [PerundanganController::class, 'admin'])->name('perundangan.index');
+    Route::post('perundangan', [PerundanganController::class, 'store'])->name('perundangan.store');
+    Route::patch('perundangan/{perundangan:id}/{nama}', [PerundanganController::class, 'update'])->name('perundangan.update');
+    Route::delete('perundangan/{perundangan:id}/{nama}', [PerundanganController::class, 'destroy'])->name('perundangan.destroy');
+
+    Route::get('kontribusi', [KontribusiController::class, 'admin'])->name('kontribusi.index');
 });
