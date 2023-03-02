@@ -21,6 +21,7 @@
                             <th>Jenis Kegiatan</th>
                             <th>Nilai Setara</th>
                             <th>Lokasi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                 </table>
