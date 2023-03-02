@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Perundangan extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nama',
+        'file',
+    ];
 }
