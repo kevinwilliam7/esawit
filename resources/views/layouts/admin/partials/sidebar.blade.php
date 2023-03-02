@@ -9,38 +9,38 @@
                     </a>
                 </li>
 
-                <li class="w-100">
-                    <a href="{{ route('admin.perkebunan.index') }}" class="text-decoration-none">
+                <li class="w-100 {{ str_contains(Route::currentRouteName(), 'admin.perkebunan') ? 'active' : '' }}">
+                    <a href="{{ route('admin.perkebunan.index') }}" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.perkebunan') ? 'active' : '' }}">
                         <i class="fa fa-tree"></i><span>Perusahaan Perkebunan</span>
                     </a>
                 </li>
 
-                <li class="w-100 menu-item">
-                    <a href="#" class="text-decoration-none">
+                <li class="w-100 menu-item {{ str_contains(Route::currentRouteName(), 'admin.pabrik') ? 'active' : '' }}">
+                    <a href="{{ route('admin.pabrik.index') }}" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.pabrik') ? 'active' : '' }}">
                         <i class="fa fa-industry"></i><span>Pabrik</span>
                     </a>
                 </li>
 
-                <li class="w-100 menu-item">
-                    <a href="#" class="text-decoration-none">
+                <li class="w-100 menu-item {{ str_contains(Route::currentRouteName(), 'admin.kontribusi') ? 'active' : '' }}">
+                    <a href="{{ route('admin.kontribusi.index') }}" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.kontribusi') ? 'active' : '' }}">
                         <i class="fa fa-envira"></i><span>CSR</span>
                     </a>
                 </li>
 
-                <li class="w-100 menu-item">
-                    <a href="#" class="text-decoration-none">
+                <li class="w-100 menu-item {{ str_contains(Route::currentRouteName(), 'admin.sop') ? 'active' : '' }}">
+                    <a href="{{ route('admin.sop.index') }}" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.sop') ? 'active' : '' }}">
                         <i class="fa fa-book"></i><span>SOP Perizinan</span>
                     </a>
                 </li>
 
-                <li class="w-100 menu-item">
-                    <a href="#" class="text-decoration-none">
+                <li class="w-100 menu-item {{ str_contains(Route::currentRouteName(), 'admin.perundangan') ? 'active' : '' }}">
+                    <a href="{{ route('admin.perundangan.index') }}" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.perundangan') ? 'active' : '' }}">
                         <i class="fa fa-download"></i><span>Peraturan Perundangan</span>
                     </a>
                 </li>
 
-                <li class="w-100 menu-item">
-                    <a href="#" class="text-decoration-none">
+                <li class="w-100 menu-item {{ str_contains(Route::currentRouteName(), 'admin.tbs') ? 'active' : '' }}">
+                    <a href="#" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.tbs') ? 'active' : '' }}">
                         <i class="fa fa-line-chart"></i><span>Harga TBS</span>
                     </a>                
                 </li>
