@@ -10,16 +10,12 @@
                     @csrf
                     @method('POST')
                     <div class="mb-3">
-                        <label for="jenis_izin" class="form-label">Jenis File atau Nama Izin</label>
-                        <input type="text" name="jenis_izin" id="jenis_izin" class="form-control">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" name="nama" id="nama" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="file" class="form-label">File (pdf)</label>
                         <input type="file" name="file" id="file" class="form-control" accept="application/pdf">
-                    </div>
-                    <div class="mb-3">
-                        <label for="keterangan" class="form-label">Keterangan</label>
-                        <textarea name="keterangan" id="keterangan" class="form-control"></textarea>
                     </div>
                 </form>
             </div>
