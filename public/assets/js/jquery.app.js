@@ -71,7 +71,7 @@
         initMetisMenu();
         initLeftMenuCollapse();
         initEnlarge();
-        initActiveMenu();
+        // initActiveMenu();
     }
 
     init();

@@ -3579,3 +3579,15 @@ table.dataTable thead th.sorting_desc:after {
   padding-left: 20px;
   min-height: 50px;
 }
+
+button.nav-link {
+  text-decoration: none !important;
+  color: black;
+  font-weight: bold;
+}
+
+button.nav-link.active {
+  color: #64c5b1 !important;
+  border-color: #64c5b1 !important;
+  border-bottom: transparent !important;
+}
