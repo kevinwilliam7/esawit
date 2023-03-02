@@ -170,11 +170,11 @@
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
                     {data: 'tahun', name: 'tahun'},
-                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'jenis_kegiatan', name: 'jenis_kegiatan'},
                     {data: 'tanggal', name: 'tanggal'},
-                    {data: 'nilaisetara', name: 'nilaisetara'},
-                    {data: 'lokasidesa', name: 'lokasidesa'},
-                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                    {data: 'nilai_setara', name: 'nilai_setara'},
+                    {data: 'desa.name', name: 'dsa.name'},
+                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name'},
                 ],
                 columnDefs: [
                     {
@@ -193,11 +193,11 @@
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
                     {data: 'tahun', name: 'tahun'},
-                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'jenis_kegiatan', name: 'jenis_kegiatan'},
                     {data: 'tanggal', name: 'tanggal'},
-                    {data: 'nilaisetara', name: 'nilaisetara'},
-                    {data: 'lokasidesa', name: 'lokasidesa'},
-                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                    {data: 'nilai_setara', name: 'nilai_setara'},
+                    {data: 'desa.name', name: 'desa.name'},
+                    {data: 'kecamatan.desa.name', name: 'kecamatan.desa.name'},
                 ],
                 columnDefs: [
                     {
@@ -216,11 +216,11 @@
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
                     {data: 'tahun', name: 'tahun'},
-                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'jenis_kegiatan', name: 'jenis_kegiatan'},
                     {data: 'tanggal', name: 'tanggal'},
-                    {data: 'nilaisetara', name: 'nilaisetara'},
-                    {data: 'lokasidesa', name: 'lokasidesa'},
-                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                    {data: 'nilai_setara', name: 'nilai_setara'},
+                    {data: 'desa.name', name: 'desa.name'},
+                    {data: 'kecamatan.desa.name', name: 'kecamatan.desa.name'},
                 ],
                 columnDefs: [
                     {
@@ -239,11 +239,11 @@
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
                     {data: 'tahun', name: 'tahun'},
-                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'jenis_kegiatan', name: 'jenis_kegiatan'},
                     {data: 'tanggal', name: 'tanggal'},
-                    {data: 'nilaisetara', name: 'nilaisetara'},
-                    {data: 'lokasidesa', name: 'lokasidesa'},
-                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                    {data: 'nilai_setara', name: 'nilai_setara'},
+                    {data: 'desa.name', name: 'desa.name'},
+                    {data: 'desa.kecamatan.name', name: 'kecamatan.desa.name'},
                 ],
                 columnDefs: [
                     {

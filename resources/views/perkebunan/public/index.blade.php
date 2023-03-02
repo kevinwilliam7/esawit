@@ -31,8 +31,9 @@
     <main id="main">
         <section id="location" class="contact">
             <div class="container">
+
                 <div class="section-title">
-                    <h2>Perusahaan Perkebunan Kelapa Sawit</h2>
+                    <h2>Perkebunan Kelapa Sawit</h2>
                     <p>Informasi Daftar Perusahaan Perkebunan Kelapa Sawit di Kabupaten Sanggau</p>
                 </div>
                 <div class="row">
@@ -58,11 +59,11 @@
     </main>
 @endsection
 
-@push('js')
+@section('js')
 <script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
-      $(document).ready(function(){
+        $(document).ready(function(){
             $('#tablePerkebunan').DataTable({
                 processing: true,
                 serverSide: true,
@@ -88,4 +89,4 @@
             });
         });
     </script>
-@endpush
+@endsection

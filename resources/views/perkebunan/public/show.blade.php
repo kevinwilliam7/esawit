@@ -72,7 +72,7 @@
                                                     </div>
                                                     <div class="row p-2">
                                                         <div class="col-4"><strong>Alamat Perusahaan</strong></div>
-                                                        <div class="col-8">{{ $perkebunan->alamat_perusahaan }}</div>
+                                                        <div class="col-8">{{ $perkebunan->alamat }}</div>
                                                     </div>
                                                     <div class="row p-2">
                                                         <div class="col-4"><strong>Email</strong></div>
@@ -94,8 +94,8 @@
                                                                     <tr>
                                                                         <td>{{ $perkebunan->direktur }}</td>
                                                                         <td>{{ $perkebunan->gm }}</td>
-                                                                        <td>{{ $perkebunan->kadivlegal }}</td>
-                                                                        <td>{{ $perkebunan->managermill }}</td>
+                                                                        <td>{{ $perkebunan->kadiv_legal }}</td>
+                                                                        <td>{{ $perkebunan->manager_mill }}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -127,13 +127,13 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                                {{-- @foreach($lokasiPerkebunans as $key => $lokasiPerkebunan)
+                                                                @foreach($lokasiPerkebunans as $key => $lokasiPerkebunan)
                                                                     <tr>
-                                                                        <td>{{ $lokasiPerkebunan->lokasi_desa}}</td>
-                                                                        <td>{{ $lokasiPerkebunan->lokasi_kecamatan }}</td>
-                                                                        <td>{{ $lokasiPerkebunan->lokasi_kabupaten}}</td>
+                                                                        <td>{{ $lokasiPerkebunan->desa->name}}</td>
+                                                                        <td>{{ $lokasiPerkebunan->desa->kecamatan->name }}</td>
+                                                                        <td>{{ $lokasiPerkebunan->desa->kecamatan->kabupaten->name}}</td>
                                                                     </tr>
-                                                                @endforeach --}}
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -150,13 +150,13 @@
                                                             </tr>
                                                             </thead>
                                                             <tbody>
-                                                                {{-- @foreach($lokasiPerkebunans as $key => $lokasiPerkebunan)
+                                                                @foreach($lokasiPabriks as $key => $lokasiPabrik)
                                                                     <tr>
-                                                                        <td>{{ $lokasiPerkebunan->lokasi_desa}}</td>
-                                                                        <td>{{ $lokasiPerkebunan->lokasi_kecamatan }}</td>
-                                                                        <td>{{ $lokasiPerkebunan->lokasi_kabupaten}}</td>
+                                                                        <td>{{ $lokasiPabrik->desa->name}}</td>
+                                                                        <td>{{ $lokasiPabrik->desa->kecamatan->name }}</td>
+                                                                        <td>{{ $lokasiPabrik->desa->kecamatan->kabupaten->name}}</td>
                                                                     </tr>
-                                                                @endforeach --}}
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -375,16 +375,15 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($iblhs as $key => $iblh)
-                                                                
+                                                                <tr>
+                                                                    <td>{{ $iblh->jenisdokumen }}</td>
+                                                                    <td>{{ $iblh->nomor_surat }}</td>
+                                                                    <td>{{ $iblh->tanggal }}</td>
+                                                                    <td>{{ $iblh->luas }}</td>
+                                                                    <td>{{ $iblh->penjabat_penerbit }}</td>
+                                                                    <td>{{ $iblh->keterangan }}</td>
+                                                                </tr>
                                                             @endforeach
-                                                            <tr>
-                                                                <td>{{ $iblh->jenisdokumen }}</td>
-                                                                <td>{{ $iblh->nomorsurat }}</td>
-                                                                <td>{{ $iblh->tanggal }}</td>
-                                                                <td>{{ $iblh->luas }}</td>
-                                                                <td>{{ $iblh->penjabat_penerbit }}</td>
-                                                                <td>{{ $iblh->keterangan }}</td>
-                                                            </tr>
                                                             <tr> 
                                                                 <td colspan="3" align="center"><strong>Total</strong></td>
                                                                 <td colspan="3">{{ $iblhTotal }}</td>
@@ -556,10 +555,10 @@
                                                         <tbody>
                                                             @foreach ($produksiKemarins as $key => $produksiKemarin)
                                                                 <tr>
-                                                                    <td>{{ $produksiKemarin->jeniskebun }}</td>
+                                                                    <td>{{ $produksiKemarin->jenis_kebun }}</td>
                                                                     <td>{{ $produksiKemarin->triwulan }}</td>
                                                                     <td>{{ $produksiKemarin->tahun }}</td>
-                                                                    <td>{{ $produksiKemarin->jumlahproduksi }}</td>
+                                                                    <td>{{ $produksiKemarin->jumlah_produksi }}</td>
                                                                 </tr>
                                                             @endforeach
                                                             <tr>
@@ -593,10 +592,10 @@
                                                         <tbody>
                                                             @foreach ($produksiBerjalans as $key => $produksiBerjalan)
                                                                 <tr>
-                                                                    <td>{{ $produksiBerjalan->jeniskebun }}</td>
+                                                                    <td>{{ $produksiBerjalan->jenis_kebun }}</td>
                                                                     <td>{{ $produksiBerjalan->triwulan }}</td>
                                                                     <td>{{ $produksiBerjalan->tahun }}</td>
-                                                                    <td>{{ $produksiBerjalan->jumlahproduksi }}</td>
+                                                                    <td>{{ $produksiBerjalan->jumlah_produksi }}</td>
                                                                 </tr>
                                                             @endforeach
                                                             <tr>
@@ -721,7 +720,7 @@
                                         <div id="collapseSeventeen" class="accordion-collapse collapse show" aria-labelledby="headingSeventeen" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                                 <div class="container">
-                                                    <div class="row">
+                                                    <div class="row p-2">
                                                         <div class="col-4"><strong>Pola Kemitraan</strong></div>
                                                         <div class="col-8">{{ $perkebunan->pola_kemitraan }}</div>
                                                     </div>
@@ -729,7 +728,7 @@
                                                         <div class="col-4"><strong>Petani Plasma</strong></div>
                                                         <div class="col-8">{{ $perkebunan->kk_target_plasma }}</div>
                                                     </div> --}}
-                                                    <div class="row">
+                                                    <div class="row p-2">
                                                         <div class="col-4"><strong>Penetapan Petani </strong></div>
                                                         <div class="col-8">
                                                             <div>Target (KK): {{ $perkebunan->kk_target_plasma }}</div>
@@ -754,10 +753,10 @@
                                                     <table id="tableProduksi" class="table table-bordered">
                                                         <thead>
                                                             <tr>
-                                                                <th><b>Bulanan</b></th>
-                                                                <th><b>Harian Tetap</b></th>
-                                                                <th><b>Harian Lepas</b></th>
-                                                                <th><b>Musiman/Borongan</b></th>
+                                                                <th><b>Tahap</b></th>
+                                                                <th><b>Koperasi</b></th>
+                                                                <th><b>Jumlah KK</b></th>
+                                                                <th><b>Luas</b></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -770,7 +769,7 @@
                                                                 </tr>
                                                             @endforeach
                                                             <tr>
-                                                                <td colspan="2" align="center"><strong>Total</strong>l</td>
+                                                                <td colspan="2" align="center"><strong>Total</strong></td>
                                                                 <td>{{ $kkPetaniTotal }}</td>
                                                                 <td>{{ $luasPetaniTotal }}</td>
                                                             </tr>
@@ -810,9 +809,9 @@
                                                                     <td>{{ $koperasi->luas }}</td>
                                                                     <td>{{ $koperasi->bank }}</td>
                                                                     <td>{{ $koperasi->akad }}</td>
-                                                                    <td>{{ $koperasi->nilaikredit }}</td>
-                                                                    <td>{{ $koperasi->tahunlunas }}</td>
-                                                                    <td>{{ $koperasi->standarbiaya }}</td>
+                                                                    <td>{{ $koperasi->nilai_kredit }}</td>
+                                                                    <td>{{ $koperasi->tahun_lunas }}</td>
+                                                                    <td>{{ $koperasi->standar_biaya }}</td>
                                                                 </tr>
                                                             @endforeach
                                                             <tr>
@@ -834,7 +833,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-csr" role="tabpanel" aria-labelledby="nav-csr-tab">
-                                <div class="accordion" id="accordionExample">
+                                <div class="accordion" id="accordion-csr">
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingtwenty">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwenty" aria-expanded="true" aria-controls="collapsetwenty">
@@ -928,6 +927,22 @@
 <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
         var id = {{ $id }}
+        $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
+            $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+        });
+
+        $('#accordion-csr').on('shown.bs.collapse', function() {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+        $('tableRealisasi').on('shown.bs.tab', function(e) {
+            $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
+        });
+
+        $('tableRealisasi').on('shown.bs.collapse', function() {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
         $(document).ready(function(){
             $('#tableRencana').DataTable({
                 processing: true,
@@ -937,11 +952,11 @@
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
-                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'jenis_kegiatan', name: 'jenis_kegiatan'},
                     {data: 'tanggal', name: 'tanggal'},
-                    {data: 'nilaisetara', name: 'nilaisetara'},
-                    {data: 'lokasidesa', name: 'lokasidesa'},
-                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                    {data: 'nilai_setara', name: 'nilai_setara'},
+                    {data: 'desa.name', name: 'desa.name'},
+                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name'},
                 ],
                 columnDefs: [
                     {
@@ -960,11 +975,11 @@
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'tahun', name: 'tahun'},
-                    {data: 'jeniskegiatan', name: 'jeniskegiatan'},
+                    {data: 'jenis_kegiatan', name: 'jenis_kegiatan'},
                     {data: 'tanggal', name: 'tanggal'},
-                    {data: 'nilaisetara', name: 'nilaisetara'},
-                    {data: 'lokasidesa', name: 'lokasidesa'},
-                    {data: 'lokasikecamatan', name: 'lokasikecamatan'},
+                    {data: 'nilai_setara', name: 'nilai_setara'},
+                    {data: 'desa.name', name: 'desa.name'},
+                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name'},
                 ],
                 columnDefs: [
                     {
@@ -983,9 +998,9 @@
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'jenis', name: 'jenis'},
-                    {data: 'namasertifikat', name: 'namasertifikat'},
-                    {data: 'nomorsurat', name: 'nomorsurat'},
-                    {data: 'tanggalterbit', name: 'tanggalterbit'},
+                    {data: 'nama_sertifikat', name: 'nama_sertifikat'},
+                    {data: 'nomor_surat', name: 'nomor_surat'},
+                    {data: 'tanggal_terbit', name: 'tanggal_terbit'},
                     {data: 'penjabat', name: 'penjabat'},
                     {data: 'kategori', name: 'kategori'},
                 ],

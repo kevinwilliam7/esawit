@@ -19,28 +19,28 @@ class KontribusiController extends Controller
     }
 
     public function dtPabrikRencana(){
-        $pabrikRencana = Kontribusi::where('kategori','pabrik')->where('pelaksanaan','rencana');
+        $pabrikRencana = Kontribusi::with('desa')->where('kategori_type','pabrik')->where('pelaksanaan','rencana');
         return DataTable::of($pabrikRencana)
             ->addIndexColumn()
             ->make();
     }
 
     public function dtPabrikRealisasi(){
-        $pabrikRealisasi = Kontribusi::where('kategori','pabrik')->where('pelaksanaan','realisasi');
+        $pabrikRealisasi = Kontribusi::with('desa')->where('kategori_type','pabrik')->where('pelaksanaan','realisasi');
         return DataTable::of($pabrikRealisasi)
             ->addIndexColumn()
             ->make();   
     }
 
     public function dtPerkebunanRencana(){
-        $perkebunanRencana  = Kontribusi::where('kategori','perkebunan')->where('pelaksanaan','rencana');
+        $perkebunanRencana  = Kontribusi::with('desa')->where('kategori_type','perkebunan')->where('pelaksanaan','rencana');
         return DataTable::of($perkebunanRencana)
             ->addIndexColumn()
             ->make();
     }
 
     public function dtPerkebunanRealisasi(){
-        $perkebunanRealisasi = Kontribusi::where('kategori','perkebunan')->where('pelaksanaan','realisasi');
+        $perkebunanRealisasi = Kontribusi::with('desa')->where('kategori_type','perkebunan')->where('pelaksanaan','realisasi');
         return DataTable::of($perkebunanRealisasi)
             ->addIndexColumn()
             ->make();

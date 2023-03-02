@@ -30,7 +30,7 @@ class PerkebunanController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            $perkebunan = Perkebunan::select('id', 'nama_perkebunan', 'npwp', 'pola_kemitraan'); 
+            $perkebunan = Perkebunan::select('id', 'nama', 'npwp', 'pola_kemitraan'); 
             return DataTable::of($perkebunan)
                 ->addIndexColumn()
                 ->addColumn('aksi', function($perkebunan){
@@ -74,8 +74,8 @@ class PerkebunanController extends Controller
     {
         //umum
         $perkebunans = Perkebunan::where('id',$id)->get();
-        $lokasiPerkebunans = Lokasi::where('perkebunan_id', $id)->get();
-        $lokasiPabriks = LokasiPabrik::where('perkebunan_id',$id)->get();
+        $lokasiPerkebunans = Lokasi::where('kategori_id', $id)->where('kategori_type', 'perkebunan')->get();
+        $lokasiPabriks = Lokasi::where('kategori_id', $id)->where('kategori_type', 'pabrik')->get();
         //legalitas
         $izinLokasis = IzinLokasi::where('perkebunan_id', $id)->get();
         $izinLokasiTotal = IzinLokasi::where('perkebunan_id', $id)->sum('luas');
@@ -86,8 +86,8 @@ class PerkebunanController extends Controller
         $iblhs = Iblh::where('perkebunan_id', $id)->get();
         $iblhTotal = $iblhs->sum('luas');
         //penanaman
-        $perolehanIntis =  PerolehanLahan::where('perkebunan_id', $id)->where('jeniskebun', 'inti')->get();
-        $perolehanPlasmas =  PerolehanLahan::where('perkebunan_id', $id)->where('jeniskebun', 'plasma')->get();
+        $perolehanIntis =  PerolehanLahan::where('perkebunan_id', $id)->where('jenis_kebun', 'inti')->get();
+        $perolehanPlasmas =  PerolehanLahan::where('perkebunan_id', $id)->where('jenis_kebun', 'plasma')->get();
         $perolehanIntiTotal = $perolehanIntis->sum('luas');
         $perolehanPlasmaTotal = $perolehanPlasmas->sum('lnilaiKuas');
         $penanamanIntis =  Penanaman::where('perkebunan_id', $id)->where('kategori', 'inti')->get();
@@ -120,14 +120,14 @@ class PerkebunanController extends Controller
 
     
     public function dtRencana(Request $request){
-        $perkebunanRencana  = Kontribusi::where('perkebunan_id', $request->id)->where('kategori','perkebunan')->where('pelaksanaan','rencana');
-        return DataTable::of($perkebunanRencana)
+        $rencana  = Kontribusi::with('desa')->where('kategori_id', $request->id)->where('kategori_type','perkebunan')->where('pelaksanaan','rencana');
+        return DataTable::of($rencana)
             ->addIndexColumn()
             ->make();
     }
 
     public function dtRealisasi(Request $request){
-        $realisasi = Kontribusi::where('perkebunan_id', $request->id)->where('kategori','perkebunan')->where('pelaksanaan','realisasi');
+        $realisasi = Kontribusi::with('desa')->where('kategori_id', $request->id)->where('kategori_type','perkebunan')->where('pelaksanaan','realisasi');
         return DataTable::of($realisasi)
             ->addIndexColumn()
             ->make();   
