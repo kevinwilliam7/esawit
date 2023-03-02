@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Sop extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'jenis_izin',
+        'file',
+        'keterangan'
+    ];
 }

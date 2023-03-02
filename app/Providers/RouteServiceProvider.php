@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Kontribusi;
 use App\Models\Pabrik\Pabrik;
 use App\Models\Perkebunan\Perkebunan;
+use App\Models\Sop;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -64,6 +65,14 @@ class RouteServiceProvider extends ServiceProvider
             return Pabrik::where([
                 'id'  => $id,
                 'nama' => $nama,
+            ])->firstOrFail();
+        });
+
+        Route::bind('sop', function($id, $route){
+            $jenis = $route->parameter('jenis');
+            return Sop::where([
+                'id' => $id,
+                'jenis_izin' => $jenis
             ])->firstOrFail();
         });
     }

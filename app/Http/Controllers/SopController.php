@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables as DataTable;
 
 class SopController extends Controller
@@ -15,11 +16,11 @@ class SopController extends Controller
      */
     public function index()
     {
-        if(request()->ajax()){
+        if (request()->ajax()) {
             $sop = Sop::query();
             return DataTable::of($sop)
                 ->addIndexColumn()
-                ->addColumn('download', function($row){
+                ->addColumn('download', function ($row) {
                     $btn = '<a href="" >Download </a>';
                     return $btn;
                 })
@@ -27,6 +28,17 @@ class SopController extends Controller
                 ->make();
         }
         return view('sop.public.index');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function admin()
+    {
+        $sops = Sop::select('id', 'jenis_izin', 'file', 'keterangan')->get();
+        return view('sop.admin.index', compact('sops'));
     }
 
     /**
@@ -47,7 +59,13 @@ class SopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->except('file');
+        $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
+        if ($request->file->storeAs("public/sop", $fileName)) {
+            $input['file'] = "sop/$fileName";            
+        }
+        Sop::create($input);
+        return redirect()->back()->with('success', 'Berhasil menambah data SOP');
     }
 
     /**
@@ -79,9 +97,16 @@ class SopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Sop $sop)
     {
-        //
+        $input = $request->except('file');
+        $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
+        if ($request->file->storeAs("public/sop", $fileName)) {
+            $input['file'] = "sop/$fileName";
+            if ($sop->file !== null && is_file($sop->file)) Storage::delete('public/' . $sop->file);
+        }
+        $sop->update($input);
+        return redirect()->back()->with('success', 'Berhasil mengubah data SOP');
     }
 
     /**
@@ -90,8 +115,10 @@ class SopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sop $sop)
     {
-        //
+        if ($sop->file !== null && is_file('storage/'.$sop->file)) Storage::delete('public/' . $sop->file);
+        $sop->delete();
+        return response('', 204);
     }
 }

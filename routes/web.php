@@ -68,4 +68,9 @@ Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
     Route::post('pabrik/{pabrik:id}/{nama}/supplier', [SupplierController::class, 'store'])->name('pabrik.supplier.store');
     Route::patch('pabrik/{pabrik:id}/{nama}/supplier/{id}', [SupplierController::class, 'update'])->name('pabrik.supplier.update');
     Route::delete('pabrik/{pabrik:id}/{nama}/supplier/{id}', [SupplierController::class, 'destroy'])->name('pabrik.supplier.destroy');
+
+    Route::get('sop', [SopController::class, 'admin'])->name('sop.index');
+    Route::post('sop', [SopController::class, 'store'])->name('sop.store');
+    Route::patch('sop/{sop:id}/{jenis}', [SopController::class, 'update'])->name('sop.update');
+    Route::delete('sop/{sop:id}/{jenis}', [SopController::class, 'destroy'])->name('sop.destroy');
 });
