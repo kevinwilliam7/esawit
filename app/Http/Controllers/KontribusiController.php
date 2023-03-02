@@ -19,96 +19,35 @@ class KontribusiController extends Controller
     }
 
     public function dtPabrikRencana(){
-        $pabrikRencana = Kontribusi::with('desa')->where('kategori_type','pabrik')->where('pelaksanaan','rencana');
+        $pabrikRencana = Kontribusi::with('desa', 'desa.kecamatan', 'parent')->where('kategori_type', 'LIKE', '%pabrik%')->where('pelaksanaan','rencana');
         return DataTable::of($pabrikRencana)
             ->addIndexColumn()
             ->make();
     }
 
     public function dtPabrikRealisasi(){
-        $pabrikRealisasi = Kontribusi::with('desa')->where('kategori_type','pabrik')->where('pelaksanaan','realisasi');
+        $pabrikRealisasi = Kontribusi::with('desa', 'desa.kecamatan', 'parent')->where('kategori_type', 'LIKE', '%pabrik%')->where('pelaksanaan','realisasi');
         return DataTable::of($pabrikRealisasi)
             ->addIndexColumn()
             ->make();   
     }
 
     public function dtPerkebunanRencana(){
-        $perkebunanRencana  = Kontribusi::with('desa')->where('kategori_type','perkebunan')->where('pelaksanaan','rencana');
+        $perkebunanRencana  = Kontribusi::with('desa', 'desa.kecamatan', 'parent')->where('kategori_type', 'LIKE', '%perkebunan%')->where('pelaksanaan','rencana');
         return DataTable::of($perkebunanRencana)
             ->addIndexColumn()
             ->make();
     }
 
     public function dtPerkebunanRealisasi(){
-        $perkebunanRealisasi = Kontribusi::with('desa')->where('kategori_type','perkebunan')->where('pelaksanaan','realisasi');
+        $perkebunanRealisasi = Kontribusi::with('desa', 'desa.kecamatan', 'parent')->where('kategori_type', 'LIKE','%perkebunan%')->where('pelaksanaan','realisasi');
         return DataTable::of($perkebunanRealisasi)
             ->addIndexColumn()
             ->make();
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    
+    public function admin()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('kontribusi.admin.index');
     }
 }

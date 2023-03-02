@@ -25,10 +25,10 @@ class Kontribusi extends Model
     }
 
     /**
-     * Get the parent parent model (perkebunan or pabrik).
+     * Get the parent model (perkebunan or pabrik).
      */
     public function parent(): MorphTo
     {
-        return $this->morphTo();
+        return $this->morphTo(__FUNCTION__, 'kategori_type', 'kategori_id');
     }
 }
