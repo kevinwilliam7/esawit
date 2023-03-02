@@ -25,6 +25,9 @@ use App\Http\Controllers\TbsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/esawit-login', function () {
+    return view('auth.index');
+});
 Route::get('/', [HomeController::class, 'index']);
 Route::get('home', [HomeController::class, 'index']);
 Route::get('perkebunan', [PerkebunanController::class, 'index']);
