@@ -219,6 +219,19 @@
                         'searchable': false,
                         'orderable': true
                     },
+                    {
+                        'data': 'id',
+                        'name': 'id',
+                        'searchable': false,
+                        'orderable': false,
+                        'render': function(data) {
+                            return `
+                                <button class='btn btn-warning btn-bordered rounded-2' data-id='${data}'>
+                                    <i class='fa fa-edit'></i>
+                                </button>
+                            `;
+                        }
+                    },
                 ],
                 'columnDefs': [{
                         'target': [0],
@@ -226,13 +239,17 @@
                         'className': 'dt-body-center'
                     },
                     {
-                        'target': [1],
-                        'width': 150,
+                        'target': [1, -1],
+                        'width': 100,
                         'className': 'dt-body-center'
                     },
                     {
                         'target': '_all',
                         'className': 'dt-head-center'
+                    },
+                    {
+                        'target': [3],
+                        'className': 'dt-body-center',
                     },
                 ]
             });
@@ -276,11 +293,8 @@
                         'orderable': false,
                         'render': function(data) {
                             return `
-                                <button class='btn btn-warning' data-id='${data}'>
+                                <button class='btn btn-warning btn-bordered rounded-2' data-id='${data}'>
                                     <i class='fa fa-edit'></i>
-                                </button>
-                                <button class='btn btn-danger' data-id='${data}'>
-                                    <i class='fa fa-trash'></i>
                                 </button>
                             `;
                         }
@@ -293,12 +307,16 @@
                     },
                     {
                         'target': [1, -1],
-                        'width': 150,
+                        'width': 100,
                         'className': 'dt-body-center'
                     },
                     {
                         'target': '_all',
                         'className': 'dt-head-center'
+                    },
+                    {
+                        'target': [3],
+                        'className': 'dt-body-center',
                     },
                 ]
             });
@@ -311,20 +329,6 @@
                 $($.fn.dataTable.tables(true)).DataTable()
                     .columns.adjust();
             });
-
-            const confirmation = async () => {
-                var result = await Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda tidak dapat mengembalikan aksi ini!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya!',
-                    cancelButtonText: 'Tidak'
-                });
-                return result.isConfirmed;
-            };
 
             $('#nav-lokasi').on('click', 'button.btn-success', function() {
                 kecamatanVal = undefined;
@@ -524,12 +528,18 @@
                 );
             });
 
-            $('table#rencanas').on('click', 'button.btn-warning', function() {
+            $('table#rencanas, table#realisasis').on('click', 'button.btn-warning', function() {
                 $('#modal-kontribusi .modal-title').text('Ubah Data Kontribusi');
                 $('#modal-kontribusi').modal('show');
                 var tr = $(this).closest('tr');
-                var id = tr.data('id');
-                var row = rencanas.row(tr);
+                var id = $(this).data('id');
+                if ($(this).closest('table').attr('id') === 'rencanas') {
+                    var row = rencanas.row(tr);
+                    $('#form-kontribusi input[name=pelaksanaan][value="rencana"]').prop('checked', true);
+                } else {
+                    var row = realisasis.row(tr);
+                    $('#form-kontribusi input[name=pelaksanaan][value="realisasi"]').prop('checked', true);
+                }
                 var tahun = row.data()['tahun'];
                 var jenis_kegiatan = row.data()['jenis_kegiatan'];
                 var tanggal = row.data()['tanggal'];
@@ -537,7 +547,6 @@
                 kecamatanVal = row.data()['lokasi'].split(', ')[1];
                 desaVal = row.data()['lokasi'].split(', ')[0];
                 $('#form-kontribusi input[name=_method]').val('PATCH');
-                $('#form-kontribusi input[name=pelaksanaan][value="rencana"]').prop('checked', true);
                 $('#form-kontribusi input[name=tahun]').val(tahun);
                 $('#form-kontribusi input[name=jenis_kegiatan]').val(jenis_kegiatan);
                 $('#form-kontribusi input[name=tanggal]').val(tanggal);
@@ -551,7 +560,7 @@
 
             });
 
-            $('table#rencanas').on('click', 'button.btn-danger', async function() {
+            $('table#rencanas, table#realisasis').on('click', 'button.btn-danger', async function() {
                 if (await confirmation()) {
                     var id = $(this).data('id');
                     $('#form-delete').attr('action',
