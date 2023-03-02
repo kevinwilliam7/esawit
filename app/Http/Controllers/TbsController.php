@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tbs;
 use Illuminate\Http\Request;
 
 class TbsController extends Controller
@@ -23,7 +24,7 @@ class TbsController extends Controller
      */
     public function create()
     {
-        //
+        return view('tbs.admin.create');
     }
 
     /**
@@ -34,7 +35,8 @@ class TbsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Tbs::create($request->all());
+        return redirect()->route('admin.tbs.index')->with('success', 'Berhasil menambah data harga TBS');
     }
 
     /**
@@ -54,9 +56,9 @@ class TbsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tbs $tb)
     {
-        //
+        return view('tbs.admin.edit', compact('tb'));
     }
 
     /**
@@ -66,9 +68,10 @@ class TbsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tbs $tb)
     {
-        //
+        $tb->update($request->all());
+        return redirect()->route('admin.tbs.index')->with('success', 'Berhasil mengubah data harga TBS');
     }
 
     /**
@@ -77,8 +80,15 @@ class TbsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tbs $tb)
     {
-        //
+        $tb->delete();
+        return response('', 204);
+    }
+
+    public function admin()
+    {
+        $tbs = Tbs::get();
+        return view('tbs.admin.index', compact('tbs'));
     }
 }

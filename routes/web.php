@@ -83,4 +83,7 @@ Route::prefix('admin')->name('admin.')->middleware([])->group(function(){
     Route::delete('perundangan/{perundangan:id}/{nama}', [PerundanganController::class, 'destroy'])->name('perundangan.destroy');
 
     Route::get('kontribusi', [KontribusiController::class, 'admin'])->name('kontribusi.index');
+
+    Route::get('tbs', [TbsController::class, 'admin'])->name('tbs.index');
+    Route::resource('tbs', TbsController::class)->except(['index']);
 });
