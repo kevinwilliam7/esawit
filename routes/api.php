@@ -4,6 +4,7 @@ use App\Http\Controllers\KontribusiController;
 use App\Http\Controllers\Pabrik\KontribusiController as PabrikKontribusiController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PabrikController;
+use App\Http\Controllers\Perkebunan\Kontribusi\KontribusiController as PerkebunanKontribusiController;
 use App\Http\Controllers\PerkebunanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -43,3 +44,4 @@ Route::get('kecamatan/{kabupaten}', [LokasiController::class, 'kecamatan'])->nam
 Route::get('desa/{kecamatan}', [LokasiController::class, 'desa'])->name('api.desa.index');
 
 Route::get('pabrik/{pabrik:id}/{nama}/kontribusi/{pelaksanaan}', [PabrikKontribusiController::class, 'index'])->name('api.pabrik.kontribusi.index');
+Route::get('perkebunan/{perkebunan:id}/{nama}/kontribusi/{pelaksanaan}', [PerkebunanKontribusiController::class, 'index'])->name('api.perkebunan.kontribusi.index');
