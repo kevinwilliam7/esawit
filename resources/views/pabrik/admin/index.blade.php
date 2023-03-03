@@ -84,15 +84,15 @@
                             return `
                         <a href="{{ route('admin.pabrik.index') }}/${data}" 
                           class="btn btn-sm btn-primary btn-bordered waves-effect waves-light me-1 mb-1 rounded-2">
-                          <i class="fa fa-eye"></i> Lihat
+                          <i class="fa fa-eye"></i> <span class="d-none d-lg-inline-block">Lihat Data</span>
                         </a>
                         <a href="{{ route('admin.pabrik.index') }}/${data}/edit"
                           class="btn btn-sm btn-warning btn-bordered waves-effect waves-light me-1 mb-1 rounded-2">
-                          <i class="fa fa-pencil"></i> Ubah Data
+                          <i class="fa fa-pencil"></i> <span class="d-none d-lg-inline-block">Ubah Data</span>
                         </a>
                         <button type="button"
                           class="btn btn-sm btn-danger btn-bordered waves-effect waves-light me-1 mb-1 rounded-2">
-                          <i class="fa fa-trash-o"></i> Hapus Data
+                          <i class="fa fa-trash-o"></i> <span class="d-none d-lg-inline-block">Hapus Data</span>
                         </button>
                       `;
                         }
@@ -107,7 +107,7 @@
                         'target': -1,
                         'orderable': false,
                         'searchable': false,
-                        'width': 350,
+                        'width': 400,
                         'className': 'dt-center'
                     },
                     {
@@ -117,7 +117,7 @@
                 ],
             });
 
-            $(document).on('click', function(e) {
+            $('button').on('click', function(e) {
                 $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
             });
 

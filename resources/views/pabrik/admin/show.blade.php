@@ -101,8 +101,8 @@
     <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            var kecamatanVal;
-            var desaVal;
+            var kecamatanDefaultValue;
+            var desaDefaultValue;
 
             $('#modal-lokasi select').select2({
                 dropdownParent: $('#modal-lokasi')
@@ -331,8 +331,8 @@
             });
 
             $('#nav-lokasi').on('click', 'button.btn-success', function() {
-                kecamatanVal = undefined;
-                desaVal = undefined;
+                kecamatanDefaultValue = undefined;
+                desaDefaultValue = undefined;
                 $('#modal-lokasi .modal-title').text('Tambah Data Lokasi');
                 $('#modal-lokasi').modal('show');
                 $('#form-lokasi').trigger('reset');
@@ -354,8 +354,8 @@
                 var id = tr.data('id');
                 var row = lokasis.row(tr);
                 var kabupaten = row.data()[1];
-                kecamatanVal = row.data()[2];
-                desaVal = row.data()[3];
+                kecamatanDefaultValue = row.data()[2];
+                desaDefaultValue = row.data()[3];
                 $('#form-lokasi input[name=_method]').val('PATCH');
                 $('#form-lokasi select#kabupaten option').filter(function() {
                     return $(this).text().trim() == kabupaten;
@@ -391,9 +391,9 @@
                     .then(kecamatans => {
                         kecamatans.data.map(kecamatan => {
                             $('#modal-lokasi select#kecamatan').append(
-                                `<option value='${kecamatan.id}' ${kecamatan.name == kecamatanVal ? 'selected' : ''}>${kecamatan.name}</option>`
+                                `<option value='${kecamatan.id}' ${kecamatan.name == kecamatanDefaultValue ? 'selected' : ''}>${kecamatan.name}</option>`
                             )
-                            if (kecamatan.name == kecamatanVal) {
+                            if (kecamatan.name == kecamatanDefaultValue) {
                                 $('#modal-lokasi select#kecamatan').trigger('change');
                             }
                         });
@@ -415,9 +415,9 @@
                     .then(desas => {
                         desas.data.map(desa => {
                             $('#modal-lokasi select#desa').append(
-                                `<option value='${desa.id}' ${desa.name == desaVal ? 'selected' : ''}>${desa.name}</option>`
+                                `<option value='${desa.id}' ${desa.name == desaDefaultValue ? 'selected' : ''}>${desa.name}</option>`
                             );
-                            if (desa.name == desaVal) {
+                            if (desa.name == desaDefaultValue) {
                                 $('#modal-lokasi select#desa').trigger('change');
                             }
                         })
@@ -544,8 +544,8 @@
                 var jenis_kegiatan = row.data()['jenis_kegiatan'];
                 var tanggal = row.data()['tanggal'];
                 var nilai_setara = row.data()['nilai_setara'];
-                kecamatanVal = row.data()['lokasi'].split(', ')[1];
-                desaVal = row.data()['lokasi'].split(', ')[0];
+                kecamatanDefaultValue = row.data()['lokasi'].split(', ')[1];
+                desaDefaultValue = row.data()['lokasi'].split(', ')[0];
                 $('#form-kontribusi input[name=_method]').val('PATCH');
                 $('#form-kontribusi input[name=tahun]').val(tahun);
                 $('#form-kontribusi input[name=jenis_kegiatan]').val(jenis_kegiatan);
@@ -581,9 +581,9 @@
                     .then(kecamatans => {
                         kecamatans.data.map(kecamatan => {
                             $('#modal-kontribusi select#kecamatan-kontribusi').append(
-                                `<option value='${kecamatan.id}' ${kecamatan.name == kecamatanVal ? 'selected' : ''}>${kecamatan.name}</option>`
+                                `<option value='${kecamatan.id}' ${kecamatan.name == kecamatanDefaultValue ? 'selected' : ''}>${kecamatan.name}</option>`
                             );
-                            if (kecamatan.name == kecamatanVal) {
+                            if (kecamatan.name == kecamatanDefaultValue) {
                                 $('#modal-kontribusi select#kecamatan-kontribusi').trigger(
                                     'change');
                             }
@@ -605,9 +605,9 @@
                     .then(desas => {
                         desas.data.map(desa => {
                             $('#modal-kontribusi select#desa-kontribusi').append(
-                                `<option value='${desa.id}' ${desa.name == desaVal ? 'selected' : ''}>${desa.name}</option>`
+                                `<option value='${desa.id}' ${desa.name == desaDefaultValue ? 'selected' : ''}>${desa.name}</option>`
                             );
-                            if (desa.name == desaVal) {
+                            if (desa.name == desaDefaultValue) {
                                 $('#modal-kontribusi select#desa-kontribusi').trigger(
                                     'change');
                             }
