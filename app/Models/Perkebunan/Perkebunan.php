@@ -82,16 +82,6 @@ class Perkebunan extends Model
     }
 
     /**
-     * Get all of the cpcl for the Perkebunan
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function cpcls(): HasMany
-    {
-        return $this->hasMany(Cpcl::class);
-    }
-
-    /**
      * Get all of the koperasis for the Perkebunan
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -99,16 +89,6 @@ class Perkebunan extends Model
     public function koperasis(): HasMany
     {
         return $this->hasMany(Koperasi::class);
-    }
-
-    /**
-     * Get all of the penilaians for the Perkebunan
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function penilaians(): HasMany
-    {
-        return $this->hasMany(Penilaian::class);
     }
 
     /**
@@ -159,16 +139,6 @@ class Perkebunan extends Model
     public function petanis(): HasMany
     {
         return $this->hasMany(Petani::class);
-    }
-
-    /**
-     * Get all of the produksi_tbs for the Perkebunan
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function produksi_tbs(): HasMany
-    {
-        return $this->hasMany(ProduksiTbs::class);
     }
 
     /**
