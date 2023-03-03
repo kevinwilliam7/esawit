@@ -33,9 +33,9 @@
                             <button class="nav-link" id="nav-perubahan-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-perubahan" type="button" role="tab" aria-controls="nav-perubahan"
                                 aria-selected="false">Akta Perubahan</button>
-                            <button class="nav-link" id="nav-penanaman-tab" data-bs-toggle="tab"
+                            {{-- <button class="nav-link" id="nav-penanaman-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-penanaman" type="button" role="tab" aria-controls="nav-penanaman"
-                                aria-selected="false">Penanaman</button>
+                                aria-selected="false">Penanaman</button> --}}
                             <button class="nav-link" id="nav-ketenagakerjaan-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-ketenagakerjaan" type="button" role="tab"
                                 aria-controls="nav-ketenagakerjaan" aria-selected="false">Ketenagakerjaan</button>
@@ -58,10 +58,10 @@
                             tabindex="0">
                             @include('perkebunan.admin.tabs.edit.akta-perubahan')
                         </div>
-                        <div class="tab-pane fade" id="nav-penanaman" role="tabpanel" aria-labelledby="nav-penanaman-tab"
+                        {{-- <div class="tab-pane fade" id="nav-penanaman" role="tabpanel" aria-labelledby="nav-penanaman-tab"
                             tabindex="0">
                             @include('perkebunan.admin.tabs.edit.penanaman')
-                        </div>
+                        </div> --}}
                         <div class="tab-pane fade" id="nav-ketenagakerjaan" role="tabpanel"
                             aria-labelledby="nav-ketenagakerjaan-tab" tabindex="0">
                             @include('perkebunan.admin.tabs.edit.ketenagakerjaan')
@@ -118,20 +118,6 @@
                 }
                 return;
             });
-
-            const confirmation = async () => {
-                var result = await Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda tidak dapat mengembalikan aksi ini!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya!',
-                    cancelButtonText: 'Tidak'
-                });
-                return result.isConfirmed;
-            }
         });
     </script>
 @endsection

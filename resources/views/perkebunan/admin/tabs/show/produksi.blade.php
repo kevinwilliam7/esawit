@@ -1,49 +1,48 @@
-<div class="accordion" id="produksi" style="font-size: 16px">
+<div class="accordion" id="produksi-penanaman" style="font-size: 16px">
 
-    {{-- Perolehan Lahan Inti --}}
+    {{-- Produksi --}}
     <div class="accordion-item">
-        <h2 class="accordion-header m-0" id="header-produksi-kemarin">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#produksi-kemarin"
-                aria-controls="produksi-kemarin">
-                Produksi Tahun Kemarin
+        <h2 class="accordion-header m-0" id="header-produksi">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#produksi"
+                aria-controls="produksi">
+                Produksi
             </button>
         </h2>
-        <div id="produksi-kemarin" class="accordion-collapse collapse show" aria-labelledby="header-produksi-kemarin"
-            data-bs-parent="#produksi">
+        <div id="produksi" class="accordion-collapse collapse show" aria-labelledby="header-produksi"
+            data-bs-parent="#produksi-penanaman">
             <div class="accordion-body">
-                <button class="mb-3 btn btn-success btn-bordered btn-sm">
+                <button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
                     <i class="fa fa-plus me-1"></i> Tambah Data
                 </button>
-                <table class="table table-striped" id="izin-lokasis">
+                <table class="table table-striped" id="produksi-kebuns">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Tahun Perolehan</th>
-                            <th>Luas Perolehan (Ha)</th>
+							<th>Kondisi</th>
+							<th>Jenis Kebun</th>
+							<th>Triwulan</th>
+							<th>Tahun</th>
+							<th>Jumlah Produksi / Ton TBS</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($perkebunan->perolehan_lahans->where('jenis_kebun', 'inti') as $perolehan_inti)
+                        @foreach ($perkebunan->produksi_kebuns as $produksi)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $perolehan_inti->tahun }}</td>
-                                <td>{{ $perolehan_inti->luas }}</td>
+                                <td>{{ $produksi->kondisi }}</td>
+                                <td>{{ $produksi->jenis_kebun }}</td>
+                                <td>{{ $produksi->triwulan }}</td>
+                                <td>{{ $produksi->tahun }}</td>
+                                <td>{{ $produksi->jumlah_produksi }}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $produksi->id }}">
                                         <i class="fa fa-edit me-1"></i> Ubah
                                     </button>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2"><b>Total</b></td>
-                            <td colspan="2">
-                                {{ $perkebunan->perolehan_lahans->where('jenis_kebun', 'inti')->sum('luas') }}</td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
@@ -51,146 +50,41 @@
 
     {{-- Perolehan Lahan Plasma --}}
     <div class="accordion-item">
-        <h2 class="accordion-header m-0" id="header-perolahan-plasma">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#perolahan-plasma" aria-controls="perolahan-plasma">
-                Perolehan Lahan Plasma
+        <h2 class="accordion-header m-0" id="header-pengolahan">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pengolahan"
+                aria-controls="pengolahan">
+                Pengolahan
             </button>
         </h2>
-        <div id="perolehan-plasma" class="accordion-collapse collapse" aria-labelledby="header-perolehan-plasma"
-            data-bs-parent="#produksi">
+        <div id="pengolahan" class="accordion-collapse collapse" aria-labelledby="header-pengolahan"
+            data-bs-parent="#produksi-penanaman">
             <div class="accordion-body">
-                <button class="mb-3 btn btn-success btn-bordered btn-sm">
+                <button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
                     <i class="fa fa-plus me-1"></i> Tambah Data
                 </button>
-                <table class="table table-striped" id="izin-lokasis">
+                <table class="table table-striped" id="pengolahan">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Tahun Perolehan</th>
-                            <th>Luas Perolehan (Ha)</th>
+							<th>Nama Pabrik</th>
+							<th>Jumlah Distribusi (Ton)</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($perkebunan->perolehan_lahans->where('jenis_kebun', 'plasma') as $perolehan_plasma)
+                        @foreach ($perkebunan->distribusis as $distribusi)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $perolehan_plasma->tahun }}</td>
-                                <td>{{ $perolehan_plasma->luas }}</td>
+                                <td>{{ $distribusi->nama_pabrik }}</td>
+                                <td>{{ $distribusi->jumlah_distribusi }}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $distribusi->id }}">
                                         <i class="fa fa-edit me-1"></i> Ubah
                                     </button>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2"><b>Total</b></td>
-                            <td colspan="2">
-                                {{ $perkebunan->perolehan_lahans->where('jenis_kebun', 'plasma')->sum('luas') }}</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    {{-- Penanaman Inti --}}
-    <div class="accordion-item">
-        <h2 class="accordion-header m-0" id="header-penanaman-inti">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#penanaman-inti" aria-controls="penanaman-inti">
-                Penanaman Inti
-            </button>
-        </h2>
-        <div id="penanaman-inti" class="accordion-collapse collapse" aria-labelledby="header-penanaman-inti"
-            data-bs-parent="#produksi">
-            <div class="accordion-body">
-                <button class="mb-3 btn btn-success btn-bordered btn-sm">
-                    <i class="fa fa-plus me-1"></i> Tambah Data
-                </button>
-                <table class="table table-striped" id="izin-lokasis">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Tahun Perolehan</th>
-                            <th>Luas Perolehan (Ha)</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($perkebunan->penanamans->where('jenis_kebun', 'inti') as $penanaman_inti)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $penanaman_inti->tahun }}</td>
-                                <td>{{ $penanaman_inti->luas }}</td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
-                                        <i class="fa fa-edit me-1"></i> Ubah
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2"><b>Total</b></td>
-                            <td colspan="2">{{ $perkebunan->penanamans->where('jenis_kebun', 'inti')->sum('luas') }}
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    {{-- Penanaman Plasma --}}
-    <div class="accordion-item">
-        <h2 class="accordion-header m-0" id="header-penanaman-plasma">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#penanaman-plasma" aria-controls="penanaman-plasma">
-                Penanaman Plasma
-            </button>
-        </h2>
-        <div id="penanaman-plasma" class="accordion-collapse collapse" aria-labelledby="header-penanaman-plasma"
-            data-bs-parent="#produksi">
-            <div class="accordion-body">
-                <button class="mb-3 btn btn-success btn-bordered btn-sm">
-                    <i class="fa fa-plus me-1"></i> Tambah Data
-                </button>
-                <table class="table table-striped" id="izin-lokasis">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Tahun Perolehan</th>
-                            <th>Luas Perolehan (Ha)</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($perkebunan->penanamans->where('jenis_kebun', 'plasma') as $penanaman_inti)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $penanaman_inti->tahun }}</td>
-                                <td>{{ $penanaman_inti->luas }}</td>
-                                <td>
-                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
-                                        <i class="fa fa-edit me-1"></i> Ubah
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2"><b>Total</b></td>
-                            <td colspan="2">
-                                {{ $perkebunan->penanamans->where('jenis_kebun', 'plasma')->sum('luas') }}</td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>

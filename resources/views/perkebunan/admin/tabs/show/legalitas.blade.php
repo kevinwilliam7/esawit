@@ -11,7 +11,7 @@
         <div id="izin-lokasi" class="accordion-collapse collapse show" aria-labelledby="header-izin-lokasi"
             data-bs-parent="#legalitas">
             <div class="accordion-body">
-				<button class="mb-3 btn btn-success btn-bordered btn-sm">
+				<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
 					<i class="fa fa-plus me-1"></i> Tambah Data
 				</button>
 				<table class="table table-striped" id="izin-lokasis">
@@ -63,7 +63,7 @@
         <div id="iup" class="accordion-collapse collapse" aria-labelledby="header-iup"
             data-bs-parent="#legalitas">
             <div class="accordion-body">
-				<button class="mb-3 btn btn-success btn-bordered btn-sm">
+				<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
 					<i class="fa fa-plus me-1"></i> Tambah Data
 				</button>
 				<table class="table table-striped w-100" id="iups">
@@ -117,7 +117,7 @@
         <div id="hgu" class="accordion-collapse collapse" aria-labelledby="header-hgu"
             data-bs-parent="#legalitas">
             <div class="accordion-body">
-				<button class="mb-3 btn btn-success btn-bordered btn-sm">
+				<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
 					<i class="fa fa-plus me-1"></i> Tambah Data
 				</button>
 				<table class="table table-striped w-100" id="hgus">
@@ -161,7 +161,7 @@
         <div id="iblh" class="accordion-collapse collapse" aria-labelledby="header-iblh"
             data-bs-parent="#legalitas">
             <div class="accordion-body">
-				<button class="mb-3 btn btn-success btn-bordered btn-sm">
+				<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
 					<i class="fa fa-plus me-1"></i> Tambah Data
 				</button>
 				<table class="table table-striped w-100" id="iblhs">

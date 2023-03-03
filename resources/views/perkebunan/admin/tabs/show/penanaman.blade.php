@@ -1,3 +1,7 @@
+<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
+    <i class="fa fa-plus me-1"></i> Tambah Data
+</button>
+
 <div class="accordion" id="penanaman" style="font-size: 16px">
 
     {{-- Perolehan Lahan Inti --}}
@@ -11,9 +15,6 @@
         <div id="perolehan-inti" class="accordion-collapse collapse show" aria-labelledby="header-perolehan-inti"
             data-bs-parent="#penanaman">
             <div class="accordion-body">
-                <button class="mb-3 btn btn-success btn-bordered btn-sm">
-                    <i class="fa fa-plus me-1"></i> Tambah Data
-                </button>
                 <table class="table table-striped" id="izin-lokasis">
                     <thead>
                         <tr>
@@ -30,7 +31,7 @@
                                 <td>{{ $perolehan_inti->tahun }}</td>
                                 <td>{{ $perolehan_inti->luas }}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $perolehan_inti->id }}">
                                         <i class="fa fa-edit me-1"></i> Ubah
                                     </button>
                                 </td>
@@ -50,18 +51,15 @@
 
     {{-- Perolehan Lahan Plasma --}}
     <div class="accordion-item">
-        <h2 class="accordion-header m-0" id="header-perolahan-plasma">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#perolahan-plasma"
-                aria-controls="perolahan-plasma">
+        <h2 class="accordion-header m-0" id="header-perolehan-plasma">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#perolehan-plasma"
+                aria-controls="perolehan-plasma">
                 Perolehan Lahan Plasma
             </button>
         </h2>
         <div id="perolehan-plasma" class="accordion-collapse collapse" aria-labelledby="header-perolehan-plasma"
             data-bs-parent="#penanaman">
             <div class="accordion-body">
-                <button class="mb-3 btn btn-success btn-bordered btn-sm">
-                    <i class="fa fa-plus me-1"></i> Tambah Data
-                </button>
                 <table class="table table-striped" id="izin-lokasis">
                     <thead>
                         <tr>
@@ -78,7 +76,7 @@
                                 <td>{{ $perolehan_plasma->tahun }}</td>
                                 <td>{{ $perolehan_plasma->luas }}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $perolehan_plasma->id }}">
                                         <i class="fa fa-edit me-1"></i> Ubah
                                     </button>
                                 </td>
@@ -107,9 +105,6 @@
         <div id="penanaman-inti" class="accordion-collapse collapse" aria-labelledby="header-penanaman-inti"
             data-bs-parent="#penanaman">
             <div class="accordion-body">
-                <button class="mb-3 btn btn-success btn-bordered btn-sm">
-                    <i class="fa fa-plus me-1"></i> Tambah Data
-                </button>
                 <table class="table table-striped" id="izin-lokasis">
                     <thead>
                         <tr>
@@ -126,7 +121,7 @@
                                 <td>{{ $penanaman_inti->tahun }}</td>
                                 <td>{{ $penanaman_inti->luas }}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $penanaman_inti->id }}">
                                         <i class="fa fa-edit me-1"></i> Ubah
                                     </button>
                                 </td>
@@ -155,9 +150,6 @@
         <div id="penanaman-plasma" class="accordion-collapse collapse" aria-labelledby="header-penanaman-plasma"
             data-bs-parent="#penanaman">
             <div class="accordion-body">
-                <button class="mb-3 btn btn-success btn-bordered btn-sm">
-                    <i class="fa fa-plus me-1"></i> Tambah Data
-                </button>
                 <table class="table table-striped" id="izin-lokasis">
                     <thead>
                         <tr>
@@ -174,7 +166,7 @@
                                 <td>{{ $penanaman_inti->tahun }}</td>
                                 <td>{{ $penanaman_inti->luas }}</td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+                                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $penanaman_inti->id }}">
                                         <i class="fa fa-edit me-1"></i> Ubah
                                     </button>
                                 </td>

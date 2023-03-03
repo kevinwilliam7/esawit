@@ -2,13 +2,13 @@
 
     {{-- Informasi Kemitraan --}}
     <div class="accordion-item">
-        <h2 class="accordion-header m-0" id="header-informasi">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#informasi"
-                aria-controls="informasi">
+        <h2 class="accordion-header m-0" id="header-informasi-kemitraan">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#informasi-kemitraan"
+                aria-controls="informasi-kemitraan">
                 Informasi Kemitraan
             </button>
         </h2>
-        <div id="informasi" class="accordion-collapse collapse show" aria-labelledby="header-informasi"
+        <div id="informasi-kemitraan" class="accordion-collapse collapse show" aria-labelledby="header-informasi-kemitraan"
             data-bs-parent="#kemitraan">
             <div class="accordion-body">
                 <div class="mb-3">
@@ -42,7 +42,7 @@
         </h2>
         <div id="penetapan" class="accordion-collapse collapse" aria-labelledby="header-penetapan" data-bs-parent="#kemitraan">
             <div class="accordion-body">
-				<button class="mb-3 btn btn-success btn-bordered btn-sm">
+				<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
                     <i class="fa fa-plus me-1"></i> Tambah Data
                 </button>
 				<table class="table table-striped">
@@ -65,7 +65,7 @@
 								<td>{{ $petani->jumlah_kk }}</td>
 								<td>{{ $petani->luas }}</td>
 								<td>
-									<button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+									<button class="btn btn-warning btn-sm rounded-2" data-id="{{ $petani->id }}">
                                         <i class="fa fa-edit me-1"></i> Ubah
                                     </button>
 								</td>
@@ -87,7 +87,7 @@
         </h2>
         <div id="koperasi" class="accordion-collapse collapse" aria-labelledby="header-koperasi" data-bs-parent="#kemitraan">
             <div class="accordion-body">
-				<button class="mb-3 btn btn-success btn-bordered btn-sm">
+				<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
                     <i class="fa fa-plus me-1"></i> Tambah Data
                 </button>
 				<table class="table table-striped">
@@ -118,7 +118,7 @@
 								<td>{{ $koperasi->tahun_lunas }}</td>
 								<td>{{ $koperasi->standar_biaya }}</td>
 								<td>
-									<button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+									<button class="btn btn-warning btn-sm rounded-2" data-id="{{ $koperasi->id }}">
                                         <i class="fa fa-edit me-1"></i> Ubah
                                     </button>
 								</td>

@@ -35,10 +35,16 @@
                         <div class="col-12 col-md-6 col-lg-9">{{ $perkebunan->email }}</div>
                     </div>
                 </div>
+				<div class="mb-3">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3"><b>Luas IUP (Ha)</b></div>
+                        <div class="col-12 col-md-6 col-lg-9">{{ $perkebunan->iups->sum('luas') }}</div>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <div class="row">
-                        <div class="col-12 col-md-6 col-lg-3"><b>Pimpinan Perusahaan</b></div>
-                        <div class="col-12 col-md-6 col-lg-9">
+                        <div class="col-12 col-md-12 col-lg-3"><b>Pimpinan Perusahaan</b></div>
+                        <div class="col-12 col-md-12 col-lg-9">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -77,8 +83,8 @@
             <div class="accordion-body">
 
 				{{-- Lokasi Kebun --}}
-                <div class="mb-3">
-                    <div class="d-flex justify-content-between align-items-center">
+                <div class="mb-3 lokasi" id="lokasi-kebun">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
 						<b>Lokasi Kebun</b>
 						<button class="btn btn-success btn-bordered btn-sm rounded-2">
 							<i class="fa fa-plus me-1"></i> Tambah Data
@@ -96,7 +102,7 @@
 						</thead>
 						<tbody>
 							@foreach ($perkebunan->lokasis as $lokasi_kebun)
-								<tr>
+								<tr data-id="{{ $lokasi_kebun->id }}">
 									<td>{{ $loop->iteration }}</td>
 									<td>{{ $lokasi_kebun->desa->name }}</td>
 									<td>{{ $lokasi_kebun->desa->kecamatan->name }}</td>
@@ -115,10 +121,10 @@
 				<div class="my-4"><hr></div>
 
 				{{-- Lokasi Pabrik --}}
-				<div class="mt-3">
+				<div class="mt-3 lokasi" id="lokasi-pabrik">
 					<div class="d-flex justify-content-between align-items-center">
 						<b>Lokasi Pabrik</b>
-						<button class="btn btn-success btn-bordered btn-sm rounded-2">
+						<button class="btn btn-success btn-bordered btn-sm rounded-2 mb-2">
 							<i class="fa fa-plus me-1"></i> Tambah Data
 						</button>
 					</div>
@@ -133,8 +139,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($perkebunan->lokasis as $lokasi_pabrik)
-								<tr>
+							@foreach ($perkebunan->lokasi_pabriks as $lokasi_pabrik)
+								<tr data-id="{{ $lokasi_pabrik->id }}">
 									<td>{{ $loop->iteration }}</td>
 									<td>{{ $lokasi_pabrik->desa->name }}</td>
 									<td>{{ $lokasi_pabrik->desa->kecamatan->name }}</td>
