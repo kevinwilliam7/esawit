@@ -6,6 +6,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Perkebunan\Perkebunan;
 use App\Http\Requests\Perkebunan\PerkebunanRequest;
+use App\Models\Lokasi\Kabupaten;
 
 class PerkebunanController extends Controller
 {
@@ -42,7 +43,7 @@ class PerkebunanController extends Controller
             Perkebunan::create($request->all());
         } catch (\Throwable $th) {
             //throw $th;
-            dd($th);
+            return redirect()->route('admin.perkebunan.index')->with('error', 'Gagal menambah data perkebunan');
         }
         return redirect()->route('admin.perkebunan.index')->with('success', 'Berhasil menambah data perkebunan');
     }
@@ -55,8 +56,9 @@ class PerkebunanController extends Controller
      */
     public function show(Perkebunan $perkebunan, String $nama)
     {
-        $perkebunan->load('distribusis', 'kontribusis', 'lokasis', 'lokasi_pabriks', 'hgus', 'iups', 'iblhs', 'petanis', 'sertifikats', 'perolehan_lahans', 'penanamans', 'produksi_tbs', 'izin_lokasis', 'koperasis', 'penilaians', 'cpcls');
-        return view('perkebunan.admin.show', compact('perkebunan'));
+        $kabupatens = Kabupaten::get();
+        $perkebunan->load('distribusis', 'kontribusis', 'lokasis', 'lokasi_pabriks', 'hgus', 'iups', 'iblhs', 'petanis', 'sertifikats', 'perolehan_lahans', 'penanamans', 'izin_lokasis', 'koperasis');
+        return view('perkebunan.admin.show', compact('perkebunan', 'kabupatens'));
     }
 
     /**
