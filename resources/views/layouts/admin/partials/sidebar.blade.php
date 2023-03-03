@@ -4,7 +4,7 @@
             <ul class="metisMenu nav" id="side-menu">
                 <li class="menu-title">MENU NAVIGASI</li>
                 <li class="w-100">
-                    <a href="#">
+                    <a href="#" class="text-decoration-none">
                         <i class="fa fa-home"></i><span>Halaman Utama</span>
                     </a>
                 </li>
