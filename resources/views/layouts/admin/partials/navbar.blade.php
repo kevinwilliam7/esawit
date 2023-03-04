@@ -26,14 +26,14 @@
                 <li class="dropdown" >
                     <a href="#" class="dropdown-toggle text-decoration-none text-white" data-bs-toggle="dropdown" role="button">
                         {{-- {{ Auth::user()->name }} --}}
-                        John Doe
+                        {{ Auth::user()->name }}
                         <span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-item ps-2">
                             {{-- <form action="{{ route('logout') }}" method="POST"> --}}
-                            <form action="" class="d-none" id="logout">
+                            <form action="logout" method="POST" class="d-none" id="logout">
                                 @csrf
                             </form>
                             <button type="submit" class="btn btn-sm" form="logout">

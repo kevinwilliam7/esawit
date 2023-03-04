@@ -46,7 +46,7 @@
                 </li>
 
                 <li class="w-100 menu-item">
-                    <a href="#" class="text-decoration-none">
+                    <a href="{{ route('admin.admin.index') }}" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.admin') ? 'active' : '' }}">
                         <i class="fa fa-user"></i><span>Admin</span>
                     </a>                
                 </li>
