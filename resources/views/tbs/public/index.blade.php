@@ -1,5 +1,4 @@
 @extends('layouts.public.master')
-
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/libs/DataTables/datatables.min.css') }}">
     <style>
@@ -38,18 +37,9 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="info">
-                            {{-- <table id="tablePerkebunan" class="table table-bordered table-striped w-100">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Perkebunan</th>
-                                    <th>NPWP</th>
-                                    <th>Pola Kemitraan</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table> --}}
+                            <div>
+                                <canvas id="myChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,33 +49,127 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('assets/libs/jquery-3.6.3/jquery-3.6.3.min.js') }}"></script>
-<script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-    //   $(document).ready(function(){
-    //         $('#tablePerkebunan').DataTable({
-    //             processing: true,
-    //             serverSide: true,
-    //             scrollX: true,
-    //             ajax: '{{ url()->current() }}',
-    //             columns: [
-    //                 {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-    //                 {data: 'nama_perkebunan', name: 'nama_perkebunan'},
-    //                 {data: 'npwp', name: 'npwp'},
-    //                 {data: 'pola_kemitraan', name: 'pola_kemitraan'},
-    //                 {
-    //                     data: 'aksi', name: 'aksi', 
-    //                     orderable: false,
-    //                     searchable: false
-    //                 },
-    //             ],
-    //             columnDefs: [
-    //                 {
-    //                     targets: [0, 1, 2, 3, 4],
-    //                     className: 'dt-center'
-    //                 }
-    //             ]
-    //         });
-    //     });
+        var data = @json($tbs);
+        var dataLabel = [];
+        var dataContent = [];
+        var dataTbs3= [];
+        var dataTbs4= [];
+        var dataTbs5 = [];
+        var dataTbs6 = [];
+        var dataTbs7 = [];
+        var dataTbs8 = [];
+        var dataTbs9 = [];
+        var dataTbs10 = [];
+        var dataTbs21 = [];
+        var dataTbs22 = [];
+        var dataTbs23 = [];
+        var dataTbs24 = [];
+        var dataTbs25 = [];
+        for(var i=0; i<data.length; i++){
+            var year = new Date(data[i]['created_at']);
+            dataLabel.push(data[i]['bulan']+' '+year.getFullYear());
+            dataTbs3.push(data[i]['tbs_3']);
+            dataTbs4.push(data[i]['tbs_4']);
+            dataTbs5.push(data[i]['tbs_5']);
+            dataTbs6.push(data[i]['tbs_6']);
+            dataTbs7.push(data[i]['tbs_7']);
+            dataTbs8.push(data[i]['tbs_8']);
+            dataTbs9.push(data[i]['tbs_9']);
+            dataTbs10.push(data[i]['tbs_10']);
+            dataTbs21.push(data[i]['tbs_21']);
+            dataTbs22.push(data[i]['tbs_22']);
+            dataTbs23.push(data[i]['tbs_23']);
+            dataTbs24.push(data[i]['tbs_24']);
+            dataTbs25.push(data[i]['tbs_25']);
+        }
+        var dataset = [
+            {    
+                label: 'TBS 3',
+                data: dataTbs3,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 4',
+                data: dataTbs4,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 5',
+                data: dataTbs5,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 6',
+                data: dataTbs6,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 7',
+                data: dataTbs7,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 8',
+                data: dataTbs8,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 9',
+                data: dataTbs9,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 10',
+                data: dataTbs10,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 21',
+                data: dataTbs21,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 22',
+                data: dataTbs22,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 23',
+                data: dataTbs23,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 24',
+                data: dataTbs24,
+                borderWidth: 1
+            },
+            {
+                label: 'TBS 25',
+                data: dataTbs25,
+                borderWidth: 1
+            },
+        ];
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dataLabel,
+            datasets: dataset,
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Polveri',
+                fontSize: 18
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+        });
     </script>
 @endsection

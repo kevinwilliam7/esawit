@@ -14,7 +14,8 @@ class TbsController extends Controller
      */
     public function index()
     {
-        return view('tbs.public.index');
+        $tbs = Tbs::orderBy('created_at', 'desc')->take(3)->get();
+        return view('tbs.public.index', compact('tbs'));
     }
 
     /**
