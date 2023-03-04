@@ -956,7 +956,7 @@
                     {data: 'tanggal', name: 'tanggal'},
                     {data: 'nilai_setara', name: 'nilai_setara'},
                     {data: 'desa.name', name: 'desa.name'},
-                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name'},
+                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name', orderable: false, searchable:false},
                 ],
                 columnDefs: [
                     {
@@ -979,7 +979,7 @@
                     {data: 'tanggal', name: 'tanggal'},
                     {data: 'nilai_setara', name: 'nilai_setara'},
                     {data: 'desa.name', name: 'desa.name'},
-                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name'},
+                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name', orderable: false, searchable:false},
                 ],
                 columnDefs: [
                     {

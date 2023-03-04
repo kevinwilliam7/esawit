@@ -113,13 +113,23 @@
         <div class="login_box">
             <div class="left">
                 <div class="contact">
-                    <form>
+                    <form action="/authenticate" method="POST">
+                        @csrf
                         <a class="logo me-auto" href="/"><img style="" src="{{asset('assets/images/E-Sawit-Small.png')}}" alt="E-Sawit" class="img-fluid"></a>
-                        <div class="form-group pt-4 row">
-                            <input type="email" class="form-control border rounded input-group input-group-lg p-3" id="exampleInputPassword1" placeholder="Masukan Email">
+                        
+                        <div class="pt-4">
+                            @if (session()->has('loginError'))
+                            <div class="alert alert-danger row" role="alert">
+                                {{ session('loginError') }}
+                            </div>
+                            @endif
+                        </div>
+                        
+                        <div class="form-group pt-2 row">
+                            <input name="email" type="email" class="form-control border rounded input-group input-group-lg p-3" id="exampleInputEmail" placeholder="Masukan Email">
                         </div>
                         <div class="form-group pt-4 row">
-                            <input type="password" class="form-control border rounded input-group input-group-lg p-3" id="exampleInputPassword1" placeholder="Masukan Password">
+                            <input name="password" type="password" class="form-control border rounded input-group input-group-lg p-3" id="exampleInputPassword" placeholder="Masukan Password">
                         </div>
                         <div class="row pt-4">
                             <button type="submit" class="btn btn-outline-success rounded-2 btn-lg">Login E-Sawit</button>

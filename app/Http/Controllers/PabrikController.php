@@ -68,14 +68,18 @@ class PabrikController extends Controller
     }
 
     public function dtRencana(Request $request){
-        $rencana = Kontribusi::with('desa')->where('kategori_id', $request->id)->where('kategori_type','pabrik')->where('pelaksanaan','rencana');
+        $rencana = Kontribusi::with('desa', 'desa.kecamatan', 'parent')
+            ->where('kategori_id', $request->id)->where('kategori_type', 'LIKE', '%pabrik%')
+            ->where('pelaksanaan','rencana');
         return DataTable::of($rencana)
             ->addIndexColumn()
             ->make();
     }
 
     public function dtRealisasi(Request $request){
-        $realisasi = Kontribusi::with('desa')->where('kategori_id', $request->id)->where('kategori_type','pabrik')->where('pelaksanaan','realisasi');
+        $realisasi = Kontribusi::with('desa', 'desa.kecamatan', 'parent')
+            ->where('kategori_id', $request->id)->where('kategori_type', 'LIKE', '%pabrik%')
+            ->where('pelaksanaan','realisasi');
         return DataTable::of($realisasi)
             ->addIndexColumn()
             ->make();  

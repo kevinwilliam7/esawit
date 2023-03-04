@@ -25,7 +25,7 @@
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto" href="/home#contact">Location</a></li>
-                <li><a class="getstarted scrollto" href="#">Login</a></li>
+                <li><a class="getstarted scrollto" href="/login">Login</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

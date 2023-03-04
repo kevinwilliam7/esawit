@@ -120,14 +120,18 @@ class PerkebunanController extends Controller
 
     
     public function dtRencana(Request $request){
-        $rencana  = Kontribusi::with('desa')->where('kategori_id', $request->id)->where('kategori_type','perkebunan')->where('pelaksanaan','rencana');
+        $rencana  = Kontribusi::with('desa')->where('kategori_id', $request->id)
+            ->where('kategori_id', $request->id)->where('kategori_type', 'LIKE', '%perkebunan%')
+            ->where('pelaksanaan','rencana');
         return DataTable::of($rencana)
             ->addIndexColumn()
             ->make();
     }
 
     public function dtRealisasi(Request $request){
-        $realisasi = Kontribusi::with('desa')->where('kategori_id', $request->id)->where('kategori_type','perkebunan')->where('pelaksanaan','realisasi');
+        $realisasi = Kontribusi::with('desa')->where('kategori_id', $request->id)
+            ->where('kategori_id', $request->id)->where('kategori_type', 'LIKE', '%perkebunan%')
+            ->where('pelaksanaan','realisasi');
         return DataTable::of($realisasi)
             ->addIndexColumn()
             ->make();   
