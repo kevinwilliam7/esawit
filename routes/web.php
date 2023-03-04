@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PabrikController;
 use App\Http\Controllers\KontribusiController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Pabrik\KontribusiController as PabrikKontribusiController;
 use App\Http\Controllers\Pabrik\LokasiController;
 use App\Http\Controllers\Pabrik\PabrikController as AdminPabrikController;
@@ -28,6 +29,8 @@ use App\Http\Controllers\PerkebunanController;
 use App\Http\Controllers\PerundanganController;
 use App\Http\Controllers\SopController;
 use App\Http\Controllers\TbsController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,21 +43,22 @@ use App\Http\Controllers\TbsController;
 |
 */
 
-Route::get('/esawit-login', function () {
-    return view('auth.index');
-});
-Route::get('/', [HomeController::class, 'index']);
-Route::get('home', [HomeController::class, 'index']);
-Route::get('perkebunan', [PerkebunanController::class, 'index']);
-Route::get('perkebunan-detail/{id}', [PerkebunanController::class, 'show']);
-Route::get('pabrik', [PabrikController::class, 'index']);
-Route::get('pabrik-detail/{id}', [PabrikController::class, 'show']);
-Route::get('kontribusi', [KontribusiController::class, 'index']);
-Route::get('sop', [SopController::class, 'index']);
-Route::get('perundangan', [PerundanganController::class, 'index']);
-Route::get('tbs', [TbsController::class, 'index']);
+if(Auth::guest()){
+    Route::get('login', [LoginController::class, 'index'])->name('login');
+    Route::post('authenticate', [LoginController::class, 'authenticate']);
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('home', [HomeController::class, 'index']);
+    Route::get('perkebunan', [PerkebunanController::class, 'index']);
+    Route::get('perkebunan-detail/{id}', [PerkebunanController::class, 'show']);
+    Route::get('pabrik', [PabrikController::class, 'index']);
+    Route::get('pabrik-detail/{id}', [PabrikController::class, 'show']);
+    Route::get('kontribusi', [KontribusiController::class, 'index']);
+    Route::get('sop', [SopController::class, 'index']);
+    Route::get('perundangan', [PerundanganController::class, 'index']);
+    Route::get('tbs', [TbsController::class, 'index']);
+}
 
-Route::prefix('admin')->name('admin.')->middleware([])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
 
     // Perkebunan
     Route::prefix('perkebunan')->name('perkebunan.')->group(function () {
@@ -173,4 +177,10 @@ Route::prefix('admin')->name('admin.')->middleware([])->group(function () {
 
     Route::get('tbs', [TbsController::class, 'admin'])->name('tbs.index');
     Route::resource('tbs', TbsController::class)->except(['index']);
+
+    Route::get('admin', [UserController::class, 'admin'])->name('admin.index');
+    Route::post('admin', [UserController::class, 'store'])->name('admin.store');
+    // Route::post('admin/update/{id}', [UserController::class, 'update'])->name('admin.update');
+    Route::delete('admin/destroy/{id}', [UserController::class, 'destroy'])->name('admin.destroy');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
