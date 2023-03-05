@@ -30,7 +30,7 @@
 					</thead>
 					<tbody>
 						@foreach ($perkebunan->izin_lokasis as $izin_lokasi)
-							<tr>
+						<tr data-id="{{ $izin_lokasi->id }}">
 								<td>{{ $loop->iteration }}</td>
 								<td>{{ $izin_lokasi->kategori }}</td>
 								<td>{{ $izin_lokasi->nomor_surat }}</td>
@@ -83,7 +83,7 @@
 					</thead>
 					<tbody>
 						@foreach ($perkebunan->iups as $iup)
-							<tr>
+						<tr data-id="{{ $iup->id }}">
 								<td>{{ $loop->iteration }}</td>
 								<td>{{ $iup->jenis_iup }}</td>
 								<td>{{ $iup->kategori }}</td>
@@ -132,7 +132,7 @@
 					</thead>
 					<tbody>
 						@foreach ($perkebunan->hgus as $hgu)
-							<tr>
+						<tr data-id="{{ $hgu->id }}">
 								<td>{{ $loop->iteration }}</td>
 								<td>{{ $hgu->nomor_sertifikat }}</td>
 								<td>{{ $hgu->tanggal_terbit }}</td>
@@ -179,7 +179,7 @@
 					</thead>
 					<tbody>
 						@foreach ($perkebunan->iblhs as $iblh)
-							<tr>
+							<tr data-id="{{ $iblh->id }}">
 								<td>{{ $loop->iteration }}</td>
 								<td>{{ $iblh->jenis_dokumen }}</td>
 								<td>{{ $iblh->nomor_surat }}</td>
