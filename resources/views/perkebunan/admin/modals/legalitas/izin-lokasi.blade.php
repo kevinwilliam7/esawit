@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Keterangan</label>
-                        <textarea name="keterangan" id="" cols="30" rows="5"></textarea>
+                        <textarea name="keterangan" id="" cols="30" rows="5" class="form-control" placeholder="Keterangan"></textarea>
                     </div>
                 </form>
             </div>
