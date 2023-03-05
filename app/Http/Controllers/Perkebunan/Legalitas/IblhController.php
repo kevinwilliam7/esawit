@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Perkebunan\Legalitas;
 
 use App\Http\Controllers\Controller;
+use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Http\Request;
 
 class IblhController extends Controller
@@ -23,9 +24,10 @@ class IblhController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Perkebunan $perkebunan)
     {
-        //
+        $perkebunan->iblhs()->create($request->all());
+        return redirect()->back()->with('success', 'Berhasil menambah data izin bidang lingkungan hidup');
     }
 
     /**
@@ -46,9 +48,10 @@ class IblhController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Perkebunan $perkebunan, string $nama, int $id)
     {
-        //
+        $perkebunan->iblhs->find($id)->update($request->all());
+        return redirect()->back()->with('success', 'Berhasil mengubah data izin bidang lingkungan hidup');
     }
 
     /**
@@ -57,8 +60,9 @@ class IblhController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Perkebunan $perkebunan, string $nama, int $id)
     {
-        //
+        $perkebunan->iblhs->find($id)->delete();
+        return redirect()->back()->with('success', 'Berhasil menghapus data izin bidang lingkungan hidup');
     }
 }

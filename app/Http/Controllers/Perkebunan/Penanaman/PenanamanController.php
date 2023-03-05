@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Perkebunan\Penanaman;
 
 use App\Http\Controllers\Controller;
+use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Http\Request;
 
 class PenanamanController extends Controller
@@ -23,9 +24,10 @@ class PenanamanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Perkebunan $perkebunan)
     {
-        //
+        $perkebunan->penanamans()->create($request->all());
+        return redirect()->back()->with('success', 'Berhasil menambah data penanaman');
     }
 
     /**
@@ -46,9 +48,10 @@ class PenanamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Perkebunan $perkebunan, string $nama, int $id)
     {
-        //
+        $perkebunan->penanamans->find($id)->update($request->all());
+        return redirect()->back()->with('success', 'Berhasil mengubah data penanaman');
     }
 
     /**
@@ -57,8 +60,9 @@ class PenanamanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Perkebunan $perkebunan, string $nama, int $id)
     {
-        //
+        $perkebunan->penanamans->find($id)->delete();
+        return redirect()->back()->with('success', 'Berhasil menghapus data penanaman');
     }
 }
