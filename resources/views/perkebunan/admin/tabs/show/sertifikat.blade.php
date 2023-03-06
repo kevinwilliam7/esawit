@@ -1,3 +1,7 @@
+<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
+    <i class="fa fa-plus me-1"></i> Tambah Data
+</button>
+
 <table class="table table-striped" id="sertifikats">
     <thead>
         <tr>
@@ -13,7 +17,7 @@
     </thead>
     <tbody>
         @foreach ($perkebunan->sertifikats as $sertifikat)
-            <tr>
+            <tr data-id="{{ $sertifikat->id }}">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $sertifikat->jenis }}</td>
                 <td>{{ $sertifikat->nama_sertifikat }}</td>
@@ -22,11 +26,9 @@
                 <td>{{ $sertifikat->penjabat }}</td>
                 <td>{{ $sertifikat->kategori }}</td>
                 <td>
-                <td>
-                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $izin_lokasi->id }}">
+                    <button class="btn btn-warning btn-sm rounded-2" data-id="{{ $sertifikat->id }}">
                         <i class="fa fa-edit me-1"></i> Ubah
                     </button>
-                </td>
                 </td>
             </tr>
         @endforeach

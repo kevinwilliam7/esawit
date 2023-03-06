@@ -1,9 +1,6 @@
-<div class="mb-3">
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-3"><b>Pola Kemitraan</b></div>
-        <div class="col-12 col-md-6 col-lg-9">{{ $perkebunan->pola_kemitraan }}</div>
-    </div>
-</div>
+<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
+    <i class="fa fa-plus me-1"></i> Tambah Data
+</button>
 
 <div class="accordion" id="kontribusi" style="font-size: 16px">
 
@@ -18,7 +15,7 @@
         <div id="realisasi" class="accordion-collapse collapse show" aria-labelledby="header-realisasi"
             data-bs-parent="#kontribusi">
             <div class="accordion-body">
-                <table class="table table-striped" id="realisasis">
+                <table class="table table-striped w-100" id="realisasis">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -46,7 +43,7 @@
         <div id="rencana" class="accordion-collapse collapse" aria-labelledby="header-rencana"
             data-bs-parent="#kontribusi">
             <div class="accordion-body">
-                <table class="table table-striped" id="realisasis">
+                <table class="table table-striped w-100" id="rencanas">
                     <thead>
                         <tr>
                             <th>No</th>

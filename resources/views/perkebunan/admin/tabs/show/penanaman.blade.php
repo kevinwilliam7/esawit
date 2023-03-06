@@ -15,7 +15,7 @@
         <div id="perolehan-inti" class="accordion-collapse collapse show" aria-labelledby="header-perolehan-inti"
             data-bs-parent="#penanaman">
             <div class="accordion-body">
-                <table class="table table-striped" id="izin-lokasis">
+                <table class="table table-striped w-100" id="perolehanIntis">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -60,7 +60,7 @@
         <div id="perolehan-plasma" class="accordion-collapse collapse" aria-labelledby="header-perolehan-plasma"
             data-bs-parent="#penanaman">
             <div class="accordion-body">
-                <table class="table table-striped" id="izin-lokasis">
+                <table class="table table-striped w-100" id="perolehanPlasmas">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -105,7 +105,7 @@
         <div id="penanaman-inti" class="accordion-collapse collapse" aria-labelledby="header-penanaman-inti"
             data-bs-parent="#penanaman">
             <div class="accordion-body">
-                <table class="table table-striped" id="izin-lokasis">
+                <table class="table table-striped w-100" id="penanamanIntis">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -150,7 +150,7 @@
         <div id="penanaman-plasma" class="accordion-collapse collapse" aria-labelledby="header-penanaman-plasma"
             data-bs-parent="#penanaman">
             <div class="accordion-body">
-                <table class="table table-striped" id="izin-lokasis">
+                <table class="table table-striped w-100" id="penanamanPlasmas">
                     <thead>
                         <tr>
                             <th>No</th>

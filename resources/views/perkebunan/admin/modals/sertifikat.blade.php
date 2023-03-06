@@ -11,27 +11,27 @@
                     @method('POST')
                     <div class="mb-3">
                         <label for="" class="form-label">Jenis Sertifikat</label>
-                        <input type="text" class="form-control" name="jenis">
+                        <input type="text" class="form-control" name="jenis" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Nama Sertifikat</label>
-                        <input type="text" class="form-control" name="nama_sertifikat">
+                        <input type="text" class="form-control" name="nama_sertifikat" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Nomor Surat</label>
-                        <input type="text" class="form-control" name="nomor_surat">
+                        <input type="text" class="form-control" name="nomor_surat" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Tanggal Diterbitkan</label>
-                        <input type="date" class="form-control" name="tanggal_terbit">
+                        <input type="date" class="form-control" name="tanggal_terbit" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Penjabat Penerbit</label>
-                        <input type="text" class="form-control" name="penjabat">
+                        <input type="text" class="form-control" name="penjabat" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Kategori</label>
-                        <input type="text" class="form-control" name="kategori">
+                        <input type="text" class="form-control" name="kategori" required>
                     </div>
                 </form>
             </div>

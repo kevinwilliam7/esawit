@@ -11,7 +11,7 @@
                     @method('POST')
                     <div class="mb-3">
                         <label for="" class="form-label">Kabupaten</label>
-                        <select id="kabupaten" class="form-select">
+                        <select id="kabupaten" class="form-select kabupaten" required>
                             <option value="">Pilih Kabupaten</option>
                             @foreach ($kabupatens as $kabupaten)
                                 <option value="{{ $kabupaten->id }}">{{ $kabupaten->name }}</option>
@@ -20,11 +20,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Kecamatan</label>
-                        <select id="kecamatan" class="form-select"></select>
+                        <select id="kecamatan" class="form-select kecamatan" required></select>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Desa</label>
-                        <select name="desa_id" id="desa" class="form-select"></select>
+                        <select name="desa_id" id="desa" class="form-select desa" required></select>
                     </div>
                 </form>
             </div>

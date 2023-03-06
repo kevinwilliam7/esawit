@@ -11,19 +11,15 @@
                     @method('POST')
                     <div class="mb-3">
                         <label for="" class="form-label">Nomor Sertifikat</label>
-                        <input type="text" name="nomor_surat" class="form-control" placeholder="Nomor Surat">
+                        <input type="text" name="nomor_surat" class="form-control" placeholder="Nomor Surat" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Tanggal Terbit</label>
-                        <input type="date" name="tanggal_terbit" class="form-control" placeholder="Tanggal Terbit">
+                        <input type="date" name="tanggal_terbit" class="form-control" placeholder="Tanggal Terbit" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Luas (Ha)</label>
-                        <input type="number" name="luas" min="0" step="0.01" class="form-control" placeholder="Luas">
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="form-label">Penjabat Penerbit</label>
-                        <input type="text" name="penjabat_penerbit" class="form-control" placeholder="Penjabat Penerbit">
+                        <input type="number" name="luas" min="0" step="0.01" class="form-control" placeholder="Luas" required>
                     </div>
                 </form>
             </div>

@@ -11,24 +11,30 @@
                     @method('POST')
                     <div class="mb-3">
                         <label for="" class="form-label">Kondisi</label>
-                        <input type="radio" name="kondisi" id="" class="form-check"> Berjalan
-                        <input type="radio" name="kondisi" id="" class="form-check"> Radio
+                        <div class="form-check">
+                            <input type="radio" value="berjalan" name="kondisi" id="" class="form-check-input" required>
+                            <label for="" class="form-check-label">Berjalan</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" value="kemarin" name="kondisi" id="" class="form-check-input">
+                            <label for="" class="form-check-label">Kemarin</label>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Jenis Kebun</label>
-                        <input type="text" name="jenis_kebun" id="">
+                        <input type="text" class="form-control" name="jenis_kebun" id="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Triwulan</label>
-                        <input type="text" name="triwulan" id="">
+                        <input type="text" class="form-control" name="triwulan" id="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Tahun</label>
-                        <input type="number" min="1900" step="1" name="tahun" id="">
+                        <input type="number" min="1900" step="1" class="form-control" name="tahun" id="" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Jumlah Produksi / Ton TBS</label>
-                        <input type="number" min="0" step="0.01" name="jumlah_produksi" id="">
+                        <input type="number" min="0" step="0.01" class="form-control" name="jumlah_produksi" id="" required>
                     </div>
                 </form>
             </div>

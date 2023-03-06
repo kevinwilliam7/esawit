@@ -11,24 +11,28 @@
                     @method('POST')
                     <div class="mb-3">
                         <label for="" class="form-label">Jenis Dokumen</label>
-                        <input type="text" name="jenis_dokumen" id="" class="form-control"></div>
+                        <input type="text" name="jenis_dokumen" id="" class="form-control" required></div>
                     <div class="mb-3">
                         <label for="" class="form-label">Nomor Surat</label>
-                        <input type="text" name="nomor_surat" class="form-control" placeholder="Nomor Surat">
+                        <input type="text" name="nomor_surat" class="form-control" placeholder="Nomor Surat" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Tanggal</label>
-                        <input type="date" name="tanggal_terbit" class="form-control" placeholder="Tanggal Terbit">
+                        <input type="date" name="tanggal" class="form-control" placeholder="Tanggal" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Luas / Kapasitas (Ha)</label>
                         <input type="number" name="luas" min="0" step="0.01" class="form-control"
-                            placeholder="Luas">
+                            placeholder="Luas" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Penjabat Penerbit</label>
                         <input type="text" name="penjabat_penerbit" class="form-control"
-                            placeholder="Penjabat Penerbit">
+                            placeholder="Penjabat Penerbit" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Keterangan</label>
+                        <textarea name="keterangan" id="" cols="30" rows="5" class="form-control" required placeholder="Keterangan"></textarea>
                     </div>
                 </form>
             </div>

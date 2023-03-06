@@ -34,18 +34,18 @@
 
     {{-- Penetapan Petani --}}
     <div class="accordion-item">
-        <h2 class="accordion-header m-0" id="header-penetapan">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#penetapan"
-                aria-controls="penetapan">
+        <h2 class="accordion-header m-0" id="header-petanis">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#petani"
+                aria-controls="petanis">
                 Penetapan Petani
             </button>
         </h2>
-        <div id="penetapan" class="accordion-collapse collapse" aria-labelledby="header-penetapan" data-bs-parent="#kemitraan">
+        <div id="petani" class="accordion-collapse collapse" aria-labelledby="header-petani" data-bs-parent="#kemitraan">
             <div class="accordion-body">
 				<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
                     <i class="fa fa-plus me-1"></i> Tambah Data
                 </button>
-				<table class="table table-striped">
+				<table class="table table-striped w-100" id="petanis">
 					<thead>
 						<tr>
 							<th>No</th>
@@ -58,7 +58,7 @@
 					</thead>
 					<tbody>
 						@foreach ($perkebunan->petanis as $petani)
-							<tr>
+							<tr data-id="{{ $petani->id }}">
 								<td>{{ $loop->iteration }}</td>
 								<td>{{ $petani->tahap }}</td>
 								<td>{{ $petani->koperasi }}</td>
@@ -90,7 +90,7 @@
 				<button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
                     <i class="fa fa-plus me-1"></i> Tambah Data
                 </button>
-				<table class="table table-striped">
+				<table class="table table-striped w-100" id="koperasis">
 					<thead>
 						<tr>
 							<th>No</th>
@@ -107,7 +107,7 @@
 					</thead>
 					<tbody>
 						@foreach ($perkebunan->koperasis as $koperasi)
-							<tr>
+							<tr data-id="{{ $koperasi->id }}">
 								<td>{{ $loop->iteration }}</td>
 								<td>{{ $koperasi->nama_koperasi }}</td>
 								<td>{{ $koperasi->jumlah_anggota }}</td>

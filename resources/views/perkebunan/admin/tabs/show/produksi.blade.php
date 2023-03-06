@@ -14,7 +14,7 @@
                 <button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
                     <i class="fa fa-plus me-1"></i> Tambah Data
                 </button>
-                <table class="table table-striped" id="produksi-kebuns">
+                <table class="table table-striped w-100" id="produksi-kebuns">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                         @foreach ($perkebunan->produksi_kebuns as $produksi)
-                            <tr>
+                            <tr data-id="{{ $produksi->id }}">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $produksi->kondisi }}</td>
                                 <td>{{ $produksi->jenis_kebun }}</td>
@@ -62,7 +62,7 @@
                 <button class="mb-3 btn btn-success btn-bordered btn-sm rounded-2">
                     <i class="fa fa-plus me-1"></i> Tambah Data
                 </button>
-                <table class="table table-striped" id="pengolahan">
+                <table class="table table-striped w-100" id="pengolahans">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -73,7 +73,7 @@
                     </thead>
                     <tbody>
                         @foreach ($perkebunan->distribusis as $distribusi)
-                            <tr>
+                            <tr data-id="{{ $distribusi->id }}">
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $distribusi->nama_pabrik }}</td>
                                 <td>{{ $distribusi->jumlah_distribusi }}</td>
