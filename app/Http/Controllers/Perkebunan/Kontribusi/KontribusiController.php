@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Perkebunan\Kontribusi;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kontribusi;
 use App\Models\Perkebunan\Perkebunan;
 use Illuminate\Http\Request;
+use DataTables;
 
 class KontribusiController extends Controller
 {
@@ -13,9 +15,12 @@ class KontribusiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Perkebunan $perkebunan, string $nama, string $pelaksanaan)
     {
-        //
+        $kontribusis = Kontribusi::with('desa', 'desa.kecamatan')->select('id', 'tahun', 'jenis_kegiatan', 'tanggal', 'nilai_setara', 'desa_id')->where('kategori_type', 'App\Models\Perkebunan\Perkebunan')
+                                ->where('kategori_id', $perkebunan->id)
+                                ->where('pelaksanaan', $pelaksanaan);
+        return DataTables::of($kontribusis)->addIndexColumn()->make();
     }
 
     /**
