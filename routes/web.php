@@ -86,8 +86,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
                 Route::delete('izin-lokasi/{id}', [IzinLokasiController::class, 'destroy'])->name('izin-lokasi.destroy');
 
                 Route::post('iup', [IupController::class, 'store'])->name('iup.store');
-                Route::patch('iup/{id}', [IzinLokasiController::class, 'update'])->name('iup.update');
-                Route::delete('iup/{id}', [IzinLokasiController::class, 'destroy'])->name('iup.destroy');
+                Route::patch('iup/{id}', [IupController::class, 'update'])->name('iup.update');
+                Route::delete('iup/{id}', [IupController::class, 'destroy'])->name('iup.destroy');
 
                 Route::post('hgu', [HguController::class, 'store'])->name('hgu.store');
                 Route::patch('hgu/{id}', [HguController::class, 'update'])->name('hgu.update');
