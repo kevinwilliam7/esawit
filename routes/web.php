@@ -10,6 +10,7 @@ use App\Http\Controllers\Pabrik\LokasiController;
 use App\Http\Controllers\Pabrik\PabrikController as AdminPabrikController;
 use App\Http\Controllers\Pabrik\ProduksiController;
 use App\Http\Controllers\Pabrik\SupplierController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\Perkebunan\Kemitraan\KoperasiController;
 use App\Http\Controllers\Perkebunan\Kemitraan\PetaniController;
 use App\Http\Controllers\Perkebunan\Kontribusi\KontribusiController as PerkebunanKontribusiController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\Perkebunan\Produksi\ProduksiController as PerkebunanPro
 use App\Http\Controllers\Perkebunan\Sertifikat\SertifikatController;
 use App\Http\Controllers\PerkebunanController;
 use App\Http\Controllers\PerundanganController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SopController;
 use App\Http\Controllers\TbsController;
 use App\Http\Controllers\UserController;
@@ -184,4 +186,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
     // Route::post('admin/update/{id}', [UserController::class, 'update'])->name('admin.update');
     Route::delete('admin/destroy/{id}', [UserController::class, 'destroy'])->name('admin.destroy');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::resource('pengaturan', SettingController::class)->only(['index', 'update']);
+    Route::resource('partner', PartnerController::class);
 });
