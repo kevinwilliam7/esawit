@@ -1449,10 +1449,9 @@ File: Components
   font-size: 14px;
 }
 .widget-box-two .widget-two-icon {
-  position: absolute;
+  position: relative;
   left: 30px;
   font-size: 36px !important;
-  top: 30px;
   overflow: hidden;
   vertical-align: middle;
   height: 80px;

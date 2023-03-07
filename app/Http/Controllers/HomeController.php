@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Kontribusi;
 use App\Models\Pabrik\Pabrik;
 use App\Models\Perkebunan\Perkebunan;
+use App\Models\Tbs;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -86,5 +88,15 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function admin()
+    {
+        $countPerkebunan = Perkebunan::count();
+        $countPabrik = Pabrik::count();
+        $countKontribusi = Kontribusi::where('pelaksanaan', 'realisasi')->count();
+        $countUser = User::count();
+        $tbs = Tbs::get();
+        return view('home.admin.index',compact('countKontribusi','countPerkebunan','countPabrik', 'countUser', 'tbs'));
     }
 }

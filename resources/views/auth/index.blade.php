@@ -126,10 +126,10 @@
                         </div>
                         
                         <div class="form-group pt-2 row">
-                            <input name="email" type="email" class="form-control border rounded input-group input-group-lg p-3" id="exampleInputEmail" placeholder="Masukan Email">
+                            <input name="email" type="email" class="form-control border rounded input-group input-group-lg p-3" id="exampleInputEmail" placeholder="Masukan Email" required>
                         </div>
                         <div class="form-group pt-4 row">
-                            <input name="password" type="password" class="form-control border rounded input-group input-group-lg p-3" id="exampleInputPassword" placeholder="Masukan Password">
+                            <input name="password" type="password" class="form-control border rounded input-group input-group-lg p-3" id="exampleInputPassword" placeholder="Masukan Password" required>
                         </div>
                         <div class="row pt-4">
                             <button type="submit" class="btn btn-outline-success rounded-2 btn-lg">Login E-Sawit</button>

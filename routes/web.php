@@ -178,6 +178,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
     Route::get('tbs', [TbsController::class, 'admin'])->name('tbs.index');
     Route::resource('tbs', TbsController::class)->except(['index']);
 
+    Route::get('home', [HomeController::class, 'admin'])->name('home.index');
     Route::get('admin', [UserController::class, 'admin'])->name('admin.index');
     Route::post('admin', [UserController::class, 'store'])->name('admin.store');
     // Route::post('admin/update/{id}', [UserController::class, 'update'])->name('admin.update');

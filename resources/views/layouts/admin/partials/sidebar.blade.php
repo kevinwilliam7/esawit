@@ -3,9 +3,9 @@
         <div id="sidebar-menu">
             <ul class="metisMenu nav" id="side-menu">
                 <li class="menu-title">MENU NAVIGASI</li>
-                <li class="w-100">
-                    <a href="#" class="text-decoration-none">
-                        <i class="fa fa-home"></i><span>Halaman Utama</span>
+                <li class="w-100 {{ str_contains(Route::currentRouteName(), 'admin.home') ? 'active' : '' }}">
+                    <a href="{{ route('admin.home.index') }}" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.home') ? 'active' : '' }}">
+                        <i class="fa fa-home {{ str_contains(Route::currentRouteName(), 'admin.home') ? 'active' : '' }}"></i><span>Halaman Utama</span>
                     </a>
                 </li>
 

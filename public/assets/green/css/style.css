@@ -1412,6 +1412,10 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
+  position:relative;
+  bottom:0;
+  width: 100%;
+  bottom: 0;
   background: #090909;
   color: #fff;
   font-size: 14px;
