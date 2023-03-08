@@ -2,7 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/libs/DataTables/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/DataTables/RowReorder-1.3.2/css/rowReorder.dataTables.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/libs/DataTables/RowReorder-1.3.2/css/rowReorder.dataTables.min.css') }}"> --}}
 @endsection
 
 @section('content-title', 'Partner')
@@ -15,9 +15,9 @@
                     <button class="btn btn-success btn-bordered rounded-2 me-2">
                         <i class="fa fa-plus me-1"></i> Tambah Data
                     </button>
-                    <button class="btn btn-primary btn-bordered rounded-2">
+                    {{-- <button class="btn btn-primary btn-bordered rounded-2">
                         <i class="fa fa-save me-1"></i> Simpan Urutan
-                    </button>
+                    </button> --}}
                 </div>
                 <table class="table table-striped w-100" id="partners">
                     <thead>
@@ -35,7 +35,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $partner->name }}</td>
                                 <td>
-                                    <img src="{{ asset($partner->image) }}" alt="{{ $partner->name }}"
+                                    <img src="{{ asset('storage/'.$partner->image) }}" alt="{{ $partner->name }}"
                                         style="max-width: 200px; max-height: 100px">
                                 </td>
                                 <td>
@@ -61,7 +61,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">Data Partner</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -99,12 +99,12 @@
 
 @section('js')
     <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/DataTables/RowReorder-1.3.2/js/dataTables.rowReorder.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/libs/DataTables/RowReorder-1.3.2/js/dataTables.rowReorder.min.js') }}"></script> --}}
     <script>
         $(document).ready(function() {
             const table = $('table#partners').DataTable({
                 'scrollX': true,
-                'rowReorder': true,
+                // 'rowReorder': true,
             });
 
             $('.container .btn-success').on('click', function() {
