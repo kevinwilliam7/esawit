@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kontribusi;
 use App\Models\Pabrik\Pabrik;
+use App\Models\Partner;
 use App\Models\Perkebunan\Perkebunan;
+use App\Models\Setting;
 use App\Models\Tbs;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,7 +23,9 @@ class HomeController extends Controller
         $countPerkebunan = Perkebunan::count();
         $countPabrik = Pabrik::count();
         $countKontribusi = Kontribusi::where('pelaksanaan', 'realisasi')->count();
-        return view('home.public.index',compact('countKontribusi','countPerkebunan','countPabrik'));
+        $setting = Setting::first();
+        $partners = Partner::get();
+        return view('home.public.index',compact('countKontribusi','countPerkebunan','countPabrik', 'setting', 'partners'));
     }
 
     /**
