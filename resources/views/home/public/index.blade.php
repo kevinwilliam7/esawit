@@ -101,8 +101,11 @@
 
                 <div class="clients-slider swiper">
                 <div class="swiper-wrapper align-items-center">
-                    <div class="swiper-slide"><img src="{{asset('assets/images/partner/pemkab_sanggau.png')}}" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{asset('assets/images/partner/elpagar.png')}}" class="img-fluid" alt=""></div>
+                    @foreach ($partners as $partner)    
+                        <div class="swiper-slide">
+                            <img src="{{ asset('storage/'.$partner->image) }}" class="img-fluid" alt="">
+                        </div>
+                    @endforeach
                 </div>
                 <div class="swiper-pagination"></div>
                 </div>
@@ -221,25 +224,28 @@
                 </div>
 
                 <div class="row">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.36304014820453!2d110.59034028175341!3d0.1261982509451756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31fd8e3e7cd5a335%3A0x3e0afd1770f515f4!2sDINAS%20PERKEBUNAN%20DAN%20PETERNAKAN%20KAB.%20SANGGAU!5e0!3m2!1sid!2sid!4v1676960296804!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe width="600" height="450" frameborder="0" scrolling="no" marginheight="0"
+                    marginwidth="0" loading="lazy"
+                    src="https://maps.google.com/maps?q={{ $setting->lat }},{{ $setting->lng }}&hl=id&z=17&amp;output=embed">
+                </iframe>
                 <div class="col-lg-12 d-flex align-items-stretch">
                     <div class="info">
                     <div class="address">
                         <i class="bi bi-geo-alt"></i>
                         <h4>Location:</h4>
-                        <p>Dinas Perkebunan dan Pertenakan Kabupaten Sanggau</p>
+                        <p>{{ $setting->alamat }}</p>
                     </div>
 
                     <div class="email">
                         <i class="bi bi-envelope"></i>
                         <h4>Email:</h4>
-                        <p><a style="color:rgb(60, 59, 59)" href="mailto: dpp@sanggau.go.id">dpp@sanggau.go.id</a></p>
+                        <p><a style="color:rgb(60, 59, 59)" href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></p>
                     </div>
 
                     <div class="phone">
                         <i class="bi bi-phone"></i>
                         <h4>Call:</h4>
-                        <p>0564-2023528/2023503</p>
+                        <p>{{ $setting->telepon }}</p>
                     </div>
                     
                     </div>
