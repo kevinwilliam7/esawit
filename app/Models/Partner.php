@@ -14,12 +14,4 @@ class Partner extends Model
         'created_at',
         'updated_at'
     ];
-
-    protected static function booted()
-    {
-        Static::creating(function($partner){
-            $order = (Partner::select('order')->orderBy('order', 'DESC')->limit(1)->first()->order ?? 0) + 1;
-            $partner['order'] = $order;
-        });
-    }
 }

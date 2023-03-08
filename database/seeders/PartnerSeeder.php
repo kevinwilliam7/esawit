@@ -17,15 +17,13 @@ class PartnerSeeder extends Seeder
         Partner::create([
             'name' => 'Pemerintah Kabupaten Sanggau',
             'link' => 'https://sanggau.go.id/',
-            'image' => 'assets/images/partner/pemkab_sanggau.png',
-            'order' => 1,
+            'image' => 'partner/pemkab_sanggau.png',
         ]);
 
         Partner::create([
             'name' => 'ELPAGAR',
             'link' => 'https://elpagar.org/',
-            'image' => 'assets/images/partner/elpagar.png',
-            'order' => 2
+            'image' => 'partner/elpagar.png',
         ]);
     }
 }

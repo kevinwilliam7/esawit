@@ -18,7 +18,6 @@ class CreatePartnersTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->string('link')->default('#');
-            $table->unsignedInteger('order');
             $table->timestamps();
         });
     }
