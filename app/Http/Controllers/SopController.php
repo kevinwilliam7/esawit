@@ -21,7 +21,7 @@ class SopController extends Controller
             return DataTable::of($sop)
                 ->addIndexColumn()
                 ->addColumn('download', function ($row) {
-                    $btn = '<a href="" >Download </a>';
+                    $btn = '<a href="'.asset('storage/'.$row->file).'" >Download </a>';
                     return $btn;
                 })
                 ->rawColumns(['download'])
@@ -62,7 +62,7 @@ class SopController extends Controller
         $input = $request->except('file');
         $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
         if ($request->file->storeAs("public/sop", $fileName)) {
-            $input['file'] = "sop/$fileName";            
+            $input['file'] = "sop/$fileName";
         }
         Sop::create($input);
         return redirect()->back()->with('success', 'Berhasil menambah data SOP');

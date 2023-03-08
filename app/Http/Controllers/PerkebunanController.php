@@ -30,7 +30,7 @@ class PerkebunanController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            $perkebunan = Perkebunan::select('id', 'nama', 'npwp', 'pola_kemitraan'); 
+            $perkebunan = Perkebunan::select('id', 'nama', 'npwp', 'pola_kemitraan');
             return DataTable::of($perkebunan)
                 ->addIndexColumn()
                 ->addColumn('aksi', function($perkebunan){
@@ -74,8 +74,8 @@ class PerkebunanController extends Controller
     {
         //umum
         $perkebunans = Perkebunan::where('id',$id)->get();
-        $lokasiPerkebunans = Lokasi::where('kategori_id', $id)->where('kategori_type', 'perkebunan')->get();
-        $lokasiPabriks = Lokasi::where('kategori_id', $id)->where('kategori_type', 'pabrik')->get();
+        $lokasiPerkebunans = Lokasi::where('kategori_id', $id)->where('kategori_type', 'LIKE', '%perkebunan%')->get();
+        $lokasiPabriks = Lokasi::where('kategori_id', $id)->where('kategori_type',  'LIKE', '%pabrik%')->get();
         //legalitas
         $izinLokasis = IzinLokasi::where('perkebunan_id', $id)->get();
         $izinLokasiTotal = IzinLokasi::where('perkebunan_id', $id)->sum('luas');
@@ -90,8 +90,8 @@ class PerkebunanController extends Controller
         $perolehanPlasmas =  PerolehanLahan::where('perkebunan_id', $id)->where('jenis_kebun', 'plasma')->get();
         $perolehanIntiTotal = $perolehanIntis->sum('luas');
         $perolehanPlasmaTotal = $perolehanPlasmas->sum('lnilaiKuas');
-        $penanamanIntis =  Penanaman::where('perkebunan_id', $id)->where('kategori', 'inti')->get();
-        $penanamanPlasmas =  Penanaman::where('perkebunan_id', $id)->where('kategori', 'plasma')->get();
+        $penanamanIntis =  Penanaman::where('perkebunan_id', $id)->where('jenis_kebun', 'inti')->get();
+        $penanamanPlasmas =  Penanaman::where('perkebunan_id', $id)->where('jenis_kebun', 'plasma')->get();
         $penanamanIntiTotal = $penanamanIntis->sum('luas');
         $penanamanPlasmaTotal = $penanamanPlasmas->sum('luas');
         //produksi
@@ -113,12 +113,12 @@ class PerkebunanController extends Controller
         $biayaKoperasiTotal = $koperasis->sum('standarbiaya');
         //csr
         //sertifikat
-        return view('perkebunan.public.show', 
+        return view('perkebunan.public.show',
             compact('id', 'perkebunans', 'lokasiPerkebunans', 'lokasiPabriks', 'izinLokasis', 'izinLokasiTotal', 'iups', 'iupTotal', 'hgus', 'hguTotal', 'iblhs', 'iblhTotal', 'perolehanIntis', 'perolehanPlasmas', 'perolehanIntiTotal', 'perolehanPlasmaTotal', 'penanamanIntis', 'penanamanPlasmas', 'penanamanIntiTotal', 'penanamanPlasmaTotal', 'produksiBerjalans', 'produksiKemarins', 'produksiBerjalanTotal', 'produksiKemarinTotal', 'distribusis', 'distribusiTotal', 'petanis', 'kkPetaniTotal', 'luasPetaniTotal', 'koperasis', 'luasKoperasiTotal', 'kreditKoperasiTotal', 'biayaKoperasiTotal', 'anggotaKoperasiTotal'),
         );
     }
 
-    
+
     public function dtRencana(Request $request){
         $rencana  = Kontribusi::with('desa')->where('kategori_id', $request->id)
             ->where('kategori_id', $request->id)->where('kategori_type', 'LIKE', '%perkebunan%')
@@ -134,14 +134,14 @@ class PerkebunanController extends Controller
             ->where('pelaksanaan','realisasi');
         return DataTable::of($realisasi)
             ->addIndexColumn()
-            ->make();   
+            ->make();
     }
 
     public function dtSertifikat(Request $request){
         $sertifikat = Sertifikat::where('perkebunan_id', $request->id);
         return DataTable::of($sertifikat)
             ->addIndexColumn()
-            ->make();   
+            ->make();
     }
 
     /**

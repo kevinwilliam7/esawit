@@ -5,8 +5,8 @@
         .pagination div.dataTables_paginate {
             color: #198754;
         }
-        .pagination .page-item.active .page-link { 
-            background-color: #198754;  
+        .pagination .page-item.active .page-link {
+            background-color: #198754;
             border: 1px solid #198754;
             color: white;
         }
@@ -265,7 +265,7 @@
                                                                     <td>{{ $izinLokasi->keterangan }}</td>
                                                                 </tr>
                                                             @endforeach
-                                                            <tr> 
+                                                            <tr>
                                                                 <td colspan="3" align="center"><strong>Total</strong></td>
                                                                 <td colspan="4">{{ $izinLokasiTotal }}</td>
                                                             </tr>
@@ -308,7 +308,7 @@
                                                                     <td>{{ $iup->penjabat_penerbit }}</td>
                                                                 </tr>
                                                             @endforeach
-                                                            <tr> 
+                                                            <tr>
                                                                 <td colspan="3" align="center"><strong>Total</strong></td>
                                                                 <td colspan="4">{{ $iupTotal }}</td>
                                                             </tr>
@@ -343,7 +343,7 @@
                                                                     <td>{{ $hgu->luas }}</td>
                                                                 </tr>
                                                             @endforeach
-                                                            <tr> 
+                                                            <tr>
                                                                 <td colspan="2" align="center"><strong>Total</strong></td>
                                                                 <td>{{ $hguTotal }}</td>
                                                             </tr>
@@ -384,7 +384,7 @@
                                                                     <td>{{ $iblh->keterangan }}</td>
                                                                 </tr>
                                                             @endforeach
-                                                            <tr> 
+                                                            <tr>
                                                                 <td colspan="3" align="center"><strong>Total</strong></td>
                                                                 <td colspan="3">{{ $iblhTotal }}</td>
                                                             </tr>

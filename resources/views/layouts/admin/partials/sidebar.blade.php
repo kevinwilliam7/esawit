@@ -51,8 +51,7 @@
                 </li>
 
                 <li class="w-100 menu-item {{ str_contains(Route::currentRouteName(), 'admin.tbs') ? 'active' : '' }}">
-                    <a href="#"
-                        class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.tbs') ? 'active' : '' }}">
+                    <a href="{{ route('admin.tbs.index') }}" class="text-decoration-none {{ str_contains(Route::currentRouteName(), 'admin.tbs') ? 'active' : '' }}">
                         <i class="fa fa-line-chart"></i><span>Harga TBS</span>
                     </a>
                 </li>

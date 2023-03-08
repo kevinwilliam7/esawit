@@ -5,8 +5,8 @@
         .pagination div.dataTables_paginate {
             color: #198754;
         }
-        .pagination .page-item.active .page-link { 
-            background-color: #198754;  
+        .pagination .page-item.active .page-link {
+            background-color: #198754;
             border: 1px solid #198754;
             color: white;
         }
@@ -118,6 +118,16 @@
                                                     <th>Lokasi Kabupaten</th>
                                                 </tr>
                                             </thead>
+                                            <tbody>
+                                                @foreach ($pabriks->lokasis as $lokasi)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $lokasi->desa->name }}</td>
+                                                        <td>{{ $lokasi->desa->kecamatan->name }}</td>
+                                                        <td>{{ $lokasi->desa->kecamatan->kabupaten->name }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -230,7 +240,7 @@
                                             <div class="col">{{ $pabriks->keterangan_ijin_timbang }}</div>
                                         </div>
                                     </div>
-    
+
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-produksi" role="tabpanel" aria-labelledby="nav-produksi-tab">
@@ -392,7 +402,7 @@
                     {data: 'tanggal', name: 'tanggal'},
                     {data: 'nilai_setara', name: 'nilai_setara'},
                     {data: 'desa.name', name: 'desa.name'},
-                    {data: 'kecamatan.name', name: 'kecamatan.name', orderable: false, searchable:false},
+                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name', orderable: false, searchable:false},
                 ],
                 columnDefs: [
                     {
@@ -415,7 +425,7 @@
                     {data: 'tanggal', name: 'tanggal'},
                     {data: 'nilai_setara', name: 'nilai_setara'},
                     {data: 'desa.name', name: 'desa.name'},
-                    {data: 'kecamatan.name', name: 'kecamatan.name', orderable: false, searchable:false},
+                    {data: 'desa.kecamatan.name', name: 'desa.kecamatan.name', orderable: false, searchable:false},
                 ],
                 columnDefs: [
                     {

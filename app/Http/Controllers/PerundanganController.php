@@ -21,7 +21,7 @@ class PerundanganController extends Controller
             return DataTable::of($pabriks)
                 ->addIndexColumn()
                 ->addColumn('download', function($row){
-                    $btn = '<a href="" >Download </a>';
+                    $btn = '<a href="'.asset('storage/'.$row->file).'" >Download </a>';
                     return $btn;
                 })
                 ->rawColumns(['download'])
@@ -51,7 +51,7 @@ class PerundanganController extends Controller
         $input = $request->except('file');
         $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
         if ($request->file->storeAs("public/perundangan", $fileName)) {
-            $input['file'] = "perundangan/$fileName";            
+            $input['file'] = "perundangan/$fileName";
         }
         Perundangan::create($input);
         return redirect()->back()->with('success', 'Berhasil menambah data perundangan');
