@@ -11,15 +11,15 @@
                   @method('POST')
                   <div class="mb-3">
                       <label for="nama-perkebunan" class="form-label">Kebun supplier</label>
-                      <input type="text" name="nama_perkebunan" id="nama-perkebunan" class="form-control">
+                      <input type="text" name="nama_perkebunan" id="nama-perkebunan" class="form-control" required>
                   </div>
                   <div class="mb-3">
                       <label for="jumlah-supply" class="form-label">Jumlah Supply (Ton)</label>
-                      <input type="number" name="jumlah_supply" id="jumlah-supply" min="0" step="0.01" class="form-control">
+                      <input type="number" name="jumlah_supply" id="jumlah-supply" min="0" step="0.01" class="form-control" required>
                   </div>
                   <div class="mb-3">
                     <label for="jangka-waktu" class="form-label">Jangka Waktu Supply</label>
-                    <input type="number" name="jangka_waktu" id="jangka-waktu" min="0" step="0.01" class="form-control">
+                    <input type="number" name="jangka_waktu" id="jangka-waktu" min="0" step="0.01" class="form-control" required>
                 </div>
               </form>
           </div>

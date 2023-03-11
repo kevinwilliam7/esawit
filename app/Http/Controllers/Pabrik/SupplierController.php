@@ -3,66 +3,52 @@
 namespace App\Http\Controllers\Pabrik;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Pabrik\SupplierRequest;
 use App\Models\Pabrik\Pabrik;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Pabrik\SupplierRequest  $request
+     * @param  app\Models\Pabrik\Pabrik  $pabrik
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Pabrik $pabrik)
+    public function store(SupplierRequest $request, Pabrik $pabrik)
     {
         $pabrik->suppliers()->create($request->all());
         return redirect()->back()->with('success', 'Berhasil menambah data supply');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Pabrik\SupplierRequest  $request
+     * @param  app\Models\Pabrik\Pabrik  $pabrik
+     * @param  string  $nama
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pabrik $pabrik, $nama, $id)
+    public function update(SupplierRequest $request, Pabrik $pabrik, string $nama, int $id)
     {
-        $pabrik->suppliers()->where('id', $id)->firstOrFail()->update($request->all());
+        $pabrik->suppliers()->findOrFail($id)->update($request->all());
         return redirect()->back()->with('success', 'Berhasil mengubah data supply');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  app\Models\Pabrik\Pabrik  $pabrik
+     * @param  string  $nama
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pabrik $pabrik, string $nama, int $id)
     {
-        $pabrik->suppliers()->where('id', $id)->first()->delete();
+        $pabrik->suppliers()->findOrFail($id)->delete();
         return redirect()->back()->with('success', 'Berhasil menghapus data produksi');
     }
 }

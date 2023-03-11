@@ -629,6 +629,31 @@
                 }
                 return x1 + x2;
             }
+
+            $('.content button[type=submit]').on('click', async function(e){
+                e.preventDefault();
+                var form = $(this).parent().prev().find('form');
+                var flag = true;
+                var name = '';
+
+                $(form).find('[required]').each(function(index, input) {
+                    if ($(input).val() === '') {
+                        name = $(input).attr('name').replace('_', ' ');
+                        name = name.charAt(0).toUpperCase() + name.slice(1);
+                        flag = false;
+                        return false;
+                    }
+                });
+                if (flag) {
+                    var confirm = await confirmation();
+                    if (confirm) {
+                        $(form).submit();
+                    }
+                    return;
+                }
+
+                swal(`${name} wajib diisi`, 'error');
+            })
         });
     </script>
 @endsection

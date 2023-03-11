@@ -4,7 +4,7 @@ namespace App\Http\Requests\Perkebunan;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PerkebunanRequest extends FormRequest
+class StorePerkebunanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -50,8 +50,8 @@ class PerkebunanRequest extends FormRequest
             'tetap_pabrik' => 'nullable|numeric|min:0',
             'lepas_pabrik' => 'nullable|numeric|min:0',
             'musiman_pabrik' => 'nullable|numeric|min:0',
-            'tka' => 'nullable|numeric|min:0|required_with:jabatan_tka',
-            'jabatan_tka' => 'nullable|string|required_with:tka',
+            'tka' => 'nullable|numeric|min:0',
+            'jabatan_tka' => 'nullable|string',
             'pola_kemitraan' => 'nullable|in:kemitraan mandiri,kemitraan satu manajemen',
             'kk_target_plasma' => 'nullable|numeric|min:0',
             'ha_target_plasma' => 'nullable|numeric|min:0',
@@ -109,7 +109,6 @@ class PerkebunanRequest extends FormRequest
             'min' => ':attribute minimal :min',
             'in' => ':attribute harus salah satu dari :values',
             'unique' => ':attribute sudah terdaftar',
-            'required_with' => ':attribute harus diisi jika :values diisi'
         ];
     }
 }

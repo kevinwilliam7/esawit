@@ -12,7 +12,7 @@
                     <div class="mb-3">
                         <label for="tahun-kontribusi" class="form-label">Pelaksanaan</label>
                         <div>
-                            <input type="radio" name="pelaksanaan" value="realisasi" class="form-check-inline me-1"> <span class="text-black">Sudah Realisasi</span>
+                            <input type="radio" name="pelaksanaan" value="realisasi" class="form-check-inline me-1" required> <span class="text-black">Sudah Realisasi</span>
                         </div>
                         <div>
                             <input type="radio" name="pelaksanaan" value="rencana" class="form-check-inline me-1"> <span class="text-black">Masih Rencana</span>
@@ -21,20 +21,20 @@
                     <div class="mb-3">
                         <label for="tahun-kontribusi" class="form-label">Tahun Kegiatan</label>
                         <input type="number" name="tahun" id="tahun-kontribusi" min="1900"
-                            max="{{ date('Y') }}" step="1" class="form-control">
+                            max="{{ date('Y') }}" step="1" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="jenis-kegiatan" class="form-label">Jenis Kegiatan</label>
-                        <input type="text" name="jenis_kegiatan" id="jenis-kegiatan" class="form-control">
+                        <input type="text" name="jenis_kegiatan" id="jenis-kegiatan" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="tanggal-kegiatan" class="form-label">Tanggal Kegiatan</label>
-                        <input type="date" name="tanggal" id="tanggal-kegiatan" class="form-control">
+                        <input type="date" name="tanggal" id="tanggal-kegiatan" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="nilai-setara" class="form-label">Nilai Setara (Rp)</label>
                         <input type="number" name="nilai_setara" id="nilai-setara" min="0" step="1"
-                            class="form-control">
+                            class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Kabupaten</label>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pabrik;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Pabrik\KontribusiRequest;
 use App\Models\Kontribusi;
 use App\Models\Pabrik\Pabrik;
 use Illuminate\Http\Request;
@@ -13,6 +14,9 @@ class KontribusiController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  app\Models\Pabrik\Pabrik  $pabrik
+     * @param  string  $nama
+     * @param  string  $pelaksanaan
      * @return \Illuminate\Http\Response
      */
     public function index(Pabrik $pabrik, string $nama, string $pelaksanaan)
@@ -28,48 +32,42 @@ class KontribusiController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Pabrik\KontribusiRequest  $request
+     * @param  app\Models\Pabrik\Pabrik  $pabrik
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Pabrik $pabrik)
+    public function store(KontribusiRequest $request, Pabrik $pabrik)
     {
         $pabrik->kontribusis()->create($request->all());
         return redirect()->back()->with('success', 'Berhasil menambah data kontribusi');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Pabrik\KontribusiRequest  $request
+     * @param  app\Models\Pabrik\Pabrik  $pabrik
+     * @param  string  $nama
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pabrik $pabrik, $nama, $id)
+    public function update(KontribusiRequest $request, Pabrik $pabrik, string $nama, int $id)
     {
-        $pabrik->kontribusis()->where('id', $id)->firstOrFail()->update($request->all());
+        $pabrik->kontribusis()->findOrFail($id)->update($request->all());
         return redirect()->back()->with('success', 'Berhasil mengubah data kontribusi');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  app\Models\Pabrik\Pabrik  $pabrik
+     * @param  string  $nama
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Pabrik $pabrik, string $nama, int $id)
     {
-        $pabrik->kontribusis()->where('id', $id)->firstOrFail()->delete();
+        $pabrik->kontribusis()->findOrFail($id)->delete();
         return redirect()->back()->with('success', 'Berhasil menghapus data kontribusi');
     }
 }

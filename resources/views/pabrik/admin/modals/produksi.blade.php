@@ -11,16 +11,16 @@
                     @method('POST')
                     <div class="mb-3">
                         <label for="tahun-produksi" class="form-label">Tahun Produksi</label>
-                        <input type="number" name="tahun_produksi" id="tahun-produksi" min="1900" max="{{ date('Y') }}" step="1"
+                        <input type="number" name="tahun_produksi" id="tahun-produksi" min="1900" max="{{ date('Y') }}" step="1" required
                             class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="hasil-pabrik" class="form-label">Nama Hasil Pabrik</label>
-                        <input type="text" name="hasil_pabrik" id="hasil-pabrik" class="form-control">
+                        <input type="text" name="hasil_pabrik" id="hasil-pabrik" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="jumlah-produksi" class="form-label">Jumlah Produksi (Ton)</label>
-                        <input type="number" name="jumlah_produksi" id="jumlah-produksi" min="0" step="0.01"
+                        <input type="number" name="jumlah_produksi" id="jumlah-produksi" min="0" step="0.01" required
                             class="form-control">
                     </div>
                 </form>
