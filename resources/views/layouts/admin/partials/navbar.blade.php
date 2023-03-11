@@ -23,22 +23,21 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right ms-auto me-lg-4">
-                <li class="dropdown" >
-                    <a href="#" class="dropdown-toggle text-decoration-none text-white" data-bs-toggle="dropdown" role="button">
-                        {{-- {{ Auth::user()->name }} --}}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle text-decoration-none text-white" data-bs-toggle="dropdown"
+                        role="button">
                         {{ Auth::user()->name }}
                         <span class="caret"></span>
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
                         <li class="dropdown-item ps-2">
-                            {{-- <form action="{{ route('logout') }}" method="POST"> --}}
-                            <form action="logout" method="POST" class="d-none" id="logout">
+                            <form action="{{ route('admin.logout') }}" method="POST">
                                 @csrf
+                                <button type="submit" class="btn btn-sm">
+                                    <i class="fa fa-sign-out"></i> Logout
+                                </button>
                             </form>
-                            <button type="submit" class="btn btn-sm" form="logout">
-                                <i class="fa fa-sign-out"></i> Logout
-                            </button>
                         </li>
                     </ul>
                 </li>
