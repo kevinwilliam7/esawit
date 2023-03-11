@@ -8,7 +8,7 @@
         <meta content="" name="description">
         <meta content="" name="keywords">
         <!-- Favicons -->
-        <link href="{{ asset('favicon.')}}" rel="icon">
+        <link href="{{ asset('favicon.ico')}}" rel="icon">
         <link href="{{ asset('assets/green/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
         <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css" />
         <!-- Google Fonts -->
