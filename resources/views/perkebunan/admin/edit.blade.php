@@ -19,7 +19,7 @@
             <div class="card-body">
                 <form method="POST"
                     action="{{ route('admin.perkebunan.update', ['perkebunan' => $perkebunan->id, 'nama' => $perkebunan->nama]) }}"
-                    id="store-perkebunan">
+                    id="edit-perkebunan">
                     @csrf
                     @method('PATCH')
                     <nav class="">
@@ -91,32 +91,28 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('button[type=submit]').on('click', async function(e) {
+            $('form#edit-perkebunan button[type=submit]').on('click', async function(e) {
+                e.preventDefault();
                 var flag = true;
                 var name = '';
-                e.preventDefault();
-                $('[required]').each(function(index, input) {
+
+                $('form#edit-perkebunan [required]').each(function(index, input) {
                     if ($(input).val() === '') {
-                        name = $(input).attr('name').replace('-', ' ');
+                        name = $(input).attr('name').replace('_', ' ');
                         name = name.charAt(0).toUpperCase() + name.slice(1);
                         flag = false;
                         return false;
                     }
                 });
-                if (!flag) {
-                    return Swal.fire({
-                        position: 'top-end',
-                        icon: 'error',
-                        title: `${name} wajib diisi`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+                if (flag) {
+                    var confirm = await confirmation();
+                    if (confirm) {
+                        $('form#edit-perkebunan [required]').submit();
+                    }
+                    return;
                 }
-                var confirm = await confirmation();
-                if (confirm) {
-                    $('form').submit();
-                }
-                return;
+
+                swal(`${name} wajib diisi`, 'error');
             });
         });
     </script>

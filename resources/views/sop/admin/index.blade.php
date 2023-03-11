@@ -13,6 +13,16 @@
 
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
         <div class="card">
             <div class="card_header"></div>
             <div class="card-body">
@@ -75,9 +85,10 @@
 
             $('button.btn-success').on('click', function() {
                 $('.modal-title').text('Tambah Data SOP Perizinan');
-                $('form').trigger('reset');
-                $('[name=_method]').val('POST');
-                $('form').attr('action', `{{ route('admin.sop.store') }}`);
+                $('.container form').trigger('reset');
+                $('.container [name=_method]').val('POST');
+                $('.content [name=file]').removeAttr('required');
+                $('.container form').attr('action', `{{ route('admin.sop.store') }}`);
                 $('.modal').modal('show');
             });
 
@@ -88,10 +99,11 @@
                 var jenis = row.data()[1];
                 var keterangan = row.data()[3];
                 $('.modal-title').text('Ubah Data SOP Perizinan');
-                $('[name=jenis_izin]').val(jenis);
-                $('[name=keterangan]').val(keterangan);
-                $('[name=_method]').val('PATCH');
-                $('form').attr('action', $(this).attr('href'));
+                $('.container [name=jenis_izin]').val(jenis);
+                $('.container [name=keterangan]').val(keterangan);
+                $('.container [name=_method]').val('PATCH');
+                $('.content [name=file]').attr('required', 'required');
+                $('.container form').attr('action', $(this).attr('href'));
                 $('.modal').modal('show');
             });
 

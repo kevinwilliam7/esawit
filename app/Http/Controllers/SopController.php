@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Sop\StoreSopRequest;
+use App\Http\Requests\Sop\UpdateSopRequest;
 use App\Models\Sop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -42,70 +44,40 @@ class SopController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Sop\StoreSopRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSopRequest $request)
     {
         $input = $request->except('file');
         $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
-        if ($request->file->storeAs("public/sop", $fileName)) {
-            $input['file'] = "sop/$fileName";
+        if (!$request->file->storeAs("public/sop", $fileName)) {
+            return redirect()->back()->with('error', 'Gagal menambah data SOP');
         }
+        $input['file'] = "sop/$fileName";
         Sop::create($input);
         return redirect()->back()->with('success', 'Berhasil menambah data SOP');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  app\Http\Requests\Sop\UpdateSopRequest  $request
+     * @param  app\Models\Sop  $sop
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sop $sop)
+    public function update(UpdateSopRequest $request, Sop $sop)
     {
         $input = $request->except('file');
         if($request->has('file')){
             $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
-            if ($request->file->storeAs("public/sop", $fileName)) {
-                $input['file'] = "sop/$fileName";
-                if ($sop->file !== null && is_file($sop->file)) Storage::delete('public/' . $sop->file);
+            if (!$request->file->storeAs("public/sop", $fileName)) {
+                return redirect()->back()->with('error', 'Gagal mengubah data SOP');
             }
+            $input['file'] = "sop/$fileName";
+            if ($sop->file !== null && is_file($sop->file)) Storage::delete('public/' . $sop->file);
         }
         $sop->update($input);
         return redirect()->back()->with('success', 'Berhasil mengubah data SOP');
@@ -114,7 +86,7 @@ class SopController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  app\Models\Sop  $sop
      * @return \Illuminate\Http\Response
      */
     public function destroy(Sop $sop)

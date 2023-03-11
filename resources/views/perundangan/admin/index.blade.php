@@ -13,8 +13,16 @@
 
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="card">
-            <div class="card_header"></div>
             <div class="card-body">
                 <button class="btn btn-success btn-bordered mb-3 rounded-2">
                     <i class="fa fa-plus me-1"></i>
@@ -35,16 +43,19 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $perundangan->nama }}</td>
                                 <td>
-                                    <a href="{{ asset('storage/' . $perundangan->file) }}" class="btn btn-bordered btn-primary btn-sm rounded-2" download>
+                                    <a href="{{ asset('storage/' . $perundangan->file) }}"
+                                        class="btn btn-bordered btn-primary btn-sm rounded-2" download>
                                         <i class="fa fa-download me-1"></i>
                                         Download
                                     </a>
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.perundangan.update', ['perundangan' => $perundangan->id, 'nama' => $perundangan->nama]) }}"
-                                        class="btn btn-warning btn-bordered rounded-2 me-1"><i class="fa fa-edit me-1"></i> Ubah Data</a>
+                                        class="btn btn-warning btn-bordered rounded-2 me-1"><i class="fa fa-edit me-1"></i>
+                                        Ubah Data</a>
                                     <a href="{{ route('admin.perundangan.destroy', ['perundangan' => $perundangan->id, 'nama' => $perundangan->nama]) }}"
-                                        class="btn btn-danger btn-bordered rounded-2"><i class="fa fa-trash me-1"></i> Hapus Data</a>
+                                        class="btn btn-danger btn-bordered rounded-2"><i class="fa fa-trash me-1"></i> Hapus
+                                        Data</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -63,18 +74,30 @@
         $(document).ready(function() {
             const perundangans = $('table#perundangans').DataTable({
                 'scrollX': true,
-                'columnDefs': [
-                    { 'target': 0, 'width': 35, 'className': 'dt-center' },
-                    { 'target': [2], 'width': 150, 'className': 'dt-center' },
-                    { 'target': [3], 'width': 250, 'className': 'dt-center' },
+                'columnDefs': [{
+                        'target': 0,
+                        'width': 35,
+                        'className': 'dt-center'
+                    },
+                    {
+                        'target': [2],
+                        'width': 150,
+                        'className': 'dt-center'
+                    },
+                    {
+                        'target': [3],
+                        'width': 250,
+                        'className': 'dt-center'
+                    },
                 ]
             });
 
             $('button.btn-success').on('click', function() {
                 $('.modal-title').text('Tambah Data Perundangan');
-                $('form').trigger('reset');
-                $('[name=_method]').val('POST');
-                $('form').attr('action', `{{ route('admin.perundangan.store') }}`);
+                $('.content form').trigger('reset');
+                $('.content [name=_method]').val('POST');
+                $('.content [name=file]').attr('required', 'required');
+                $('.content form').attr('action', `{{ route('admin.perundangan.store') }}`);
                 $('.modal').modal('show');
             });
 
@@ -84,9 +107,10 @@
                 var row = perundangans.row(tr);
                 var nama = row.data()[1];
                 $('.modal-title').text('Ubah Data Perundangan');
-                $('[name=nama]').val(nama);
-                $('[name=_method]').val('PATCH');
-                $('form').attr('action', $(this).attr('href'));
+                $('.content [name=nama]').val(nama);
+                $('.content [name=_method]').val('PATCH');
+                $('.content [name=file]').removeAttr('required');
+                $('.content form').attr('action', $(this).attr('href'));
                 $('.modal').modal('show');
             });
 

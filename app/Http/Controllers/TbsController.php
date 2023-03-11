@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Tbs\TbsRequest;
 use App\Models\Tbs;
 use Illuminate\Http\Request;
 
@@ -31,30 +32,20 @@ class TbsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Tbs\TbsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TbsRequest $request)
     {
         Tbs::create($request->all());
         return redirect()->route('admin.tbs.index')->with('success', 'Berhasil menambah data harga TBS');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  app\Models\Tbs  $tb
      * @return \Illuminate\Http\Response
      */
     public function edit(Tbs $tb)
@@ -65,11 +56,11 @@ class TbsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  app\Http\Requests\Tbs\TbsRequest  $request
+     * @param  app\Models\Tbs  $tb
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tbs $tb)
+    public function update(TbsRequest $request, Tbs $tb)
     {
         $tb->update($request->all());
         return redirect()->route('admin.tbs.index')->with('success', 'Berhasil mengubah data harga TBS');
@@ -78,7 +69,7 @@ class TbsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  app\Models\Tbs  $tb
      * @return \Illuminate\Http\Response
      */
     public function destroy(Tbs $tb)

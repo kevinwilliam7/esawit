@@ -90,13 +90,14 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('button[type=submit]').on('click', async function(e) {
+            $('form#store-perkebunan button[type=submit]').on('click', async function(e) {
+                e.preventDefault();
                 var flag = true;
                 var name = '';
-                e.preventDefault();
-                $('[required]').each(function(index, input) {
+
+                $('form#store-perkebunan [required]').each(function(index, input) {
                     if ($(input).val() === '') {
-                        name = $(input).attr('name').replace('-', ' ');
+                        name = $(input).attr('name').replace('_', ' ');
                         name = name.charAt(0).toUpperCase() + name.slice(1);
                         flag = false;
                         return false;
@@ -105,32 +106,13 @@
                 if (flag) {
                     var confirm = await confirmation();
                     if (confirm) {
-                        $('form').submit();
+                        $('form#store-perkebunan [required]').submit();
                     }
                     return;
                 }
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'error',
-                    title: `${name} wajib diisi`,
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            });
 
-            const confirmation = async () => {
-                var result = await Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda tidak dapat mengembalikan aksi ini!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya!',
-                    cancelButtonText: 'Tidak'
-                });
-                return result.isConfirmed;
-            }
+                swal(`${name} wajib diisi`, 'error');
+            });
         });
     </script>
 @endsection

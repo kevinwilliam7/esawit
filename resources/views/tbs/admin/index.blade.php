@@ -45,7 +45,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $tbs->bulan }}</td>
                                 @foreach ($listTbs as $tahun)
-                                    <td>{{ $tbs->{"tbs_$tahun"} * 1000 }}</td>
+                                    <td>{{ $tbs->{"tbs_$tahun"} }}</td>
                                 @endforeach
                                 <td>
                                     {{-- <button class="btn btn-primary btn-bordered rounded-2 btn-sm">

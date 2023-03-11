@@ -91,7 +91,7 @@
         </div>
     </div>
 
-    <form action="{{ route('admin.partner.destroy', ['partner' => $partner->id]) }}" class="d-none" method="POST">
+    <form action="{{ route('admin.partner.destroy', ['partner' => $partner->id]) }}" class="d-none" method="POST" id="form-delete">
         @csrf
         @method('DELETE')
     </form>
@@ -132,12 +132,8 @@
 
             $('table#partners').on('click', '.btn-danger', async function() {
                 if (await confirmation()) {
-                    $('form.d-none').submit();
+                    $('#form-delete').submit();
                 }
-            });
-
-            table.on('row-reorder', function(e, diff, edit) {
-                console.log(e, diff, edit);
             });
         });
     </script>

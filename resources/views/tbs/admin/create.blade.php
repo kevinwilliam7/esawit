@@ -1,14 +1,14 @@
 @php
     $listBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
     $listTbs = [3,4,5,6,7,8,9,10,21,22,23,24,25];
-    $romanNum = ['I', 'II']
+    $romanNum = ['I', 'II'];
 @endphp
 @extends('layouts.admin.master')
 
 @section('content-title', 'Tambah Data Harga TBS')
 
 @section('content')
-    <div class="container">
+    <div class="container">      
         <div class="card">
             <div class="card-header">
                 <div class="card-title h6"><b>Data Harga TBS</b></div>
@@ -26,12 +26,18 @@
                                 @endforeach
                             @endforeach
                         </select>
+                        @error('bulan')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="row mt-3">
                         @foreach ($listTbs as $tbs)
                             <div class="col-12 col-md-6 col-lg-3 mb-3">
                                 <label for="tbs-{{ $tbs }}" class="form-label">TBS {{ $tbs }} Tahun</label>
-                                <input type="number" name="tbs_{{ $tbs }}" id="tbs-{{ $tbs }}" class="form-control" required>
+                                <input type="number" name="tbs_{{ $tbs }}" id="tbs-{{ $tbs }}" class="form-control" placeholder="TBS {{ $tbs }} Tahun" required>
+                                @error("tbs_$tbs")
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         @endforeach
                     </div>

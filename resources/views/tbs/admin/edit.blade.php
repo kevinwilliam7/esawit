@@ -32,7 +32,10 @@
                         @foreach ($listTbs as $tahun)
                             <div class="col-12 col-md-6 col-lg-3 mb-3">
                                 <label for="tbs-{{ $tahun }}" class="form-label">TBS {{ $tahun }} Tahun</label>
-                                <input type="number" name="tbs_{{ $tahun }}" id="tbs-{{ $tahun }}" value='{{ $tb->{"tbs_$tahun"} }}' class="form-control" required>
+                                <input type="number" name="tbs_{{ $tahun }}" id="tbs-{{ $tahun }}" value='{{ $tb->{"tbs_$tahun"} }}' class="form-control" placeholder="TBS {{ $tahun }} Tahun" required>
+                                @error("tbs_$tahun")
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         @endforeach
                     </div>

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Perundangan\StorePerundanganRequest;
+use App\Http\Requests\Perundangan\UpdatePerundanganRequest;
 use App\Models\Perundangan;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\DataTables as DataTable;
 
@@ -31,70 +32,40 @@ class PerundanganController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Perundangan\StorePerundanganRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePerundanganRequest $request)
     {
         $input = $request->except('file');
         $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
-        if ($request->file->storeAs("public/perundangan", $fileName)) {
-            $input['file'] = "perundangan/$fileName";
+        if (!$request->file->storeAs("public/perundangan", $fileName)) {
+            return redirect()->back()->with('error', 'Gagal menambah data perundangan');
         }
+        $input['file'] = "perundangan/$fileName";
         Perundangan::create($input);
         return redirect()->back()->with('success', 'Berhasil menambah data perundangan');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  app\Http\Requests\Perundangan\UpdatePerundanganRequest  $request
+     * @param  app\Models\Perundangan  $perundangan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Perundangan $perundangan)
+    public function update(UpdatePerundanganRequest $request, Perundangan $perundangan)
     {
         $input = $request->except('file');
         if($request->has('file')){
             $fileName = uniqid() . '-' . $request->file->getClientOriginalName();
-            if ($request->file->storeAs("public/perundangan", $fileName)) {
-                $input['file'] = "perundangan/$fileName";
-                if ($perundangan->file !== null && is_file($perundangan->file)) Storage::delete('public/' . $perundangan->file);
+            if (!$request->file->storeAs("public/perundangan", $fileName)) {
+                return redirect()->back()->with('error', 'Gagal mengubah data perundangan');
             }
+            $input['file'] = "perundangan/$fileName";
+            if ($perundangan->file !== null && is_file($perundangan->file)) Storage::delete('public/' . $perundangan->file);
         }
         $perundangan->update($input);
         return redirect()->back()->with('success', 'Berhasil mengubah data perundangan');

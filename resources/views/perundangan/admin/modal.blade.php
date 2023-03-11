@@ -11,11 +11,11 @@
                     @method('POST')
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" name="nama" id="nama" class="form-control">
+                        <input type="text" name="nama" id="nama" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="file" class="form-label">File (pdf)</label>
-                        <input type="file" name="file" id="file" class="form-control" accept="application/pdf">
+                        <input type="file" name="file" id="file" class="form-control" accept="application/pdf" required>
                     </div>
                 </form>
             </div>

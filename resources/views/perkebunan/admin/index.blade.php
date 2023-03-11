@@ -119,24 +119,10 @@
                             table.draw();
                         };
                     }).catch((error) => {
-                        console.log(error);
+                        
                     });
                 };
             });
-
-            const confirmation = async () => {
-                var result = await Swal.fire({
-                    title: 'Apakah Anda yakin?',
-                    text: "Anda tidak dapat mengembalikan aksi ini!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya!',
-                    cancelButtonText: 'Tidak'
-                });
-                return result.isConfirmed;
-            };
         });
     </script>
 @endsection
