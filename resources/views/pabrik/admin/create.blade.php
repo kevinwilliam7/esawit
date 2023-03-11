@@ -70,7 +70,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('button[type=submit]').on('click', async function(e) {
+            $('#store button[type=submit]').on('click', async function(e) {
                 var flag = true;
                 var name = '';
                 e.preventDefault();

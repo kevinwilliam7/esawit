@@ -19,7 +19,7 @@
                 <div class="card-title py-0 h5">Ubah Data</div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.pabrik.update', ['pabrik' => $pabrik->id, 'nama' => $pabrik->nama]) }}" method="post" enctype="multipart/form-data" id="store">
+                <form action="{{ route('admin.pabrik.update', ['pabrik' => $pabrik->id, 'nama' => $pabrik->nama]) }}" method="post" enctype="multipart/form-data" id="edit">
                     @csrf
                     @method('PATCH')
                     <nav>
@@ -59,7 +59,7 @@
                     <a href="{{ route('admin.pabrik.index') }}" class="btn btn-default btn-bordered w-md waves-light">
                         <i class="fa fa-chevron-left"></i>
                         Kembali</a>
-                    <button type="submit" class="btn btn-primary btn-bordered w-md waves-light" form="store">
+                    <button type="submit" class="btn btn-primary btn-bordered w-md waves-light" form="edit">
                         <i class="fa fa-save"></i> Simpan Data
                     </button>
                 </div>
@@ -71,7 +71,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('button[type=submit]').on('click', async function(e) {
+            $('#edit button[type=submit]').on('click', async function(e) {
                 var flag = true;
                 var name = '';
                 e.preventDefault();
