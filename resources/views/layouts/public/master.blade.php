@@ -8,7 +8,7 @@
         <meta content="" name="description">
         <meta content="" name="keywords">
         <!-- Favicons -->
-        <link href="{{ asset('assets/green/img/favicon.png')}}" rel="icon">
+        <link href="{{ asset('favicon.')}}" rel="icon">
         <link href="{{ asset('assets/green/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
         <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css" />
         <!-- Google Fonts -->
@@ -68,7 +68,6 @@
                         $('#preloader').remove();
                     });
                 }
-                console.log(1);
                 disablePreloader();
             });
         </script>
