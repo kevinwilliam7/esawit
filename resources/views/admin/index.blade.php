@@ -20,7 +20,7 @@
                     <i class="fa fa-plus me-1"></i>
                     Tambah Data Admin
                 </button>
-                <table id="tableAdmin" class="table table-striped w-100">
+                <table class="table table-striped w-100" id="tableAdmin" >
                     <thead>
                         <tr>
                             <th>No</th>
@@ -32,7 +32,7 @@
                     <tbody>
                         @foreach ($admins as $admin)
                             <tr>
-                                <td>{{ $admin->name  }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $admin->name }}</td>
                                 <td>{{ $admin->email }}</td>
                                 <td>
@@ -43,6 +43,9 @@
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="rounded-2 btn btn-outline-danger delete_confirm"><i class="fa fa-trash-o"></i> Hapus</button>
                                             </form>
+                                            <a href="{{ route('admin.admin.update',['id' => $admin->id]) }} " class="btn btn-warning btn-bordered mb-3 rounded-2"><i class="fa fa-edit me-1"></i>
+                                                Ubah Data
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
@@ -60,23 +63,38 @@
     <script src="{{ asset('assets/libs/DataTables/datatables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#tableAdmin').DataTable({  
+            const tableAdmins = $('#tableAdmin').DataTable({  
+            });
+
+            $('button.btn-success').on('click', function() {
+                $('.modal-title').text('Tambah Data Admin');
+                $('form').trigger('reset');
+                $('[name=_method]').val('POST');
+                $('form').attr('action', `{{ route('admin.admin.store') }}`);
+                $('.modal').modal('show');
+            });
+
+            $('table#tableAdmin').on('click', 'a.btn-warning', function(e) {
+                e.preventDefault();
+                var tr = $(this).closest('tr');
+                var row = tableAdmins.row(tr);
+                var nama = row.data()[1];
+                var email = row.data()[2];
+                $('.modal-title').text('Update Data Admin');
+                $('form').trigger('reset');
+                $('[name=name]').val(nama);
+                $('[name=email]').val(email);
+                $('[name=_method]').val('PATCH');
+                $('form').attr('action', $(this).attr('href'));
+                $('.modal').modal('show');
+            });
+
+            $('.delete_confirm').click(async function(event) {
+                var form =  $(this).closest("form");
+                event.preventDefault();
+                if(!await confirmation()) return false;
+                return form.submit();
             });
         });
-
-        $('button.btn-success').on('click', function() {
-            $('.modal-title').text('Tambah Data Admin');
-            $('form').trigger('reset');
-            $('[name=_method]').val('POST');
-            $('form').attr('action', `{{ route('admin.admin.store') }}`);
-            $('.modal-create').modal('show');
-        });
-
-        $('.delete_confirm').click(async function(event) {
-          var form =  $(this).closest("form");
-          event.preventDefault();
-          if(!await confirmation()) return false;
-          return form.submit();
-      })
     </script>
 @endsection

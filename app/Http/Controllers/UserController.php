@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\StoreAdminRequest;
+use App\Http\Requests\Admin\UpdateAdminRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -37,14 +39,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAdminRequest $request)
     {
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        User::create(request(['name', 'email', 'password']));
+        $input = $request->all();
+        User::create($input);
         return redirect()->back()->with('success', 'Berhasil menambah data Admin');
     }
 
@@ -78,9 +76,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAdminRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if($request->password == null)
+        {
+            $user->fill([
+                'name' => $request->name,
+                'email' => $request->email
+            ]);
+        } else
+        {
+            $user->fill([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+        }
+        $user->save();
+        return redirect()->route('admin.admin.index')->with('success', 'Berhasil mengubah data admin');
     }
 
     /**

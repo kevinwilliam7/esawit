@@ -183,7 +183,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
     Route::get('home', [HomeController::class, 'admin'])->name('home.index');
     Route::get('admin', [UserController::class, 'admin'])->name('admin.index');
     Route::post('admin', [UserController::class, 'store'])->name('admin.store');
-    // Route::post('admin/update/{id}', [UserController::class, 'update'])->name('admin.update');
+    Route::patch('admin/update/{id}', [UserController::class, 'update'])->name('admin.update');
     Route::delete('admin/destroy/{id}', [UserController::class, 'destroy'])->name('admin.destroy');
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
