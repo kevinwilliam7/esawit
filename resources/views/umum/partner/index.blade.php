@@ -9,6 +9,16 @@
 
 @section('content')
     <div class="container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="card">
             <div class="card-body">
                 <div class="mb-3">
@@ -24,7 +34,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama</th>
-                            <th>Image</th>
+                            <th>Logo</th>
                             <th>Link</th>
                             <th>Aksi</th>
                         </tr>
@@ -71,15 +81,15 @@
                         @method('POST')
                         <div class="mb-3">
                             <label for="" class="form-label">Nama</label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Link</label>
-                            <input type="text" name="link" class="form-control">
+                            <input type="text" name="link" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Link</label>
-                            <input type="file" name="image" accept="image/*" class="form-control">
+                            <label for="" class="form-label">Logo</label>
+                            <input type="file" name="image" accept="image/*" class="form-control" required>
                         </div>
                     </form>
                 </div>
