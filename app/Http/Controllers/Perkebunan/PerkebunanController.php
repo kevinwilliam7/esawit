@@ -34,7 +34,7 @@ class PerkebunanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  app/Http/Requests/Perkebunan/PerkebunanRequest  $request
+     * @param  app\Http\Requests\Perkebunan\PerkebunanRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(PerkebunanRequest $request)
@@ -51,7 +51,7 @@ class PerkebunanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
+     * @param  app\Models\Perkebunan\Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
     public function show(Perkebunan $perkebunan, String $nama)
@@ -64,7 +64,7 @@ class PerkebunanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
+     * @param  app\Models\Perkebunan\Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
     public function edit(Perkebunan $perkebunan, String $nama): View
@@ -75,8 +75,8 @@ class PerkebunanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  app/Http/Requests/Perkebunan/PerkebunanRequest  $request
-     * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
+     * @param  app\Http\Requests\Perkebunan\PerkebunanRequest  $request
+     * @param  app\Models\Perkebunan\Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
     public function update(PerkebunanRequest $request, Perkebunan $perkebunan, String $nama)
@@ -88,7 +88,7 @@ class PerkebunanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  app/Models/Perkebunan/Perkebunan  $perkebunan
+     * @param  app\Models\Perkebunan\Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
     public function destroy(Perkebunan $perkebunan, String $nama)

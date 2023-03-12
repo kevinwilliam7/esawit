@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Perkebunan\Kontribusi;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Perkebunan\KontribusiRequest;
 use App\Models\Kontribusi;
 use App\Models\Perkebunan\Perkebunan;
-use Illuminate\Http\Request;
 use DataTables;
 
 class KontribusiController extends Controller
@@ -13,6 +13,9 @@ class KontribusiController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  app\Models\Perkebunan\Perkebunan  $perkebunan
+     * @param  string  $nama
+     * @param  string  $pelaksanaan
      * @return \Illuminate\Http\Response
      */
     public function index(Perkebunan $perkebunan, string $nama, string $pelaksanaan)
@@ -26,48 +29,42 @@ class KontribusiController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Perkebunan\KontribusiRequest  $request
+     * @param  app\Models\Perkebunan\Perkebunan  $perkebunan
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Perkebunan $perkebunan)
+    public function store(KontribusiRequest $request, Perkebunan $perkebunan)
     {
         $perkebunan->kontribusis()->create($request->all());
         return redirect()->back()->with('success', 'Berhasil menambah data kontribusi');
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  app\Http\Requests\Perkebunan\KontribusiRequest  $request
+     * @param  app\Models\Perkebunan\Perkebunan  $perkebunan
+     * @param  string  $nama
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Perkebunan $perkebunan, string $nama, int $id)
+    public function update(KontribusiRequest $request, Perkebunan $perkebunan, string $nama, int $id)
     {
-        $perkebunan->kontribusis->find($id)->update($request->all());
+        $perkebunan->kontribusis()->findOrFail($id)->update($request->all());
         return redirect()->back()->with('success', 'Berhasil mengubah data kontribusi');
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  app\Models\Perkebunan\Perkebunan  $perkebunan
+     * @param  string  $nama
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Perkebunan $perkebunan, string $nama, int $id)
     {
-        $perkebunan->kontribusis->find($id)->delete();
+        $perkebunan->kontribusis()->findOrFail($id)->delete();
         return redirect()->back()->with('success', 'Berhasil menghapus data kontribusi');
     }
 }

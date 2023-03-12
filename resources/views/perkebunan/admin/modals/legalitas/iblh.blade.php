@@ -11,7 +11,7 @@
                     @method('POST')
                     <div class="mb-3">
                         <label for="" class="form-label">Jenis Dokumen</label>
-                        <input type="text" name="jenis_dokumen" id="" class="form-control" required></div>
+                        <input type="text" name="jenis_dokumen" id="" class="form-control" placeholder="Jenis Dokumen" required></div>
                     <div class="mb-3">
                         <label for="" class="form-label">Nomor Surat</label>
                         <input type="text" name="nomor_surat" class="form-control" placeholder="Nomor Surat" required>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Keterangan</label>
-                        <textarea name="keterangan" id="" cols="30" rows="5" class="form-control" required placeholder="Keterangan"></textarea>
+                        <textarea name="keterangan" id="" cols="30" rows="5" class="form-control" placeholder="Keterangan"></textarea>
                     </div>
                 </form>
             </div>

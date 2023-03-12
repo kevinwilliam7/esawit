@@ -2,7 +2,7 @@
     <i class="fa fa-plus me-1"></i> Tambah Data
 </button>
 
-<table class="table table-striped" id="sertifikats">
+<table class="table table-striped w-100" id="sertifikats">
     <thead>
         <tr>
             <th>No</th>

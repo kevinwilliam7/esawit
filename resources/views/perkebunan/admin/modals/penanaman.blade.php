@@ -32,7 +32,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Tahun</label>
-                        <input type="text" name="tahun" class="form-control" placeholder="Tahun" required>
+                        <input type="number" name="tahun" class="form-control" min="1900" max="{{ date('Y') }}" placeholder="Tahun" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Luas (Ha)</label>

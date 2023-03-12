@@ -33,6 +33,10 @@
                         <label for="" class="form-label">Lokasi</label>
                         <input type="text" name="lokasi" class="form-control" placeholder="Lokasi" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="" class="form-label">Penjabat Penerbit</label>
+                        <input type="text" name="penjabat_penerbit"  class="form-control" placeholder="Penjabat Penerbit" required>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

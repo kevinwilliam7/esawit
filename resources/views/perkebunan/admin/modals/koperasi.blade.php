@@ -15,11 +15,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Anggota</label>
-                        <input type="number" class="form-control" name="jumlah_anggota" required>
+                        <input type="number" min="0" class="form-control" name="jumlah_anggota" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Luas (Ha)</label>
-                        <input type="text" class="form-control" name="luas" required>
+                        <input type="number" min="0" step="0.01" class="form-control" name="luas" required>
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Bank</label>
